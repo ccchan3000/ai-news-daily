@@ -1,279 +1,381 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>行业资讯日报 | 2026-06-21</title>
-    <style>
-        * { margin:0; padding:0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 0; line-height: 1.6; min-height: 100vh; }
-        .container { max-width: 100%; margin: 0 auto; background: #f7fafc; min-height: 100vh; }
-        .header { background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); color: white; padding: 30px 20px; text-align: center; box-shadow: 0 4px 20px rgba(66,153,225,0.3); }
-        .header h1 { font-size: 28px; margin-bottom: 8px; font-weight: 800; letter-spacing: 1px; }
-        .header .date { font-size: 16px; opacity: 0.95; font-weight: 500; }
-        .header .subtitle { font-size: 14px; opacity: 0.9; margin-top: 8px; }
-        .content { padding: 20px 15px 40px; }
-        .section-title { font-size: 20px; font-weight: 700; color: #2d3748; margin-bottom: 20px; padding-left: 15px; border-left: 4px solid #4299e1; }
-        .section-title.s2 { border-left-color: #48bb78; margin-top: 30px; }
-        .news-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
-        .news-card.color-blue   { border-left: 4px solid #4299e1; }
-        .news-card.color-green  { border-left: 4px solid #48bb78; }
-        .news-card.color-yellow { border-left: 4px solid #ecc94b; }
-        .news-card.color-purple { border-left: 4px solid #9f7aea; }
-        .news-card.color-teal   { border-left: 4px solid #4fd1c5; }
-        .rank-badge { position: absolute; top: 15px; right: 15px; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; }
-        .color-blue   .rank-badge { background: linear-gradient(135deg, #4299e1, #3182ce); }
-        .color-green  .rank-badge { background: linear-gradient(135deg, #48bb78, #38a169); }
-        .color-yellow .rank-badge { background: linear-gradient(135deg, #ecc94b, #d69e2e); }
-        .color-purple .rank-badge { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-        .color-teal   .rank-badge { background: linear-gradient(135deg, #4fd1c5, #319795); }
-        .news-title { font-size: 18px; font-weight: 700; color: #1a202c; margin-bottom: 12px; padding-right: 50px; line-height: 1.4; }
-        .news-summary { color: #4a5568; font-size: 15px; line-height: 1.8; margin-bottom: 15px; }
-        .news-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
-        .source-tag { color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .color-blue   .source-tag { background: linear-gradient(135deg, #4299e1, #3182ce); }
-        .color-green  .source-tag { background: linear-gradient(135deg, #48bb78, #38a169); }
-        .color-yellow .source-tag { background: linear-gradient(135deg, #ecc94b, #d69e2e); }
-        .color-purple .source-tag { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-        .color-teal   .source-tag { background: linear-gradient(135deg, #4fd1c5, #319795); }
-        .original-link { display: inline-block; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: 600; }
-        .color-blue   .original-link { background: linear-gradient(135deg, #4299e1, #3182ce); }
-        .color-green  .original-link { background: linear-gradient(135deg, #48bb78, #38a169); }
-        .color-yellow .original-link { background: linear-gradient(135deg, #ecc94b, #d69e2e); }
-        .color-purple .original-link { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-        .color-teal   .original-link { background: linear-gradient(135deg, #4fd1c5, #319795); }
-        .importance-score { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px; background: #f7fafc; border-radius: 10px; }
-        .score-label { font-size: 13px; color: #718096; font-weight: 600; }
-        .score-bar { flex: 1; background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; }
-        .score-fill { height: 100%; border-radius: 4px; }
-        .color-blue   .score-fill { background: linear-gradient(90deg, #4299e1, #3182ce); }
-        .color-green  .score-fill { background: linear-gradient(90deg, #48bb78, #38a169); }
-        .color-yellow .score-fill { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
-        .color-purple .score-fill { background: linear-gradient(90deg, #9f7aea, #805ad5); }
-        .color-teal   .score-fill { background: linear-gradient(90deg, #4fd1c5, #319795); }
-        .score-number { font-size: 14px; font-weight: 700; }
-        .color-blue   .score-number { color: #3182ce; }
-        .color-green  .score-number { color: #38a169; }
-        .color-yellow .score-number { color: #d69e2e; }
-        .color-purple .score-number { color: #805ad5; }
-        .color-teal   .score-number { color: #319795; }
-        .footer { background: white; padding: 20px; text-align: center; color: #718096; font-size: 13px; border-top: 1px solid #e2e8f0; }
-        .footer .brand { font-weight: 700; background: linear-gradient(135deg, #4299e1, #3182ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI+综合资讯简报 | 2026年6月22日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #16213e, #0f3460);
+  border-radius: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.header h1 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.header .date {
+  font-size: 16px;
+  color: #a0a0b0;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 28px 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card {
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 4px 0 0 4px;
+}
+.color-blue { background: linear-gradient(135deg, #1a2744, #1e3a5f); }
+.color-blue::before { background: linear-gradient(180deg, #4299e1, #3182ce); }
+.color-green { background: linear-gradient(135deg, #1a3428, #1e4a38); }
+.color-green::before { background: linear-gradient(180deg, #48bb78, #38a169); }
+.color-yellow { background: linear-gradient(135deg, #2a2618, #3e3a22); }
+.color-yellow::before { background: linear-gradient(180deg, #ecc94b, #d69e2e); }
+.color-purple { background: linear-gradient(135deg, #2a1e44, #3a2a5f); }
+.color-purple::before { background: linear-gradient(180deg, #9f7aea, #805ad5); }
+.color-teal { background: linear-gradient(135deg, #1a2e34, #1e4048); }
+.color-teal::before { background: linear-gradient(180deg, #4fd1c5, #319795); }
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.color-blue .rank-badge { background: #3182ce; color: #fff; }
+.color-green .rank-badge { background: #38a169; color: #fff; }
+.color-yellow .rank-badge { background: #d69e2e; color: #1a1a2e; }
+.color-purple .rank-badge { background: #805ad5; color: #fff; }
+.color-teal .rank-badge { background: #319795; color: #fff; }
+.card-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #f0f0f0;
+  flex: 1;
+}
+.card-summary {
+  font-size: 14px;
+  color: #b0b0c0;
+  margin-bottom: 12px;
+  padding-left: 44px;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 44px;
+  font-size: 12px;
+}
+.card-source {
+  color: #7a7a90;
+}
+.card-link {
+  color: #4299e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.card-link:hover { color: #63b3ed; }
+.importance-bar {
+  margin-top: 10px;
+  padding-left: 44px;
+}
+.importance-bar .label {
+  font-size: 12px;
+  color: #7a7a90;
+  margin-bottom: 4px;
+}
+.importance-track {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.importance-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.color-blue .importance-fill { background: linear-gradient(90deg, #4299e1, #3182ce); }
+.color-green .importance-fill { background: linear-gradient(90deg, #48bb78, #38a169); }
+.color-yellow .importance-fill { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
+.color-purple .importance-fill { background: linear-gradient(90deg, #9f7aea, #805ad5); }
+.color-teal .importance-fill { background: linear-gradient(90deg, #4fd1c5, #319795); }
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #5a5a70;
+  font-size: 12px;
+  margin-top: 30px;
+}
+</style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <h1>📰 行业资讯日报</h1>
-        <div class="date">2026年6月21日 星期六</div>
-        <div class="subtitle">精选TOP5重磅新闻 · 每日7:00更新</div>
-    </div>
 
-    <div class="content">
-        <div class="section-title">🔥 今日热点（AI行业）</div>
+<div class="header">
+  <h1>AI + 综合资讯简报</h1>
+  <div class="date">2026年6月22日 · 星期一 · 农历五月初八</div>
+</div>
 
-        <div class="news-card color-blue">
-            <div class="rank-badge">1</div>
-            <div class="news-title">诺贝尔奖得主John Jumper离开Google DeepMind加盟Anthropic</div>
-            <div class="news-summary">AlphaFold蛋白质结构预测研究的核心人物、2024年诺贝尔化学奖得主John Jumper正式离开Google DeepMind转投竞争对手Anthropic，引发行业对顶级AI实验室竞争格局演变的广泛关注。这一人才流动被视为Anthropic在顶尖科研实力上的重大加持，也意味着AI领域的人才争夺战愈发激烈。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 TechCrunch AI</span>
-                <a href="https://aitoolly.com/zh/ai-news/article/2026-06-21-nobel-laureate-john-jumper-departs-google-deepmind-to-join-rival-ai-firm-anthropic" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:95%"></div></div>
-                <span class="score-number">95分</span>
-            </div>
-        </div>
+<div class="section-title">🔥 今日热点 · AI行业 TOP5</div>
 
-        <div class="news-card color-green">
-            <div class="rank-badge">2</div>
-            <div class="news-title">美团LongCat发布General 365评测集：最强模型推理准确率仅62.8%</div>
-            <div class="news-summary">美团LongCat团队发布General 365推理评测基准，对26款主流大模型进行实测。结果令人惊讶：最强的Gemini 3 Pro准确率仅62.8%，多数模型未达60分及格线，揭示了当前大模型在复杂推理任务上的普遍短板。该评测被誉为AI推理能力评估领域的"压力测试"，对行业具有重要参考价值。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 美团技术团队</span>
-                <a href="https://aitoolly.com/zh/ai-news/article/2026-06-21-meituan-longcat-unveils-general-365-a-rigorous-new-benchmark-for-ai-reasoning-capabilities" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
-                <span class="score-number">90分</span>
-            </div>
-        </div>
+<div class="card color-blue">
+  <div class="card-title-row">
+    <span class="rank-badge">1</span>
+    <span class="card-title">GPT-5.6系列有望下周发布，OpenAI发动价格战反击Anthropic</span>
+  </div>
+  <div class="card-summary">OpenAI有望下周推出GPT-5.6系列模型，涵盖mini、标准版及Pro版。上下文窗口从100万tokens扩展至150万tokens，优化长周期编码能力和Codex响应速度。部分Pro订阅用户已可访问GPT-5.6 Pro模型，反馈理解力显著增强。在智能体编码工作中，GPT-5.6已优于Anthropic Mythos系列。OpenAI将以Anthropic一半的定价发动价格战，在提升性能前提下进一步降价。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：IT之家</span>
+    <a class="card-link" href="https://www.ithome.com/0/966/506.htm" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:95%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-yellow">
-            <div class="rank-badge">3</div>
-            <div class="news-title">美团开源首个交互式视频世界模型评测基准WBench</div>
-            <div class="news-summary">美团LongCat团队开源了全球首个针对交互式视频世界模型的系统性多轮评测基准WBench，被比喻为AI能力的"CT扫描仪"。该基准专门评估世界模型从"被动观看"向"主动交互"模式转型中的技术瓶颈，填补了行业在该领域评测标准上的空白，为视频AI研究提供了重要参考工具。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 美团技术团队</span>
-                <a href="https://aitoolly.com/zh/ai-news/article/2026-06-21-meituan-longcat-team-unveils-wbench-the-first-systematic-multi-round-benchmark-for-interactive-video" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:85%"></div></div>
-                <span class="score-number">85分</span>
-            </div>
-        </div>
+<div class="card color-green">
+  <div class="card-title-row">
+    <span class="rank-badge">2</span>
+    <span class="card-title">Claude Fable 5横扫编程榜单，Anthropic估值首超OpenAI</span>
+  </div>
+  <div class="card-summary">Anthropic发布Claude Fable 5和Mythos 5双轨制模型。Fable 5在SWE-bench Pro评测中以80.3%得分远超GPT-5.5的58.6%，近22个百分点差距。内部测试中24小时完成5000万行Ruby代码迁移任务。Anthropic估值达9650亿美元，首次超过OpenAI的8520亿美元。但美国政府以国家安全为由要求Anthropic关闭Fable 5和Mythos 5，受此影响GPT-5.6或将延迟发布。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：搜狐科技 / 36氪</span>
+    <a class="card-link" href="https://www.sohu.com/a/1037991307_122893087" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:92%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-purple">
-            <div class="rank-badge">4</div>
-            <div class="news-title">Signal总裁警告：AI聊天机器人并非人类朋友，呼吁理性看待</div>
-            <div class="news-summary">Signal总裁Meredith Whittaker发出警告，明确指出AI聊天机器人既非人类朋友，也非有意识生命体，不具备真正感知对话的能力。她对当前AI产品拟人化趋势表示担忧，认为这可能导致用户产生不健康的情感依赖，呼吁公众和行业在产品设计与使用上保持理性，避免过度拟人化带来的伦理与社会风险。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 TechCrunch AI</span>
-                <a href="https://aitoolly.com/zh/ai-news/article/2026-06-21-signalmeredith-whittakerai" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:82%"></div></div>
-                <span class="score-number">82分</span>
-            </div>
-        </div>
+<div class="card color-yellow">
+  <div class="card-title-row">
+    <span class="rank-badge">3</span>
+    <span class="card-title">DeepSeek V4-Pro颠覆成本曲线，国产开源三强集体突围</span>
+  </div>
+  <div class="card-summary">6月国产开源模型集体更新：DeepSeek V4-Pro（1.6万亿参数MoE架构）在SimpleQA-Verified得分57.9，领先开源第二名超20个百分点；百万token上下文检索得分83.5超Gemini 3.1 Pro。输入0.28美元/百万tokens的定价使其性价比达171.9，是Claude Opus 4.8的31倍。月之暗面Kimi K2.7 Code专注代码场景提升8个百分点；智谱GLM-5.2优化中文理解与多轮对话。三条路线各有定位，行业选型更加清晰。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：搜狐科技</span>
+    <a class="card-link" href="https://www.sohu.com/a/1037991307_122893087" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:88%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-teal">
-            <div class="rank-badge">5</div>
-            <div class="news-title">开源工具Headroom：LLM上下文压缩最高减少95% Token消耗</div>
-            <div class="news-summary">开发者推出的开源工具Headroom，在大模型处理前对工具输出、日志、文件及RAG分块进行高效压缩，Token使用量降低60%至95%。该工具提供库、代理及MCP服务器多种集成形式，零依赖单二进制文件。对于需要处理大量上下文的企业级AI应用，Headroom有望显著降低调用成本，提升效率。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 GitHub Trending</span>
-                <a href="https://aitoolly.com/zh/ai-news/article/2026-06-21-headroom-new-open-source-tool-achieves-up-to-95-token-reduction-for-llm-inputs" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
-                <span class="score-number">80分</span>
-            </div>
-        </div>
+<div class="card color-purple">
+  <div class="card-title-row">
+    <span class="rank-badge">4</span>
+    <span class="card-title">AI Coding进入代理式编程新时代，腾讯与Anthropic双双发布报告</span>
+  </div>
+  <div class="card-summary">Anthropic发布《2026代理式编程趋势报告》指出：AI从"高级代码补全工具"进化为"自主协作工程师"，10人团队数周项目现在一个工程师带AI不到72小时搞定。腾讯研究院发布《AI Coding观察报告2.0》揭示六大洞察：模型能力高度趋同但45%AI代码存在已知漏洞，验证与规格定义成为新痛点，工具生态全面走向Agent-First。工程师角色从"代码编写者"转型为"AI兵团指挥官"，核心竞争力转向编排调度和系统架构。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：AI前沿社</span>
+    <a class="card-link" href="https://www.aifirshe.com/posts/019e85cb83557af5ad9f347be9c467e6" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:82%"></div></div>
+  </div>
+</div>
 
-        <div class="section-title s2">🌍 综合资讯</div>
+<div class="card color-teal">
+  <div class="card-title-row">
+    <span class="rank-badge">5</span>
+    <span class="card-title">具身智能产业化加速：万台量产+行业标准落地+运动基座模型发布</span>
+  </div>
+  <div class="card-summary">智身科技6月1日实现第10000台具身智能机器人量产下线，从5000台到10000台仅用5个月，单月产值突破1亿元。具身智能首份行业标准YD/T 6770—2026正式实施，构建统一基准测试框架。智元机器人发布全球首个端到端运动基座模型BFM-2，引入生成式训练机制实现"运动思考"。WITA硅光动语大模型完成全国首例具身智能交互模型合规备案，交互时延压缩至500ms以内。具身智能正从概念验证快速进入规模化应用。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：AI前沿社</span>
+    <a class="card-link" href="https://www.aifirshe.com/posts/019e85cb83557af5ad9f347be9c467e6" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:78%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-blue">
-            <div class="rank-badge">1</div>
-            <div class="news-title">伊朗宣布关闭霍尔木兹海峡，国际油价暗盘拉升比特币跳水</div>
-            <div class="news-summary">当地时间6月20日，伊朗武装部队宣布霍尔木兹海峡对所有船只关闭，原因是美国违背承诺、以色列违反停火协议。消息传出后，国际原油暗盘拉升超2%，比特币快速跳水，全球加密货币市场超6.7万人被爆仓。霍尔木兹海峡是全球约20%的原油运输要道，此次关闭对全球能源市场影响深远。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:95%"></div></div>
-                <span class="score-number">95分</span>
-            </div>
-        </div>
+<div class="section-title">🌍 综合资讯 · TOP8</div>
 
-        <div class="news-card color-green">
-            <div class="rank-badge">2</div>
-            <div class="news-title">马斯克行使期权获7800亿元股票，身家超万亿成全球首位"万亿富翁"</div>
-            <div class="news-summary">据美国证券交易委员会文件，6月16日马斯克行使2018年特斯拉CEO薪酬方案权利，获得3.04亿股股票，账面收益约1160亿美元（约合人民币7800亿元）。SpaceX上市也让其个人财富大增，身家达1.3万亿美元，成为全球首位"万亿富翁"，引发全球对科技亿万富翁财富集中问题的热议。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
-                <span class="score-number">90分</span>
-            </div>
-        </div>
+<div class="card color-green">
+  <div class="card-title-row">
+    <span class="rank-badge">1</span>
+    <span class="card-title">华润新能源245亿元IPO刷新深交所纪录，成为史上最大规模新股</span>
+  </div>
+  <div class="card-summary">华润新能源6月22日正式开启申购，本次IPO预计募集资金总额为245亿元，将刷新深交所IPO融资纪录，超越2020年上市的金龙鱼约139亿元成为深交所史上最大规模IPO。华润新能源是深交所史上发行股票数量第二多的新股，预计中签率较高。新能源板块持续受到市场追捧，A股创业板本周涨幅达11.02%，AI驱动半导体设备股价年内翻倍。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：财经早餐 · 财经</span>
+    <a class="card-link" href="https://baijiahao.baidu.com/s?id=1868620752199891592" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:85%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-yellow">
-            <div class="rank-badge">3</div>
-            <div class="news-title">世界杯荷兰5-1大胜瑞典，打入队史世界杯第100球</div>
-            <div class="news-summary">北京时间6月21日凌晨，2026美加墨世界杯F组小组赛第二轮，荷兰队5-1战胜瑞典队，迎来大胜。本场比赛荷兰队还打入队史世界杯第100球，成为第八支达成该里程碑的队伍，从1934年首次参赛到今日，历经92年写下这一历史性节点，赛后球迷反应热烈，话题冲上各大平台热搜。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 今日头条</span>
-                <a href="https://finance.sina.com.cn/wm/2026-06-21/doc-iniecfme1384658.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:85%"></div></div>
-                <span class="score-number">85分</span>
-            </div>
-        </div>
+<div class="card color-yellow">
+  <div class="card-title-row">
+    <span class="rank-badge">2</span>
+    <span class="card-title">马斯克拿下7800亿元天价薪酬，为企业史上最大股权激励</span>
+  </div>
+  <div class="card-summary">马斯克获得7800亿元人民币天价薪酬方案，2028年可兑现，为企业史上规模最大的股权激励。特斯拉同时提交"Amazing Abundance"商标注册申请，核心布局人工智能、人形机器人、自动驾驶系统，并依托自动化技术实现生产成本大幅下降的未来图景。大众汽车集团宣布将削减约5万个岗位，去年营业利润创十年新低，传统汽车巨头与新能源转型之间的矛盾加剧。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：每日60秒新闻 · 财经</span>
+    <a class="card-link" href="https://www.yyxw.com/" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:80%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-purple">
-            <div class="rank-badge">4</div>
-            <div class="news-title">香港机场劫金案告破：警方确认有"内鬼"，700万港元金条仍未寻回</div>
-            <div class="news-summary">6月18日凌晨，香港国际机场发生持刀抢劫案，6条总重6公斤、价值约700万港元的金条被抢走，一名男子被砍伤。6月20日，香港警方拘捕4男3女，部分人士有黑社会背景。警方确认案件并非随机犯案，相信有"内鬼"通风报信，案件性质严重，金条目前仍未寻回，调查仍在持续。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
-                <span class="score-number">80分</span>
-            </div>
-        </div>
+<div class="card color-purple">
+  <div class="card-title-row">
+    <span class="rank-badge">3</span>
+    <span class="card-title">今年第7号台风"米克拉"生成，最强可达超强台风级</span>
+  </div>
+  <div class="card-summary">今年第7号台风"米克拉"已正式生成，最强可达超强台风级别，路径尚有不确定性。极端天气事件频发引发关注，多地持续面临暴雨和洪涝灾害风险。气象部门提醒沿海地区做好防台风准备，密切关注后续路径变化和强度发展。同期广东3岁女童遭幼儿园老师暴力喂食受伤事件引发社会热议，涉事教师已被拘留。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：每日60秒新闻 · 社会热点</span>
+    <a class="card-link" href="https://www.yyxw.com/" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:75%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-teal">
-            <div class="rank-badge">5</div>
-            <div class="news-title">A股科技股强势崛起，中际旭创市值超越贵州茅台</div>
-            <div class="news-summary">6月18日，A股走出割裂行情，科创50暴涨近4%，中际旭创市值正式超越贵州茅台，成为市场关注焦点。银行、保险、白酒等传统蓝筹遭资金抛售，科技赛道享受政策与估值多重溢价。国家经济战略明确转向新质生产力，科技自立自强成为主线，A股风格切换信号愈发明显。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:78%"></div></div>
-                <span class="score-number">78分</span>
-            </div>
-        </div>
+<div class="card color-teal">
+  <div class="card-title-row">
+    <span class="rank-badge">4</span>
+    <span class="card-title">广东3岁女童遭幼儿园老师暴力喂食受伤，涉事教师已被拘留</span>
+  </div>
+  <div class="card-summary">广东一名3岁女童在幼儿园遭老师暴力喂食导致受伤，事件引发社会广泛关注和强烈谴责。涉事教师已被警方拘留，相关部门正在进一步调查处理。多地近日发布征集合同不公平格式条款线索公告，涉及餐饮住宿等行业，消费者权益保护持续推进。同期云南中考历史试卷被指存在多处史实错误，当地考试院回应正研判处理。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：每日60秒新闻 · 社会热点</span>
+    <a class="card-link" href="https://www.yyxw.com/" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:70%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-blue">
-            <div class="rank-badge">6</div>
-            <div class="news-title">国际金价惊魂跳水，美联储鹰派信号成核心导火索</div>
-            <div class="news-summary">近期国际金价剧烈下跌，COMEX金价连续三日大幅下挫，累计跌幅超4%。核心导火索是新任美联储主席沃什首秀释放超预期鹰派信号，叠加地缘、资金面多重利空共振。市场对美联储年内加息预期升温，黄金持有机会成本上升，资金持续流出，贵金属投资者损失惨重。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:75%"></div></div>
-                <span class="score-number">75分</span>
-            </div>
-        </div>
+<div class="card color-blue">
+  <div class="card-title-row">
+    <span class="rank-badge">5</span>
+    <span class="card-title">微信AI助手"小微"灰度上线，支持语音对话操控微信原生功能</span>
+  </div>
+  <div class="card-summary">微信AI助手"小微"已小范围灰度上线，部分网友微信主界面左上角出现小眼睛式样图标，即为AI助手"小微"测试版入口。小微支持通过文字或语音对话操作微信原生功能、调起小程序等，例如帮助好友发送消息、查询朋友圈、预约服务。京东创始人刘强东提出"涅槃计划"，将70万快递员送做技术培训以应对AI冲击。微信这一举措标志着超级App正式拥抱AI交互范式。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：财经早餐 · 科技</span>
+    <a class="card-link" href="https://baijiahao.baidu.com/s?id=1868620752199891592" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:82%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-green">
-            <div class="rank-badge">7</div>
-            <div class="news-title">小米股价过去一年暴跌六成，市值蒸发近万亿港元</div>
-            <div class="news-summary">武汉街头雷军吃早餐视频引发关注，网友送其"雷仁勋"外号，调侃与英伟达CEO黄仁勋的对比。过去一年，小米股价从约61港元跌至24港元附近，跌幅六成，总市值从逼近1.6万亿港元缩水到约6300亿港元。一季度财报收入和净利润双双负增长，市场对其"生态叙事"估值泡沫产生质疑。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:72%"></div></div>
-                <span class="score-number">72分</span>
-            </div>
-        </div>
+<div class="card color-green">
+  <div class="card-title-row">
+    <span class="rank-badge">6</span>
+    <span class="card-title">马宁领衔中国裁判组亮相世界杯，中国裁判时隔24年再主哨</span>
+  </div>
+  <div class="card-summary">北京时间6月21日，美加墨世界杯E组第二轮厄瓜多尔对阵库拉索，中国裁判员马宁、周飞、傅明分别担任主裁、助理裁判和视频助理裁判。中国裁判时隔24年再次主哨世界杯比赛，也是历史上首次有三名中国裁判执法同一场世界杯比赛。马宁在本场比赛出示6张黄牌，被外国球迷赞为"大师级执法"。日本队创队史世界杯最大赢球比分但淘汰赛首轮面临强强对话。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：央视新闻 · 体育</span>
+    <a class="card-link" href="https://baijiahao.baidu.com/s?id=1868620752199891592" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:72%"></div></div>
+  </div>
+</div>
 
-        <div class="news-card color-yellow">
-            <div class="rank-badge">8</div>
-            <div class="news-title">英特尔CEO陈立武放话"5-10年10倍回报"，押注新兴半导体领域</div>
-            <div class="news-summary">英特尔CEO陈立武表示对英特尔回报目标是"5到10年内实现10倍"，正围绕先进封装、新型半导体材料与下一代基板技术重构技术路线图。他投资玻璃基板公司、氮化镓等新材料领域，还与马斯克合作推进Terafab项目，预计2030至2032年，英特尔代工业务潜力将正式显现。</div>
-            <div class="news-meta">
-                <span class="source-tag">📌 新浪财经</span>
-                <a href="https://finance.sina.com.cn/headline/2026-06-21/doc-iniecfkz3286359.shtml" class="original-link">🔗 阅读原文</a>
-            </div>
-            <div class="importance-score">
-                <span class="score-label">重要性</span>
-                <div class="score-bar"><div class="score-fill" style="width:68%"></div></div>
-                <span class="score-number">68分</span>
-            </div>
-        </div>
-    </div>
+<div class="card color-yellow">
+  <div class="card-title-row">
+    <span class="rank-badge">7</span>
+    <span class="card-title">伊朗宣布关闭霍尔木兹海峡，美方称通行"安全无阻"</span>
+  </div>
+  <div class="card-summary">伊朗军方宣布霍尔木兹海峡仍然关闭，伊朗伊斯兰革命卫队海军尚未发布任何船只通行许可。美方则称海峡当天通行"安全无阻"，商业船舶通行量有所增加。特朗普称美伊须60天内签协议否则采取进一步行动，美伊技术层级会谈在瑞士举行。国际油价WTI周跌9.83%至76.54美元/桶，霍尔木兹海峡局势对全球能源供应链构成重大不确定性。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：新华社 / 财经早餐 · 国际</span>
+    <a class="card-link" href="https://baijiahao.baidu.com/s?id=1868620752199891592" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:88%"></div></div>
+  </div>
+</div>
 
-    <div class="footer">
-        <div class="brand">🤖 WorkBuddy AI 自动生成</div>
-        <div>每日7:00准时推送 · 扫码关注获取更多资讯</div>
-    </div>
+<div class="card color-purple">
+  <div class="card-title-row">
+    <span class="rank-badge">8</span>
+    <span class="card-title">我国公众可观测月面"X"状光影奇观，端午假期消费数据彰显韧性</span>
+  </div>
+  <div class="card-summary">6月22日我国公众可观测月面"X"状光影奇观，17时10分至19时30分为适宜观测时段，天文爱好者切勿错过。端午假期消费数据彰显经济韧性：重点监测步行街及商圈营业额同比增长3.5%，消费品以旧换新惠及1.36亿人次带动销售额超1万亿元。暑期出行预订迎高峰，研学和非遗文化体验成两大增长引擎，潮汕地区旅游热度持续攀升，"赛旅融合"成端午出行主流。</div>
+  <div class="card-meta">
+    <span class="card-source">来源：每日60秒新闻 / 商务部 · 文化/民生</span>
+    <a class="card-link" href="https://www.yyxw.com/" target="_blank">查看原文 →</a>
+  </div>
+  <div class="importance-bar">
+    <div class="label">重要性</div>
+    <div class="importance-track"><div class="importance-fill" style="width:65%"></div></div>
+  </div>
+</div>
+
+<div class="footer">
+  AI + 综合资讯简报 · 每日更新 · 数据来源：公开新闻报道与行业报告
+</div>
+
 </div>
 </body>
 </html>
