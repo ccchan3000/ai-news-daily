@@ -3,351 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI+综合资讯简报 | 2026年6月30日</title>
+<title>每日AI+综合资讯简报 | 2026年07月02日</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f1419;
+    background-image: linear-gradient(135deg, #0f1419 0%, #1a202c 50%, #0f1419 100%);
+    color: #e2e8f0;
+    line-height: 1.7;
+    padding: 20px;
     min-height: 100vh;
-    line-height: 1.6;
   }
-  .container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+  .container { max-width: 900px; margin: 0 auto; }
+
   .header {
     text-align: center;
-    padding: 32px 20px 24px;
-    background: linear-gradient(180deg, rgba(66,153,225,0.15) 0%, rgba(49,130,206,0.05) 100%);
-    border-radius: 16px;
-    margin-bottom: 28px;
+    padding: 40px 20px 30px;
+    background: linear-gradient(135deg, rgba(66,153,225,0.15), rgba(159,122,234,0.15));
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(66,153,225,0.2);
   }
   .header h1 {
     font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
+    background: linear-gradient(90deg, #4299e1, #9f7aea, #4fd1c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
   }
-  .header .date {
-    font-size: 15px;
-    color: #a0aec0;
-    margin-top: 8px;
-  }
+  .header .date { font-size: 15px; color: #a0aec0; }
+  .header .subtitle { font-size: 13px; color: #718096; margin-top: 6px; }
+
   .section-title {
     font-size: 22px;
     font-weight: 700;
-    margin: 28px 0 16px;
-    padding-left: 12px;
+    margin: 35px 0 18px;
+    padding-left: 14px;
+    border-left: 4px solid #4299e1;
   }
-  .card {
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 16px;
+
+  .news-card {
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
     position: relative;
+    overflow: hidden;
+    background: #1e2937;
+    border-left: 5px solid;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     transition: transform 0.2s, box-shadow 0.2s;
   }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-  .card .rank {
+  .news-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+
+  .news-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  /* 颜色类 */
+  .c-blue { border-left-color: #3182ce; }
+  .c-blue::before { background: linear-gradient(90deg, #4299e1, #3182ce); }
+  .c-green { border-left-color: #38a169; }
+  .c-green::before { background: linear-gradient(90deg, #48bb78, #38a169); }
+  .c-yellow { border-left-color: #d69e2e; }
+  .c-yellow::before { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
+  .c-purple { border-left-color: #805ad5; }
+  .c-purple::before { background: linear-gradient(90deg, #9f7aea, #805ad5); }
+  .c-cyan { border-left-color: #319795; }
+  .c-cyan::before { background: linear-gradient(90deg, #4fd1c5, #319795); }
+
+  .news-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .rank {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 32px; height: 32px;
     border-radius: 50%;
-    font-size: 16px;
     font-weight: 700;
-    margin-right: 10px;
+    font-size: 15px;
     color: #fff;
+    flex-shrink: 0;
   }
-  .card .title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    display: inline;
-  }
-  .card .summary {
-    font-size: 14px;
+  .c-blue .rank { background: linear-gradient(135deg, #4299e1, #3182ce); }
+  .c-green .rank { background: linear-gradient(135deg, #48bb78, #38a169); }
+  .c-yellow .rank { background: linear-gradient(135deg, #ecc94b, #d69e2e); color: #1a202c; }
+  .c-purple .rank { background: linear-gradient(135deg, #9f7aea, #805ad5); }
+  .c-cyan .rank { background: linear-gradient(135deg, #4fd1c5, #319795); color: #1a202c; }
+
+  .news-title { font-size: 17px; font-weight: 600; color: #f7fafc; flex: 1; min-width: 200px; }
+  .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
     color: #cbd5e0;
-    margin-top: 12px;
-    line-height: 1.7;
-  }
-  .card .meta {
-    font-size: 12px;
-    color: #718096;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .card .meta a {
-    color: #63b3ed;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .card .meta a:hover { color: #90cdf4; }
-  .importance-bar {
-    margin-top: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .importance-bar .label {
-    font-size: 12px;
-    color: #718096;
-    white-space: nowrap;
-  }
-  .importance-bar .bar-bg {
-    flex: 1;
-    height: 8px;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.1);
-    overflow: hidden;
-  }
-  .importance-bar .bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* Color classes */
-  .color-blue { background: linear-gradient(135deg, rgba(66,153,225,0.18) 0%, rgba(49,130,206,0.08) 100%); border-left: 4px solid #4299e1; }
-  .color-blue .rank { background: linear-gradient(135deg, #4299e1, #3182ce); }
-  .color-blue .bar-fill { background: linear-gradient(90deg, #4299e1, #3182ce); }
+  .news-summary { font-size: 14px; color: #cbd5e0; margin-bottom: 14px; text-align: justify; }
 
-  .color-green { background: linear-gradient(135deg, rgba(72,187,120,0.18) 0%, rgba(56,161,105,0.08) 100%); border-left: 4px solid #48bb78; }
-  .color-green .rank { background: linear-gradient(135deg, #48bb78, #38a169); }
-  .color-green .bar-fill { background: linear-gradient(90deg, #48bb78, #38a169); }
+  .news-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .source { font-size: 12px; color: #718096; }
+  .source a { color: #63b3ed; text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
 
-  .color-yellow { background: linear-gradient(135deg, rgba(236,201,75,0.18) 0%, rgba(214,158,46,0.08) 100%); border-left: 4px solid #ecc94b; }
-  .color-yellow .rank { background: linear-gradient(135deg, #ecc94b, #d69e2e); }
-  .color-yellow .bar-fill { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
-
-  .color-purple { background: linear-gradient(135deg, rgba(159,122,234,0.18) 0%, rgba(128,90,213,0.08) 100%); border-left: 4px solid #9f7aea; }
-  .color-purple .rank { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-  .color-purple .bar-fill { background: linear-gradient(90deg, #9f7aea, #805ad5); }
-
-  .color-teal { background: linear-gradient(135deg, rgba(79,209,197,0.18) 0%, rgba(49,151,149,0.08) 100%); border-left: 4px solid #4fd1c5; }
-  .color-teal .rank { background: linear-gradient(135deg, #4fd1c5, #319795); }
-  .color-teal .bar-fill { background: linear-gradient(90deg, #4fd1c5, #319795); }
+  .importance { display: flex; align-items: center; gap: 8px; }
+  .importance-label { font-size: 11px; color: #718096; white-space: nowrap; }
+  .bar-wrap { width: 100px; height: 7px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+  .bar { height: 100%; border-radius: 4px; }
+  .c-blue .bar { background: linear-gradient(90deg, #4299e1, #3182ce); }
+  .c-green .bar { background: linear-gradient(90deg, #48bb78, #38a169); }
+  .c-yellow .bar { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
+  .c-purple .bar { background: linear-gradient(90deg, #9f7aea, #805ad5); }
+  .c-cyan .bar { background: linear-gradient(90deg, #4fd1c5, #319795); }
+  .importance-val { font-size: 11px; color: #a0aec0; font-weight: 600; }
 
   .footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     color: #4a5568;
     font-size: 12px;
-    margin-top: 32px;
   }
+  .footer a { color: #63b3ed; text-decoration: none; }
 </style>
 </head>
 <body>
 <div class="container">
+
   <div class="header">
-    <h1>🤖 AI+综合资讯简报</h1>
-    <div class="date">2026年6月30日 · 星期一 · 每日自动更新</div>
+    <h1>📊 每日AI+综合资讯简报</h1>
+    <div class="date">2026年07月02日 · 星期四</div>
+    <div class="subtitle">AI行业前沿动态 × 综合热点速览</div>
   </div>
 
-  <!-- 🔥 今日热点 AI TOP5 -->
+  <!-- ===================== AI行业 TOP5 ===================== -->
   <div class="section-title">🔥 今日热点 · AI行业 TOP5</div>
 
-  <!-- #1 GPT-5.6 -->
-  <div class="card color-blue">
-    <span class="rank">1</span>
-    <span class="title">OpenAI正式发布GPT-5.6系列模型，仅向少数合作伙伴开放</span>
-    <div class="summary">6月26日，OpenAI发布GPT-5.6系列模型，包含旗舰版Sol、均衡版Terra和轻量版Luna。Sol面向复杂推理、智能体及软件开发场景，在Terminal-Bench 2.1基准测试中超越Anthropic Claude Mythos 5。定价约为Claude Fable 5的一半，进一步强化AI模型价格竞争。应美国政府要求，GPT-5.6目前仅向少数"可信合作伙伴"开放预览，配合前沿AI模型安全评估机制，未来几周逐步扩大开放范围。这标志着AI竞争从模型能力延伸至价格、算力及监管体系。</div>
-    <div class="meta">
-      <span>来源：每经网</span>
-      <a href="https://www.nbd.com.cn/articles/2026-06-29/4439922.html" target="_blank">阅读原文 →</a>
+  <div class="news-card c-blue">
+    <div class="news-head">
+      <span class="rank">1</span>
+      <span class="news-title">美团发布LongCat-2.0万亿参数大模型 全链路国产算力训练</span>
+      <span class="tag">大模型</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
+    <div class="news-summary">美团发布LongCat-2.0大模型，参数规模达1.6万亿，是全球首个完整依托国产五万卡算力集群完成预训练与推理全流程研发的万亿级大模型，无需海外芯片支撑。该模型支持百万字超长上下文，重点优化代码智能体能力，并同步开启开源，标志着国产算力在大模型训练领域实现重大突破。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://iaipie.com/2026-%E5%B9%B4-7-%E6%9C%88-1-%E6%97%A5-ai-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/" target="_blank">无矩AI</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:96%"></div></div><span class="importance-val">96%</span></div>
     </div>
   </div>
 
-  <!-- #2 红皇后哥德尔机 -->
-  <div class="card color-green">
-    <span class="rank">2</span>
-    <span class="title">英伟达+剑桥发布"红皇后哥德尔机"，让AI自我繁衍代码无限进化</span>
-    <div class="summary">剑桥大学与英伟达等机构联合发布论文《Red Queen Gödel Machine》，提出让AI在博弈式训练环境中自发生成"考官"，用更强的新任务淘汰上一代模型，实现"无休止的自我进化"。该路线颠覆了过去20年"靠人类标注"作为外部驱动力的范式，被作者群形容为"年度最危险论文"。论文与Anthropic联合创始人Jack Clark关于2028年RSI（递归自我改进）的预测形成互文，把递归改进从概念讨论推进到可工程化的训练算法。</div>
-    <div class="meta">
-      <span>来源：36氪</span>
-      <a href="https://www.36kr.com/p/3872518454776841" target="_blank">阅读原文 →</a>
+  <div class="news-card c-green">
+    <div class="news-head">
+      <span class="rank">2</span>
+      <span class="news-title">谷歌发布Nano Banana 2 Lite图像模型及Gemini Omni Flash</span>
+      <span class="tag">海外AI</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div>
+    <div class="news-summary">谷歌宣布Nano Banana 2 Lite（即Gemini 3.1 Flash-Lite图像模型）正式开放使用，同时推出Gemini Omni Flash开启公开预览。新模型在图像生成与多模态处理能力上进一步升级，为开发者提供更高效的AI工具，加速多模态AI应用落地，谷歌在轻量化模型赛道持续发力。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://xueqiu.com/1077174092/397730375" target="_blank">雪球</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:90%"></div></div><span class="importance-val">90%</span></div>
     </div>
   </div>
 
-  <!-- #3 Anthropic指控阿里 -->
-  <div class="card color-yellow">
-    <span class="rank">3</span>
-    <span class="title">Anthropic致信美参议院指控阿里Qwen蒸馏Claude，2.5万账号2880万次交互</span>
-    <div class="summary">路透社与《华尔街日报》披露，Anthropic向美国参议员和白宫官员提交材料，指控阿里巴巴通义千问模型在4月至6月期间使用约25000个虚假账号同Claude进行约2880万次交互，试图蒸馏Claude的能力。Anthropic声明称此举违反服务条款，强调"定义权、解释权、合法性"是下一代竞争的核心。事件已超出技术维权层面，演变为关于"什么叫学习、什么叫抄袭"的叙事权争夺，也是中美AI阵营首次在公开场域直接交锋。</div>
-    <div class="meta">
-      <span>来源：36氪 / 路透社</span>
-      <a href="https://www.36kr.com/p/3871394526155777" target="_blank">阅读原文 →</a>
+  <div class="news-card c-yellow">
+    <div class="news-head">
+      <span class="rank">3</span>
+      <span class="news-title">AI芯片公司Etched结束隐身 获超10亿美元客户合同</span>
+      <span class="tag">AI芯片</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div>
+    <div class="news-summary">AI芯片初创公司Etched正式结束隐身运营，宣布已获得超10亿美元客户合同及8亿美元融资。其首款专为AI推理设计的芯片已完成流片，首批机柜将于夏季交付，瞄准大模型推理算力市场。此举加剧AI芯片赛道竞争，推理专用芯片成为新风口。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://xueqiu.com/1077174092/397730375" target="_blank">雪球</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:88%"></div></div><span class="importance-val">88%</span></div>
     </div>
   </div>
 
-  <!-- #4 高通挑战英伟达 -->
-  <div class="card color-purple">
-    <span class="rank">4</span>
-    <span class="title">高通宣布进军数据中心AI基础设施，正面挑战英伟达算力霸权</span>
-    <div class="summary">高通在2026年投资者日宣布史上最激进转型计划：进军数据中心AI基础设施。核心举措包括推出自研服务器CPU"Dragonfly C1000"，计划收购AI软件公司Modular和芯片初创Tenstorrent，上调2029财年非手机业务收入目标至400亿美元（数据中心超150亿美元）。此举被市场解读为对英伟达AI算力霸权的正面挑战，高通聚焦高性价比推理算力市场，Meta和微软已确认为其大客户。AI芯片市场下一个核心战场指向推理成本。</div>
-    <div class="meta">
-      <span>来源：钛媒体</span>
-      <a href="https://www.tmtpost.com/8044290.html" target="_blank">阅读原文 →</a>
+  <div class="news-card c-purple">
+    <div class="news-head">
+      <span class="rank">4</span>
+      <span class="news-title">国常会AI产业扶持政策正式落地 智算中心配套升级</span>
+      <span class="tag">政策</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div>
+    <div class="news-summary">此前国常会出台的人工智能产业扶持政策于7月1日正式落地执行。政策要求新建万卡级智算中心配套高速光传输设备，加大高端芯片、存储材料研发补贴与税收减免，同时开放政企场景推动AI商业化。算力、光模块、国产半导体赛道长期受益，AI规模化发展获政策强力支撑。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://iaipie.com/2026-%E5%B9%B4-7-%E6%9C%88-1-%E6%97%A5-ai-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/" target="_blank">无矩AI</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:92%"></div></div><span class="importance-val">92%</span></div>
     </div>
   </div>
 
-  <!-- #5 演语科技融资 -->
-  <div class="card color-teal">
-    <span class="rank">5</span>
-    <span class="title">演语科技(Liblib母公司)完成3亿美元B+轮融资，估值突破20亿美元</span>
-    <div class="summary">6月29日，演语科技宣布完成近3亿美元B+轮融资，由Granite Asia、腾讯、顺为资本联合领投，估值突破20亿美元，成为国内AI应用领域新晋独角兽。旗下产品Liblib靠聚合市面主流视频/图像生成模型、面向设计师与创作者搭建调度平台，在没有底座模型的情况下迅速做大。随着大模型迭代节奏加快，"AI中间商"模式反而被资本市场重新关注，单一模型可能被下一版迅速覆盖的问题凸显。</div>
-    <div class="meta">
-      <span>来源：36氪</span>
-      <a href="https://www.36kr.com/p/3872803056302723" target="_blank">阅读原文 →</a>
+  <div class="news-card c-cyan">
+    <div class="news-head">
+      <span class="rank">5</span>
+      <span class="news-title">人形机器人量产加速 优必选U1与智元刷新全球纪录</span>
+      <span class="tag">机器人</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
+    <div class="news-summary">优必选推出全尺寸超仿生人形机器人U1系列，已实现规模化量产，搭载情感交互大模型，全球订单突破万台；智元机器人15000台工业具身机器人下线，量产速度刷新全球纪录。人形机器人产业化进程显著提速，具身智能赛道进入商业化落地快车道。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://iaipie.com/2026-%E5%B9%B4-7-%E6%9C%88-1-%E6%97%A5-ai-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/" target="_blank">无矩AI</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:85%"></div></div><span class="importance-val">85%</span></div>
     </div>
   </div>
 
-  <!-- 🌍 综合资讯 TOP8 -->
+  <!-- ===================== 综合资讯 TOP8 ===================== -->
   <div class="section-title">🌍 综合资讯 · TOP8</div>
 
-  <!-- #6 美伊停火 -->
-  <div class="card color-blue">
-    <span class="rank">6</span>
-    <span class="title">美伊同意停止互袭，30日在多哈继续谈判</span>
-    <div class="summary">据美国阿克西奥斯新闻网站28日报道，一名美国高级官员透露，美伊双方已同意停止相互攻击，并计划于6月30日在卡塔尔首都多哈举行会晤，聚焦霍尔木兹海峡问题。此前一艘装载卡塔尔原油的超级油轮在霍尔木兹海峡遭袭，引发国际油价波动。停火协议消息传出后，国际油价涨幅收窄。双方谈判若能取得进展，有望缓解中东局势紧张，稳定全球能源市场预期。</div>
-    <div class="meta">
-      <span>来源：新华网 / 财联社</span>
-      <a href="https://news.sina.com.cn/w/2026-06-29/doc-inieznpi0346270.shtml" target="_blank">阅读原文 →</a>
+  <div class="news-card c-blue">
+    <div class="news-head">
+      <span class="rank">1</span>
+      <span class="news-title">全球半导体统一涨价10%-15% 算力需求引爆供需缺口</span>
+      <span class="tag">财经</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
+    <div class="news-summary">7月1日海内外近20家功率、模拟半导体企业同步调价，英飞凌、扬杰科技等厂商涨价10%-15%。涨价主因为AI数据中心算力需求爆发，存储、第三代半导体材料供需缺口持续扩大。机构预测全年全球半导体市场规模将突破1.5万亿美元，行业景气度居高不下。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://iaipie.com/2026-%E5%B9%B4-7-%E6%9C%88-1-%E6%97%A5-ai-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF%E9%80%9F%E8%A7%88/" target="_blank">无矩AI</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:86%"></div></div><span class="importance-val">86%</span></div>
     </div>
   </div>
 
-  <!-- #7 百度昆仑芯 -->
-  <div class="card color-green">
-    <span class="rank">7</span>
-    <span class="title">百度昆仑芯瞄准500亿美元香港IPO，百度股价上涨7%</span>
-    <div class="summary">据报道，百度AI芯片部门昆仑芯正瞄准500亿美元估值在香港进行IPO。消息传出后百度股价上涨7%。昆仑芯是百度自研AI芯片品牌，已推出多代产品，覆盖训练和推理场景。若IPO成功，昆仑芯将成为中国AI芯片领域最大规模的上市事件，也标志着百度从"全栈AI玩家"战略中迈出关键一步，进一步巩固其在AI基础设施领域的布局。</div>
-    <div class="meta">
-      <span>来源：CNBC / Bloomberg</span>
-      <a href="https://www.cnbc.com/" target="_blank">阅读原文 →</a>
+  <div class="news-card c-green">
+    <div class="news-head">
+      <span class="rank">2</span>
+      <span class="news-title">美股三大股指集体收涨 半导体板块领涨阿斯麦创新高</span>
+      <span class="tag">财经</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+    <div class="news-summary">美股三大股指集体收涨，道指涨0.26%，标普500涨0.78%，纳指涨1.50%。半导体板块领涨，闪迪涨10.72%，英伟达涨2.56%，阿斯麦大涨超4%创历史新高，AMD暴涨7%。市场资金持续看好AI算力长期资本开支，全球云厂商锁定长期芯片供货订单。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://baijiahao.baidu.com/s?id=1869508591154675454" target="_blank">新浪财经</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:82%"></div></div><span class="importance-val">82%</span></div>
     </div>
   </div>
 
-  <!-- #8 委内瑞拉地震 -->
-  <div class="card color-yellow">
-    <span class="rank">8</span>
-    <span class="title">委内瑞拉7.5级强震已致1430人死亡，8名中国公民遇难</span>
-    <div class="summary">6月24日，委内瑞拉西北部沿海地区一分钟内连续发生7.2级前震和7.5级主震，为该国一个多世纪以来最强烈地震事件。截至6月27日，死亡人数已升至1430人，受伤3238人，已有8名中国公民遇难。震中位于亚拉奎州中低人口密度区，地震能量主要沿断裂带方向释放，未演成最初预测的万人级灾难。救援工作仍在继续，受灾家庭已转移至安置点。</div>
-    <div class="meta">
-      <span>来源：央视新闻 / 新华社</span>
-      <a href="https://finance.sina.com.cn/jjxw/2026-06-28/doc-iniexipy4098851.shtml" target="_blank">阅读原文 →</a>
+  <div class="news-card c-yellow">
+    <div class="news-head">
+      <span class="rank">3</span>
+      <span class="news-title">庆祝中国共产党成立105周年大会在人民大会堂举行</span>
+      <span class="tag">社会热点</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div>
+    <div class="news-summary">7月1日上午10时，庆祝中国共产党成立105周年大会在人民大会堂隆重举行，习近平向"七一勋章"获得者颁授勋章并发表重要讲话。截至2025年底，中国共产党党员总数达10128.6万名，净增101.5万名，基层组织543.1万个，党的建设取得新成效。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://www.zaobao.cn/news/202607/6201.html" target="_blank">联合早报</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:90%"></div></div><span class="importance-val">90%</span></div>
     </div>
   </div>
 
-  <!-- #9 法国高温 -->
-  <div class="card color-purple">
-    <span class="rank">9</span>
-    <span class="title">法国极端热浪已致超1000人死亡，空调普及率仅25%</span>
-    <div class="summary">6月下旬，极端热浪持续席卷欧洲，法国、英国等多国遭遇6月同期破纪录高温，超1亿欧洲人口暴露在35摄氏度以上环境中。法国公共卫生机构统计本轮高温已造成全国超1000例超额死亡，最终遇难人数可能继续上涨。法国空调普及率仅25%，大量医院未安装空调，3万台空调订单已紧急下达。巴黎消防出动次数翻倍，卢浮宫与埃菲尔铁塔被迫提前关闭。专家指出欧洲极端高温正从"例外"转向"常态"。</div>
-    <div class="meta">
-      <span>来源：腾讯新闻 / MSN</span>
-      <a href="https://news.qq.com/rain/a/20260629A0244S00" target="_blank">阅读原文 →</a>
+  <div class="news-card c-purple">
+    <div class="news-head">
+      <span class="rank">4</span>
+      <span class="news-title">全国铁路暑运启动 预计发送旅客10.1亿人次</span>
+      <span class="tag">社会热点</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div>
+    <div class="news-summary">7月1日至8月31日全国铁路暑运正式启动，为期62天，预计发送旅客10.1亿人次，日均1629万人次。民航暑运同步开启，暑期机票预订量激增，7月4日将迎来首个出行高峰。交通出行需求强劲释放，反映出消费活力持续回暖。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://www.zaobao.cn/news/202607/6201.html" target="_blank">联合早报</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:78%"></div></div><span class="importance-val">78%</span></div>
     </div>
   </div>
 
-  <!-- #10 达沃斯AI -->
-  <div class="card color-teal">
-    <span class="rank">10</span>
-    <span class="title">夏季达沃斯论坛热议AI，"中国方案"成全场高频词</span>
-    <div class="summary">2026年夏季达沃斯论坛6月24日在辽宁大连开幕，AI规模化创新与产业落地成为全场热议焦点。在多场专题对话中，全球行业领军者、顶尖学者、国际机构高管聚焦AI技术迭代与产业未来，共探人工智能可持续发展新路径。"中国方案"成为全场高频词，多位参会者肯定中国在AI产业应用落地方面的积极探索，认为中国经验为全球AI治理和发展提供了重要参考。</div>
-    <div class="meta">
-      <span>来源：MSN新闻</span>
-      <a href="https://www.msn.cn/zh-cn/news/other/" target="_blank">阅读原文 →</a>
+  <div class="news-card c-cyan">
+    <div class="news-head">
+      <span class="rank">5</span>
+      <span class="news-title">2026全球数字经济大会7月2日北京启幕 人形机器人集中亮相</span>
+      <span class="tag">科技</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div>
+    <div class="news-summary">2026全球数字经济大会7月2日至5日在国家会议中心举行，以"建设数字友好城市——智惠无界，数联全球"为主题。国内外最新人形机器人和世界模型集中亮相，50余场论坛覆盖全产业链，近20项行业规则标准陆续出炉，与全球近40个高级别团组交流互鉴。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://www.chinanews.com.cn/cj/2026/06-25/10647263.shtml" target="_blank">中国新闻网</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:84%"></div></div><span class="importance-val">84%</span></div>
     </div>
   </div>
 
-  <!-- #11 马斯克收购Mesh -->
-  <div class="card color-blue">
-    <span class="rank">11</span>
-    <span class="title">马斯克拟收购光模块公司Mesh，完善SpaceX AI基础设施布局</span>
-    <div class="summary">据美国联邦贸易委员会披露文件，马斯克正考虑收购光模块初创公司Mesh，FTC已加快反垄断审查。Mesh由三位前SpaceX工程师创立，主要开发面向高速数据中心通信的光模块产品，今年2月完成5000万美元A轮融资。若收购完成，将进一步完善SpaceX在AI数据中心基础设施领域的布局，强化数据中心互联能力，完善AI基础设施产业链。SpaceX正持续拓展AI算力业务，相继建设数据中心。</div>
-    <div class="meta">
-      <span>来源：每经网 / FTC</span>
-      <a href="https://www.nbd.com.cn/articles/2026-06-29/4439922.html" target="_blank">阅读原文 →</a>
+  <div class="news-card c-blue">
+    <div class="news-head">
+      <span class="rank">6</span>
+      <span class="news-title">7月1日起多项重要新规实施 涵盖救助法与电动汽车安全国标</span>
+      <span class="tag">民生</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
+    <div class="news-summary">7月1日起多项新规正式实施：《社会救助法》扩大救助范围，纳入低保边缘与刚性支出困难家庭；《超龄劳动者权益保障规定》要求用人单位为超龄务工者缴工伤保险；电动汽车安全新国标强制物理断电、电池阻燃防爆（热失控2小时不起火）；修订版《民用航空法》要求无人机申请适航许可。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://www.cnr.cn/news/" target="_blank">央广网</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:80%"></div></div><span class="importance-val">80%</span></div>
     </div>
   </div>
 
-  <!-- #12 谷歌限制Gemini -->
-  <div class="card color-green">
-    <span class="rank">12</span>
-    <span class="title">谷歌因算力紧张限制Gemini使用，Meta受影响</span>
-    <div class="summary">由于Gemini API需求快速增长，谷歌已开始收紧Gemini模型的算力资源分配，并限制部分客户使用额度。其中Meta因对Gemini模型需求较高，未能获得所需算力配额，导致部分内部AI项目推进受影响。谷歌自5月起已对Gemini实施基于算力额度的使用限制。事件反映出即便科技巨头持续加码AI基础设施投资，算力供给仍难以完全满足快速增长的AI需求，算力资源正成为影响模型开发和企业部署的重要瓶颈。</div>
-    <div class="meta">
-      <span>来源：每经网 / Engadget</span>
-      <a href="https://www.nbd.com.cn/articles/2026-06-29/4439922.html" target="_blank">阅读原文 →</a>
+  <div class="news-card c-green">
+    <div class="news-head">
+      <span class="rank">7</span>
+      <span class="news-title">美国商务部解除Anthropic Fable模型出口管制</span>
+      <span class="tag">国际</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div>
+    <div class="news-summary">美国商务部长卢特尼克表示，过去两周与Anthropic公司密切合作，已批准Fable 5模型分析，预计解除对其出口管制，以巩固美国在AI领域的领导地位。此举引发业界对AI技术出口监管走向的广泛关注，或影响全球AI模型贸易格局与技术竞争态势。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://baijiahao.baidu.com/s?id=1869508591154675454" target="_blank">新浪财经</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:76%"></div></div><span class="importance-val">76%</span></div>
     </div>
   </div>
 
-  <!-- #13 中国AI教育 -->
-  <div class="card color-yellow">
-    <span class="rank">13</span>
-    <span class="title">中国推动所有学校层级教授AI课程，习近平技术驱动战略落地</span>
-    <div class="summary">据报道，中国在习近平技术驱动战略下，推动所有学校层级教授AI课程。从基础教育到高等教育，AI相关课程正被纳入教学体系，培养下一代AI人才。此举是中国加速AI产业布局的重要组成部分，旨在从人才供给端保障AI产业的长期竞争力。同时，《人工智能智能体互联》国家标准已正式发布，进一步完善AI产业标准化体系建设，为AI技术的广泛应用提供规范支撑。</div>
-    <div class="meta">
-      <span>来源：Bloomberg / 同花顺</span>
-      <a href="https://stock.10jqka.com.cn/20260629/c677774643.shtml" target="_blank">阅读原文 →</a>
+  <div class="news-card c-yellow">
+    <div class="news-head">
+      <span class="rank">8</span>
+      <span class="news-title">青海海西州发生5.2级地震 启动四级应急响应</span>
+      <span class="tag">突发</span>
     </div>
-    <div class="importance-bar">
-      <span class="label">重要性</span>
-      <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+    <div class="news-summary">7月1日7时44分，青海海西州直辖区发生5.2级地震，震源深度10公里。地震局启动四级应急响应，目前暂无重大伤亡报告。同期中央政治局召开会议部署防汛抗旱工作，强调立足防大汛、抗大旱保障人民生命安全，国家防总已启动湖南、云南防汛四级应急响应。</div>
+    <div class="news-footer">
+      <div class="source">来源：<a href="https://www.zaobao.cn/news/202607/6201.html" target="_blank">联合早报</a></div>
+      <div class="importance"><span class="importance-label">重要性</span><div class="bar-wrap"><div class="bar" style="width:72%"></div></div><span class="importance-val">72%</span></div>
     </div>
   </div>
 
   <div class="footer">
-    本简报由AI自动搜集整理生成 · 数据来源：36氪、每经网、新华网、Bloomberg、TechCrunch等 · 每日更新
+    <p>每日AI+综合资讯简报 · 数据来源：无矩AI / 雪球 / 新浪财经 / 联合早报 / 中国新闻网 / 央广网</p>
+    <p style="margin-top:8px;">本简报由AI自动生成，仅供参考 · <a href="https://ccchan3000.github.io/ai-news-daily/" target="_blank">查看在线版</a></p>
   </div>
+
 </div>
 </body>
 </html>
