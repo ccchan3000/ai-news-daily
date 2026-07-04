@@ -3,136 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日AI+综合资讯简报 | 2026年07月04日</title>
+<title>每日AI+综合资讯简报 | 2026年7月5日</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     background: #0f1419;
+    background-image: radial-gradient(circle at 20% 10%, rgba(66,153,225,0.12), transparent 40%),
+                      radial-gradient(circle at 80% 30%, rgba(159,122,234,0.10), transparent 45%),
+                      radial-gradient(circle at 50% 90%, rgba(72,187,120,0.10), transparent 45%);
     color: #e2e8f0;
     line-height: 1.7;
-    padding: 20px;
+    min-height: 100vh;
   }
-  .container { max-width: 920px; margin: 0 auto; }
+  .container { max-width: 860px; margin: 0 auto; padding: 40px 20px 60px; }
+
   .header {
     text-align: center;
-    padding: 48px 24px 40px;
-    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    padding: 48px 24px 36px;
+    background: linear-gradient(135deg, rgba(66,153,225,0.15), rgba(159,122,234,0.15));
     border-radius: 20px;
     margin-bottom: 36px;
-    border: 1px solid #2d3748;
+    border: 1px solid rgba(255,255,255,0.06);
   }
   .header h1 {
     font-size: 30px;
     font-weight: 700;
-    background: linear-gradient(135deg, #4299e1, #9f7aea, #4fd1c5);
+    background: linear-gradient(90deg, #4299e1, #9f7aea, #4fd1c5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .header .date {
-    color: #a0aec0;
-    font-size: 15px;
-    letter-spacing: 1px;
-  }
-  .section { margin-bottom: 44px; }
+  .header .date { color: #a0aec0; font-size: 15px; }
+
   .section-title {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 22px;
+    margin: 40px 0 22px;
     padding-left: 14px;
-    border-left: 4px solid #4fd1c5;
+    border-left: 4px solid #4299e1;
   }
-  .card {
-    border-radius: 16px;
-    padding: 26px 28px;
-    margin-bottom: 20px;
+  .section-title.s2 { border-left-color: #48bb78; }
+
+  .news-card {
     position: relative;
+    border-radius: 16px;
+    padding: 24px 26px 22px;
+    margin-bottom: 22px;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
     background: #1a202c;
-    border: 1px solid #2d3748;
   }
-  .card::before {
+  .news-card::before {
     content: '';
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    width: 6px;
+    width: 5px;
   }
-  .color-blue::before   { background: linear-gradient(180deg, #4299e1, #3182ce); }
-  .color-green::before  { background: linear-gradient(180deg, #48bb78, #38a169); }
-  .color-yellow::before { background: linear-gradient(180deg, #ecc94b, #d69e2e); }
-  .color-purple::before { background: linear-gradient(180deg, #9f7aea, #805ad5); }
-  .color-cyan::before   { background: linear-gradient(180deg, #4fd1c5, #319795); }
 
-  .card-head {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+  /* 颜色主题 —— 深色柔和渐变 */
+  .blue::before  { background: linear-gradient(180deg, #4299e1, #3182ce); }
+  .blue  { background: linear-gradient(135deg, rgba(66,153,225,0.16), rgba(49,130,206,0.06)); }
+  .green::before { background: linear-gradient(180deg, #48bb78, #38a169); }
+  .green { background: linear-gradient(135deg, rgba(72,187,120,0.16), rgba(56,161,105,0.06)); }
+  .yellow::before{ background: linear-gradient(180deg, #ecc94b, #d69e2e); }
+  .yellow{ background: linear-gradient(135deg, rgba(236,201,75,0.16), rgba(214,158,46,0.06)); }
+  .purple::before{ background: linear-gradient(180deg, #9f7aea, #805ad5); }
+  .purple{ background: linear-gradient(135deg, rgba(159,122,234,0.16), rgba(128,90,213,0.06)); }
+  .teal::before  { background: linear-gradient(180deg, #4fd1c5, #319795); }
+  .teal  { background: linear-gradient(135deg, rgba(79,209,197,0.16), rgba(49,151,149,0.06)); }
+
   .rank {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 34px;
-    height: 34px;
-    padding: 0 8px;
-    border-radius: 10px;
+    width: 34px; height: 34px;
+    border-radius: 50%;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
+    margin-bottom: 12px;
     color: #fff;
   }
-  .color-blue .rank   { background: linear-gradient(135deg, #4299e1, #3182ce); }
-  .color-green .rank  { background: linear-gradient(135deg, #48bb78, #38a169); }
-  .color-yellow .rank { background: linear-gradient(135deg, #ecc94b, #d69e2e); color:#1a202c; }
-  .color-purple .rank { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-  .color-cyan .rank   { background: linear-gradient(135deg, #4fd1c5, #319795); color:#1a202c; }
+  .blue .rank   { background: linear-gradient(135deg, #4299e1, #3182ce); }
+  .green .rank  { background: linear-gradient(135deg, #48bb78, #38a169); }
+  .yellow .rank { background: linear-gradient(135deg, #ecc94b, #d69e2e); color:#1a202c; }
+  .purple .rank { background: linear-gradient(135deg, #9f7aea, #805ad5); }
+  .teal .rank   { background: linear-gradient(135deg, #4fd1c5, #319795); color:#1a202c; }
 
-  .tag {
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.08);
-    color: #cbd5e0;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  .card-title {
+  .news-title {
     font-size: 19px;
-    font-weight: 600;
+    font-weight: 700;
     color: #f7fafc;
     margin-bottom: 10px;
     line-height: 1.4;
   }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 9px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+  .blue .tag   { background: rgba(66,153,225,0.25); color: #63b3ed; }
+  .green .tag  { background: rgba(72,187,120,0.25); color: #68d391; }
+  .yellow .tag { background: rgba(236,201,75,0.25); color: #f6e05e; }
+  .purple .tag { background: rgba(159,122,234,0.25); color: #b794f4; }
+  .teal .tag   { background: rgba(79,209,197,0.25); color: #4fd1c5; }
+
   .summary {
     font-size: 14.5px;
     color: #cbd5e0;
     margin-bottom: 14px;
     text-align: justify;
   }
+
   .meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 10px;
-    font-size: 13px;
-    color: #718096;
+    margin-top: 4px;
   }
-  .source { display: flex; align-items: center; gap: 6px; }
-  .source a {
-    color: #63b3ed;
-    text-decoration: none;
-    word-break: break-all;
+  .source-link { font-size: 13px; color: #a0aec0; }
+  .source-link a { color: #63b3ed; text-decoration: none; }
+  .source-link a:hover { text-decoration: underline; }
+
+  .importance { width: 46%; min-width: 160px; }
+  .importance .label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #a0aec0;
+    margin-bottom: 5px;
   }
-  .source a:hover { text-decoration: underline; }
-  .importance { display: flex; align-items: center; gap: 8px; }
   .bar {
-    width: 110px;
     height: 7px;
     border-radius: 4px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08);
     overflow: hidden;
   }
   .bar > span {
@@ -140,16 +151,24 @@
     height: 100%;
     border-radius: 4px;
   }
-  .color-blue .bar > span   { background: linear-gradient(90deg, #4299e1, #3182ce); }
-  .color-green .bar > span  { background: linear-gradient(90deg, #48bb78, #38a169); }
-  .color-yellow .bar > span { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
-  .color-purple .bar > span { background: linear-gradient(90deg, #9f7aea, #805ad5); }
-  .color-cyan .bar > span   { background: linear-gradient(90deg, #4fd1c5, #319795); }
+  .blue .bar > span   { background: linear-gradient(90deg, #4299e1, #3182ce); }
+  .green .bar > span  { background: linear-gradient(90deg, #48bb78, #38a169); }
+  .yellow .bar > span { background: linear-gradient(90deg, #ecc94b, #d69e2e); }
+  .purple .bar > span { background: linear-gradient(90deg, #9f7aea, #805ad5); }
+  .teal .bar > span   { background: linear-gradient(90deg, #4fd1c5, #319795); }
+
   .footer {
     text-align: center;
-    color: #4a5568;
+    color: #718096;
     font-size: 13px;
-    padding: 24px 0 8px;
+    margin-top: 50px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  @media (max-width: 520px) {
+    .news-title { font-size: 17px; }
+    .meta { flex-direction: column; align-items: flex-start; }
+    .importance { width: 100%; }
   }
 </style>
 </head>
@@ -158,190 +177,187 @@
 
   <div class="header">
     <h1>每日 AI + 综合资讯简报</h1>
-    <div class="date">2026 年 07 月 04 日 · 星期六</div>
+    <div class="date">2026 年 7 月 5 日 · 星期日</div>
   </div>
 
-  <!-- 🔥 今日热点 AI行业 TOP5 -->
-  <div class="section">
-    <div class="section-title">🔥 今日热点 · AI 行业 TOP 5</div>
+  <!-- ============ 今日热点 AI TOP5 ============ -->
+  <div class="section-title">🔥 今日热点 · AI 行业 TOP5</div>
 
-    <div class="card color-blue">
-      <div class="card-head">
-        <span class="rank">1</span>
-        <span class="tag">大模型</span>
-      </div>
-      <div class="card-title">OpenAI 发布 GPT-5.6 系列，三档模型齐发编码登顶</div>
-      <div class="summary">OpenAI 于 2026 年 6 月 26 日正式发布 GPT-5.6 系列，包含旗舰款 Sol、均衡款 Terra 和性价比款 Luna 三档模型。其中 Sol 在 Terminal-Bench 2.1 基准测试中以 91.9% 的成绩位居全球第一，编码能力超越前代，且定价与 GPT-5.5 持平。7 月起 GPT-5.6 分阶段全面开放，ChatGPT 同步上线 Agent 模式、1.5M Token 长上下文及 Realtime Voice 2.0，标志着 OpenAI 进入产品密度最高的月份之一。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://www.gemini-cnblog.com/chatgpt/guides/gpt-5.6-release-guide.html" target="_blank">GPT-5.6 发布指南</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:98%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-green">
-      <div class="card-head">
-        <span class="rank">2</span>
-        <span class="tag">算力基建</span>
-      </div>
-      <div class="card-title">黄仁勋：AI 已正式进入获利阶段，基建周期以数十年计</div>
-      <div class="summary">英伟达 CEO 黄仁勋在 2026 年度股东大会上传递强烈信心，强调"有用的 AI 已经到来，并且已经能够赚钱"，AI 投资回报率问题已有答案。他预计本轮 AI 基础设施建设周期将以数十年计，规模或将成为人类历史上最大的基础设施建设之一。黄仁勋将"物理 AI"定义为下一波增长浪潮，认为机器人、汽车和智能工厂将成为现实世界中的智能体，英伟达机器人团队同步开放具身智能等四大方向招聘。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33449692" target="_blank">澎湃新闻</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:92%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-yellow">
-      <div class="card-head">
-        <span class="rank">3</span>
-        <span class="tag">具身智能</span>
-      </div>
-      <div class="card-title">Optimus V3 投产在即，人形机器人产业加速落地</div>
-      <div class="summary">人形机器人产业近期密集利好：特斯拉 Optimus V3 被曝投产在即，"优世界 U1"预售突破万台，智元实现万台级交付。7 月 1 日人形机器人概念股表现强势，机器人 ETF 招商午后涨近 1%，汇川技术涨超 2%。英伟达机器人团队围绕具身智能、仿真、部署及解决方案架构四大核心方向开放招聘，黄仁勋强调"物理 AI"是人工智能未来发展的主要趋势，产业进入加速落地期。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://www.sfccn.com/2026/7-1/3MMDE1MjBfMjE3MTk3Mw.html" target="_blank">同花顺财经</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:88%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-purple">
-      <div class="card-head">
-        <span class="rank">4</span>
-        <span class="tag">智能终端</span>
-      </div>
-      <div class="card-title">AI 眼镜密集上新，行业迈入规模化发展关键节点</div>
-      <div class="summary">近期国内外 AI 眼镜品牌迎来集中发布窗口期，多款适配办公、影音、教育、工业等场景的新品接连亮相。凭借产能高速增长、上游零部件技术突破与消费补贴政策加持，AI 眼镜已正式走出小众极客圈层，迈入从"能戴"向"好用"迭代的规模化发展阶段。下一代随身计算终端产业格局正加速重构，有望成为继智能手机之后的重要智能终端入口。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="http://www.zqrb.cn/finance/hangyedongtai/2026-06-21/A1782057077950.html" target="_blank">证券日报</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:82%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-cyan">
-      <div class="card-head">
-        <span class="rank">5</span>
-        <span class="tag">应用普及</span>
-      </div>
-      <div class="card-title">ChatGPT 全球采用率持续扩大，非英语用户占比过半</div>
-      <div class="summary">OpenAI 发布最新数据分析报告，介绍 2026 年第一季度 ChatGPT 消费级产品（Free、Go、Plus 和 Pro）的使用情况变化。数据显示，ChatGPT 全球采用率持续扩大，非英语用户占比已过半，标志着其从英语市场向全球多元化市场加速渗透。这一趋势反映出大语言模型在全球范围内的普及程度不断提升，AI 正成为越来越多用户的日常工具。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://www.ithome.com/0/971/038.htm" target="_blank">IT之家</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:78%"></span></div></div>
+  <div class="news-card blue">
+    <div class="rank">1</div>
+    <div class="news-title">英伟达推出"AI工厂"合作模式，联合云厂商部署大规模算力<span class="tag">算力</span></div>
+    <div class="summary">当地时间7月1日，英伟达宣布与多家人工智能云服务商达成合作，通过收益分成与信贷支持模式，共同部署"大规模、多租户AI工厂"。AI云厂商可依托英伟达DSX AI工厂对外提供云服务，既能加快英伟达平台普及速度，也为云厂商提供轻量化扩产路径，并创造与使用量挂钩的持续性收入。该模式还为AI初创公司算力租赁提供资金支持与回购保证，进一步巩固英伟达在AI基础设施生态中的核心地位。</div>
+    <div class="meta">
+      <div class="source-link">来源：新浪财经 · <a href="https://finance.sina.com.cn/stock/hkstock/hkstocknews/2026-07-02/doc-inifmfcw2641671.shtml" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>95%</span></div>
+        <div class="bar"><span style="width:95%"></span></div>
       </div>
     </div>
   </div>
 
-  <!-- 🌍 综合资讯 TOP8 -->
-  <div class="section">
-    <div class="section-title">🌍 综合资讯 · TOP 8</div>
-
-    <div class="card color-blue">
-      <div class="card-head">
-        <span class="rank">1</span>
-        <span class="tag">财经</span>
-      </div>
-      <div class="card-title">国内油价迎来"三连跌"，创年内最大单次调价跌幅</div>
-      <div class="summary">7 月 3 日 24 时，国内成品油调价窗口再度开启，成品油零售限价迎来"三连跌"，并创年内最大单次调价跌幅。据卓创资讯测算，本轮成品油价格下调 855 元/吨，折合升价 92 号汽油、95 号汽油、0 号柴油分别下调 0.67 元、0.71 元、0.73 元。按一般家用汽车 50 升油箱容量估测，加满一箱 92 号汽油将少花约 37.5 元，车主用油成本进一步下降。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://baijiahao.baidu.com/s?id=1869651786515452735&wfr=spider&for=pc" target="_blank">百家号·财闻早知道</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:90%"></span></div></div>
+  <div class="news-card green">
+    <div class="rank">2</div>
+    <div class="news-title">2026全球数字经济大会在京启幕，人形机器人与世界模型集中亮相<span class="tag">数字经济</span></div>
+    <div class="summary">7月2日至5日，2026全球数字经济大会在国家会议中心举行，主题为"建设数字友好城市——智惠无界，数联全球"。国内外最新人形机器人和世界模型集中亮相，50余场论坛覆盖全产业链，配套隆福寺数字潮市及近20项行业规则标准陆续出炉。大会包括高规格开幕盛典、全球数字友好城市建设对话主论坛及多场专题分论坛，为全球数字经济合作搭建重要平台。</div>
+    <div class="meta">
+      <div class="source-link">来源：北京市政府 · <a href="https://www.beijing.gov.cn/ywdt/gzdt/202606/t20260626_4724043.html" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>90%</span></div>
+        <div class="bar"><span style="width:90%"></span></div>
       </div>
     </div>
-
-    <div class="card color-green">
-      <div class="card-head">
-        <span class="rank">2</span>
-        <span class="tag">财经</span>
-      </div>
-      <div class="card-title">宇树科技 IPO 注册获批，A 股"人形机器人第一股"诞生在即</div>
-      <div class="summary">证监会同意宇树科技股份有限公司首次公开发行股票注册，A 股"人形机器人第一股"诞生在即。宇树科技从 3 月 20 日上交所受理，到 6 月 1 日过会，再到 7 月 1 日获批注册，全程约 103 天，其中受理至过会仅 73 天，远短于其他项目平均周期。此次 IPO 拟募资 42.02 亿元，将用于机器人技术研发与产业化，有望进一步推动人形机器人产业发展。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://baijiahao.baidu.com/s?id=1869602427408946134&wfr=spider&for=pc" target="_blank">百家号</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:86%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-yellow">
-      <div class="card-head">
-        <span class="rank">3</span>
-        <span class="tag">社会热点</span>
-      </div>
-      <div class="card-title">中国船员在韩海警扣押期间死亡，家属质疑延误黄金救援</div>
-      <div class="summary">5 月 8 日晚，一艘载有 10 名船员的中国渔船在韩国白翎岛附近海域因越界捕捞遭韩国海警扣押。中国籍船员秦帅克被转移至韩方舰艇后死亡，韩方死因报告为"急性酒精中毒"。据同船船友称，发现秦帅克状态异常后曾连续 6 次提醒韩国海警需要急救，但未获及时施救。家属质疑延误黄金救援时间，河南省外办证实事件属实，正协助家属赴韩处理后事并追责。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://news.qq.com/rain/a/20260703A093CL00" target="_blank">腾讯新闻</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:84%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-purple">
-      <div class="card-head">
-        <span class="rank">4</span>
-        <span class="tag">科技</span>
-      </div>
-      <div class="card-title">2026 全球数字经济大会在京开幕，人形机器人集中亮相</div>
-      <div class="summary">7 月 2 日，2026 全球数字经济大会在北京国家会议中心开幕，会期持续至 7 月 5 日，以"建设数字友好城市——智惠无界，数联全球"为主题。国内外最新人形机器人和世界模型集中亮相，近 20 项行业规则标准陆续出炉，涵盖数据跨境流动、人工智能治理等关键方向。来自全球近 40 个高级别团组与千余位嘉宾围绕人工智能、数字治理、数据要素等议题开展深度交流。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://www.chinanews.com/cj/2026/07-02/10651255.shtml" target="_blank">中国新闻网</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:80%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-cyan">
-      <div class="card-head">
-        <span class="rank">5</span>
-        <span class="tag">国际</span>
-      </div>
-      <div class="card-title">美联储主席沃什：当前美国通胀水平仍然过高</div>
-      <div class="summary">美国联邦储备委员会主席凯文·沃什 7 月 1 日在葡萄牙举行的欧洲央行中央银行论坛上表示，当前美国通胀水平仍然过高，同时重申美联储工作的优先事项是确保物价稳定。这一表态延续了美联储对通胀的谨慎立场，市场关注后续货币政策走向。与此同时，美股三大股指近期集体收涨，纳指涨 1.50%，"七姐妹"科技股多数上涨，英伟达涨 2.56%，市场风险偏好有所回暖。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://baijiahao.baidu.com/s?id=1869602616457652084&wfr=spider&for=pc" target="_blank">百家号·今日财经要闻</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:76%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-blue">
-      <div class="card-head">
-        <span class="rank">6</span>
-        <span class="tag">社会热点</span>
-      </div>
-      <div class="card-title">网友买二手 CCD 相机，发现内存哈工大教授上百张老照片</div>
-      <div class="summary">7 月 2 日，四川一名网友在二手平台购入一台 CCD 相机后，发现相机内存有 100 余张数年前的老照片，通过其中一张毕业证照片上的名字查询得知，原机主现为哈尔滨工业大学教授张千帆。视频发布后引发关注，不少自称教授学生的网友主动认领转发。3 日上午，张教授回应已收到这 100 多张 10 多年前的照片，并感谢该网友，一段温馨的寻回故事在网络上流传。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://news.ifeng.com/c/8uSIyMWF67e" target="_blank">凤凰网·极目新闻</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:70%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-green">
-      <div class="card-head">
-        <span class="rank">7</span>
-        <span class="tag">体育</span>
-      </div>
-      <div class="card-title">温网：张帅王欣瑜出局，中国军团单打无缘 32 强</div>
-      <div class="summary">当地时间 7 月 1 日，2026 年温布尔登网球锦标赛在伦敦继续进行。中国"金花"张帅和王欣瑜均在女单次轮告负，无缘 32 强，至此中国军团在单打赛场上已全军覆没。37 岁老将张帅 0 比 2 不敌赛会 10 号种子、捷克名将穆霍娃，首盘 5 次破发机会均未抓住。这是张帅在首轮战胜前美网冠军安德莱斯库后的止步，中国网球本届温网单打征程就此结束。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://ent.people.com.cn/n1/2026/0703/c1012-40752874.html" target="_blank">人民网</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:68%"></span></div></div>
-      </div>
-    </div>
-
-    <div class="card color-yellow">
-      <div class="card-head">
-        <span class="rank">8</span>
-        <span class="tag">民生天气</span>
-      </div>
-      <div class="card-title">西北持续高温 41-44℃，7 月防汛防台防暑形势严峻</div>
-      <div class="summary">中国气象局 7 月 2 日发布预警，未来 10 天我国西北地区将有 6 至 9 天持续性高温天气，最强时段出现在 7 月 3 日至 8 日，部分地区日最高气温可达 41 至 44 摄氏度，将接近或突破历史极值。6 月全国平均气温 20.7℃，较常年偏高 0.3℃，南方强降水频繁、局地极端性强。7 月上旬多地将有暴雨，四轮高温叠加多台风双雨带，防汛防台防暑形势严峻，气象局出台新一轮灾害防御规划。</div>
-      <div class="meta">
-        <div class="source">来源：<a href="https://www.sfccn.com/2026/7-2/4OMDE0MDVfMjE3MzE4OA.html" target="_blank">同花顺财经</a></div>
-        <div class="importance">重要性 <div class="bar"><span style="width:74%"></span></div></div>
-      </div>
-    </div>
-
   </div>
 
-  <div class="footer">每日 AI + 综合资讯简报 · 由 AI 自动生成 · 仅供资讯参考</div>
+  <div class="news-card yellow">
+    <div class="rank">3</div>
+    <div class="news-title">葡萄牙发布国家AI大模型"阿马利娅"，投资增至700万欧元<span class="tag">大模型</span></div>
+    <div class="summary">7月1日，葡萄牙政府发布国家人工智能大模型"阿马利娅"，并追加投资150万欧元，使项目总投资增至700万欧元。该模型以葡萄牙语为核心，开发历时18个月，未来将应用于教育、国防、文化、医疗卫生和政务服务等领域。总理蒙特内格罗在发布仪式上表示，欧洲需在AI主权上迈出关键一步，新资金将用于支持大模型迭代和自主人工智能基础设施建设。</div>
+    <div class="meta">
+      <div class="source-link">来源：人民网 · <a href="https://world.people.com.cn/n1/2026/0702/c1002-40752332.html" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>75%</span></div>
+        <div class="bar"><span style="width:75%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card purple">
+    <div class="rank">4</div>
+    <div class="news-title">AI大模型深度渗透医疗健康，骨科手术时长从3小时压缩至30分钟<span class="tag">AI医疗</span></div>
+    <div class="summary">6月24日，第四届中国国际供应链促进博览会健康生活链展区显示，AI大模型正深度渗透医疗健康全链条。长木谷ROPA6人工智能全骨科手术机器人以亚毫米级精度将骨科手术时长从3小时压缩至30分钟；通用技术集团等展示AI识情绪、评健康等创新应用。从辅助诊断到手术机器人全场景落地，AI正重新定义医疗健康的新边界，推动诊疗效率与精度跃升。</div>
+    <div class="meta">
+      <div class="source-link">来源：中国新闻网 · <a href="https://www.chinanews.com.cn/cj/2026/06-25/10647048.shtml" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>80%</span></div>
+        <div class="bar"><span style="width:80%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card teal">
+    <div class="rank">5</div>
+    <div class="news-title">AI推理芯片公司Etched估值冲至50亿美元，签下68亿元订单<span class="tag">AI芯片</span></div>
+    <div class="summary">AI推理芯片公司Etched宣布累计融资8亿美元，最新一轮单笔5亿美元，投后估值达50亿美元（约合人民币340亿）。Etched专注AI推理芯片，只做这一件事，希望比英伟达GPU更快、更省电、更便宜。其芯片虽尚未大规模交货，已签下超10亿美元（约合68亿元）客户采购合同，成为英伟达在AI推理赛道上的强劲对手，折射出专用芯片赛道的火热竞争。</div>
+    <div class="meta">
+      <div class="source-link">来源：36氪 · <a href="https://www.36kr.com/p/3879412172615686" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>85%</span></div>
+        <div class="bar"><span style="width:85%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 综合资讯 TOP8 ============ -->
+  <div class="section-title s2">🌍 综合资讯 · TOP8</div>
+
+  <div class="news-card blue">
+    <div class="rank">1</div>
+    <div class="news-title">电动汽车安全强制国标7月1日实施，A股科技赛道迎来风格切换<span class="tag">财经</span></div>
+    <div class="summary">7月1日，两项电动汽车安全强制国家标准正式实施，全面抬高新能源车行业准入门槛。新华社关注指出，2026年上半年新基金发行数量、规模同比双双走高，呈现"小额多只"发行特征。7月首个交易日A股迎来明显风格切换，科技赛道资金出现兑现。新规将推动新能源汽车产业高质量发展与安全水平提升，行业格局或加速分化。</div>
+    <div class="meta">
+      <div class="source-link">来源：新华社 · <a href="https://baijiahao.baidu.com/s?id=1869564332268180718" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>85%</span></div>
+        <div class="bar"><span style="width:85%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card green">
+    <div class="rank">2</div>
+    <div class="news-title">全球财经要闻：美股半导体爆发，油价回落，全球降息预期分化<span class="tag">财经</span></div>
+    <div class="summary">6月30日至7月1日，市场呈现国内经济修复数据向好、数字经济顶层政策落地、A股上半年收官科技主线领涨；国际油价持续回落、美股半导体板块爆发、全球降息预期分化；港股IPO热度高位但指数震荡。核心特征为国内稳增长、促产业、扩内需政策集中生效，经济景气边际回暖；海外大宗商品持续走弱，科技成长资产受资金追捧。</div>
+    <div class="meta">
+      <div class="source-link">来源：雪球 · <a href="https://xueqiu.com/1021113906/397737398" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>80%</span></div>
+        <div class="bar"><span style="width:80%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card yellow">
+    <div class="rank">3</div>
+    <div class="news-title">7月1日起全国统一执行民生新规，社会救助升格为正式法律<span class="tag">社会</span></div>
+    <div class="summary">7月1日起全国统一执行的民生新规中，最重磅的是将施行31年的社会救助"暂行办法"升格为正式法律。低保边缘户、突发重病花垮家的普通家庭求助无门的局面将改变，申请救助不再需回户籍地跑断腿，可线上递交材料。救助范围从低保特困扩大到收入偏低、遇急难的普通家庭，看病上学难处均可填报，民生兜底网络显著扩容。</div>
+    <div class="meta">
+      <div class="source-link">来源：腾讯新闻 · <a href="https://news.qq.com/rain/a/20260701A07ZKW00" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>88%</span></div>
+        <div class="bar"><span style="width:88%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card purple">
+    <div class="rank">4</div>
+    <div class="news-title">重庆酒店推出"24小时退房制"，打破行业惯例或引鲇鱼效应<span class="tag">社会</span></div>
+    <div class="summary">近日，重庆一家酒店发布视频称其门店推出"24小时退房制"活动，打破行业"中午12点退房"的长期惯例。这一举措引发市场关注，被期待激发"鲇鱼效应"，推动酒店行业服务模式创新。长期以来，酒店退房时间僵化一直是消费者痛点，新模式有望提升入住体验与行业竞争活力，或带动更多酒店跟进调整服务规则。</div>
+    <div class="meta">
+      <div class="source-link">来源：央广网 · <a href="https://www.cnr.cn/mspd/yw/" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>65%</span></div>
+        <div class="bar"><span style="width:65%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card teal">
+    <div class="rank">5</div>
+    <div class="news-title">中国科技力量亮相2026世界杯，AI技术与制造深度参与赛事运行<span class="tag">体育</span></div>
+    <div class="summary">2026年美加墨世界杯开幕，中国队虽缺席赛场，但中国制造与AI技术已深度参与赛事运行。从北京亦庄企业的LED显示驱动方案，到上海华漕企业的防眩光照明，再到多家中国厂商提供的场馆大屏、控制系统与判罚显示设备，中企在多个关键环节提供支持。利亚德等企业在赛事显示与控制系统领域展现中国科技与制造的全球影响力。</div>
+    <div class="meta">
+      <div class="source-link">来源：MSN · <a href="https://www.msn.cn/zh-cn/news/other/%E4%B8%AD%E5%9B%BD%E7%A7%91%E6%8A%80%E5%8A%9B%E9%87%8F%E4%BA%AE%E7%9B%B82026%E4%B8%96%E7%95%8C%E6%9D%AF/gm-GME49E8E35" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>78%</span></div>
+        <div class="bar"><span style="width:78%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card blue">
+    <div class="rank">6</div>
+    <div class="news-title">中欧领导人峰会举行，冯德莱恩称中欧应相互倾听找到务实方案<span class="tag">国际</span></div>
+    <div class="summary">欧洲理事会主席科斯塔和欧盟委员会主席冯德莱恩访华出席第二十五次中国—欧盟领导人会晤。两位领导人强调欧盟致力于推动中欧合作，建立更平衡、更可持续的双边关系。双方就出口管制问题达成新共识，同意建立升级版机制快速解决问题。冯德莱恩在回答记者提问时强调，中欧之间虽存在分歧，但最重要的是相互倾听、找到务实解决方案。</div>
+    <div class="meta">
+      <div class="source-link">来源：腾讯新闻 · <a href="https://new.qq.com/rain/a/20250725A06HPJ00" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>82%</span></div>
+        <div class="bar"><span style="width:82%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card green">
+    <div class="rank">7</div>
+    <div class="news-title">俄罗斯堪察加半岛发生7.9级强震，多国发布海啸预警<span class="tag">国际</span></div>
+    <div class="summary">中国地震台网正式测定，堪察加东岸远海发生7.9级地震，震源深度10公里。俄罗斯、美国夏威夷、日本、加拿大多地发布海啸预警。此次强震震级高、震源浅，引发环太平洋地区广泛关注，多国紧急启动海啸监测与应急响应机制，提醒沿海地区居民防范潜在风险。目前各方密切关注震情发展与海啸波及范围，相关救援与预警工作有序展开。</div>
+    <div class="meta">
+      <div class="source-link">来源：腾讯新闻 · <a href="https://new.qq.com/rain/a/20250730A06QIX00" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>90%</span></div>
+        <div class="bar"><span style="width:90%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card yellow">
+    <div class="rank">8</div>
+    <div class="news-title">阿根廷放宽对中国公民签证要求，持美欧签证可免签入境<span class="tag">国际</span></div>
+    <div class="summary">阿根廷政府宣布即日起放宽对中国公民签证要求。凡持有美国或欧盟有效签证的中国公民，无需额外申请阿根廷签证，即可入境进行旅游或商务活动，入境后最多停留30天，可向移民局申请一次停留延期。此项决议旨在促进旅游业发展、移除阻碍经济自由发展的机制，将便利中阿人员往来与经贸文化交流，为中国游客赴南美旅游打开更便捷通道。</div>
+    <div class="meta">
+      <div class="source-link">来源：腾讯新闻 · <a href="https://new.qq.com/rain/a/20250723A06I1Z00" target="_blank" rel="noopener">阅读原文</a></div>
+      <div class="importance">
+        <div class="label"><span>重要性</span><span>60%</span></div>
+        <div class="bar"><span style="width:60%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    本简报由 AI 自动抓取整理 · 仅供资讯参考 · 2026/07/05
+  </div>
 
 </div>
 </body>
