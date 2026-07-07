@@ -3,200 +3,319 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日 AI + 综合资讯简报 · 07月07日</title>
+<title>每日 AI + 综合资讯简报</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: linear-gradient(160deg, #0f1419 0%, #141b2d 45%, #101826 100%);
+    background: linear-gradient(160deg, #0f1419 0%, #1a202c 50%, #141b26 100%);
     color: #e2e8f0;
+    padding: 32px 16px 60px;
     line-height: 1.7;
-    padding: 32px 16px 64px;
-    min-height: 100vh;
   }
-  .wrap { max-width: 880px; margin: 0 auto; }
-  header.page {
+  .wrap { max-width: 860px; margin: 0 auto; }
+  header.page-head {
     text-align: center;
-    margin-bottom: 14px;
+    padding: 28px 20px;
+    margin-bottom: 32px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(66,153,225,0.18), rgba(159,122,234,0.18));
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   }
-  header.page h1 {
+  header.page-head h1 {
     font-size: 30px;
-    font-weight: 800;
-    background: linear-gradient(90deg, #4299e1, #9f7aea, #4fd1c5);
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #63b3ed, #9f7aea, #4fd1c5);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
   }
-  header.page .date { color: #90a4bf; font-size: 14px; margin-top: 6px; }
+  header.page-head p { margin-top: 8px; color: #a0aec0; font-size: 14px; }
   .section-title {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 36px 0 18px;
+    font-size: 23px;
+    margin: 38px 0 18px;
     padding-left: 14px;
-    border-left: 4px solid #4299e1;
+    border-left: 5px solid #4299e1;
   }
   .card {
-    position: relative;
     border-radius: 16px;
-    padding: 20px 22px 18px;
-    margin-bottom: 16px;
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.08);
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+    position: relative;
     overflow: hidden;
-    transition: transform .18s ease, box-shadow .18s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
   .card::before {
     content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 5px;
-    background: linear-gradient(180deg, var(--c1), var(--c2));
+    position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
   }
+  .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .rank {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px; height: 34px;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 16px;
-    color: #0f1419;
-    background: linear-gradient(135deg, var(--c1), var(--c2));
-    margin-right: 12px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 18px; color: #fff;
   }
-  .card-head { display: flex; align-items: center; margin-bottom: 10px; }
-  .card-head h3 { font-size: 18px; font-weight: 700; color: #f7fafc; }
-  .summary { font-size: 14.5px; color: #cbd5e1; margin-bottom: 12px; }
-  .meta { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 13px; }
-  .meta .src { color: #90a4bf; }
-  .meta a { color: var(--c1); text-decoration: none; font-weight: 600; }
+  .card h3 { font-size: 18px; color: #f7fafc; flex: 1; }
+  .summary { color: #cbd5e0; font-size: 14.5px; margin: 6px 0 14px; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; font-size: 13px; }
+  .source { color: #a0aec0; }
+  .source b { color: #e2e8f0; font-weight: 600; }
+  .meta a { color: #63b3ed; text-decoration: none; }
   .meta a:hover { text-decoration: underline; }
-  .bar-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
-  .bar-label { font-size: 12px; color: #90a4bf; white-space: nowrap; }
-  .bar-track {
-    flex: 1; height: 8px; border-radius: 6px;
-    background: rgba(255,255,255,0.08); overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%; border-radius: 6px;
-    background: linear-gradient(90deg, var(--c1), var(--c2));
-  }
-  .bar-pct { font-size: 12px; color: #cbd5e1; font-weight: 700; white-space: nowrap; }
-  /* 颜色 class 命名 */
-  .color-blue   { --c1: #4299e1; --c2: #3182ce; }
-  .color-green  { --c1: #48bb78; --c2: #38a169; }
-  .color-yellow { --c1: #ecc94b; --c2: #d69e2e; }
-  .color-purple { --c1: #9f7aea; --c2: #805ad5; }
-  .color-cyan   { --c1: #4fd1c5; --c2: #319795; }
-  footer.page { text-align: center; color: #5a6b85; font-size: 12px; margin-top: 40px; }
+  .importance { flex: 1 1 100%; margin-top: 4px; }
+  .importance .bar-label { display: flex; justify-content: space-between; font-size: 12px; color: #a0aec0; margin-bottom: 4px; }
+  .bar-bg { height: 8px; border-radius: 6px; background: rgba(255,255,255,0.10); overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; }
+
+  /* 颜色主题：相邻卡片颜色不同 */
+  .color-blue::before { background: linear-gradient(180deg,#4299e1,#3182ce); }
+  .color-blue .rank { background: linear-gradient(135deg,#4299e1,#3182ce); }
+  .color-blue .bar-fill { background: linear-gradient(90deg,#4299e1,#3182ce); }
+
+  .color-green::before { background: linear-gradient(180deg,#48bb78,#38a169); }
+  .color-green .rank { background: linear-gradient(135deg,#48bb78,#38a169); }
+  .color-green .bar-fill { background: linear-gradient(90deg,#48bb78,#38a169); }
+
+  .color-yellow::before { background: linear-gradient(180deg,#ecc94b,#d69e2e); }
+  .color-yellow .rank { background: linear-gradient(135deg,#ecc94b,#d69e2e); }
+  .color-yellow .bar-fill { background: linear-gradient(90deg,#ecc94b,#d69e2e); }
+
+  .color-purple::before { background: linear-gradient(180deg,#9f7aea,#805ad5); }
+  .color-purple .rank { background: linear-gradient(135deg,#9f7aea,#805ad5); }
+  .color-purple .bar-fill { background: linear-gradient(90deg,#9f7aea,#805ad5); }
+
+  .color-cyan::before { background: linear-gradient(180deg,#4fd1c5,#319795); }
+  .color-cyan .rank { background: linear-gradient(135deg,#4fd1c5,#319795); }
+  .color-cyan .bar-fill { background: linear-gradient(90deg,#4fd1c5,#319795); }
+
+  footer { text-align: center; margin-top: 40px; color: #718096; font-size: 12.5px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="page">
+  <header class="page-head">
     <h1>每日 AI + 综合资讯简报</h1>
-    <div class="date">2026 年 07 月 07 日 · 由 WorkBuddy 自动生成</div>
+    <p>2026年07月08日 · 由 WorkBuddy 自动生成</p>
   </header>
 
-  <h2 class="section-title">🔥 今日热点（AI 行业 TOP 5）</h2>
+  <h2 class="section-title">🔥 今日热点（AI 行业 TOP5）</h2>
 
-  <article class="card color-blue">
-    <div class="card-head"><span class="rank">1</span><h3>月之暗面 Kimi K3 确认本月发布，参数规模或达 2.5 万亿</h3></div>
-    <p class="summary">国产大模型竞速在 2026 下半年开局即进入白热化。月之暗面员工在 X 平台确认 Kimi K3 将于 7 月内发布，据内部人士透露其参数规模有望达 2.5 万亿，集成 1M 超长上下文与多模态能力，目标直指全球顶尖水平，被视为对 DeepSeek V4 Pro、文心 5.0 的有力挑战。Kimi 当前最新模型 K2.7 Code 已专攻 AI 编程赛道，K3 的到来将进一步激化国内大模型格局。</p>
-    <div class="meta"><span class="src">来源：站长之家 / 新浪科技</span><a href="https://www.chinaz.com/ainews/29318.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div><span class="bar-pct">96%</span></div>
-  </article>
+  <div class="card color-blue">
+    <div class="card-head">
+      <div class="rank">1</div>
+      <h3>OpenAI 发布 GPT-5.6 系列，编程跑分超越 Claude Mythos 5</h3>
+    </div>
+    <p class="summary">OpenAI 推出 GPT-5.6 系列模型 Sol、Terra 与 Luna，在代码生成与复杂推理基准上超越 Anthropic 的 Claude Mythos 5。新系列采用分层安全防护体系，包含模型内置拒答、实时分类器、账户级风险审查与差异化访问机制；高风险场景下系统可暂停生成并交由更大推理模型复核，违规内容在展示前被拦截，兼顾性能与安全性。</p>
+    <div class="meta">
+      <span class="source">来源：<b>IT之家</b></span>
+      <a href="https://www.ithome.com/0/969/272.htm" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性</span><span>96%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:96%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-green">
-    <div class="card-head"><span class="rank">2</span><h3>DeepSeek V4 正式版备受期待，Agent 与推理能力领跑开源</h3></div>
-    <p class="summary">随着 DeepSeek 于 4 月发布 V4 模型、具备百万字超长上下文，在 Agent 能力、世界知识与推理性能上实现国内与开源领域领先，业界正密切关注其正式版动向。V4 在复杂多步任务与长文档处理上的表现被广泛讨论，被认为是中国大模型从"能演示"走向"能落地"的代表性产品。其与 Kimi K3 的同月竞发，将拉开下半年国产大模型性能比拼的大幕。</p>
-    <div class="meta"><span class="src">来源：搜狐科技</span><a href="https://www.sohu.com/a/1015666963_121123901" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><span class="bar-pct">92%</span></div>
-  </article>
+  <div class="card color-green">
+    <div class="card-head">
+      <div class="rank">2</div>
+      <h3>快手可灵 AI 完成近 30 亿美元融资，估值 180 亿美元创纪录</h3>
+    </div>
+    <p class="summary">快手旗下视频生成大模型可灵 AI 落地近 30 亿美元融资，投后估值有望达 180 亿美元，创全球视频大模型公司最大单笔融资纪录。本轮由 CPE 源峰、国方创投、BlueFive、腾讯、中关村科学城基金、中信证券联合领投，BAT 三大巨头罕见同台，国资基金与中东主权资本悉数入场，标志其独立商业化进程正式开启。</p>
+    <div class="meta">
+      <span class="source">来源：<b>新浪财经</b></span>
+      <a href="https://finance.sina.com.cn/jjxw/2026-07-03/doc-inifnnxn0546121.shtml" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性</span><span>92%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-yellow">
-    <div class="card-head"><span class="rank">3</span><h3>Meta 下场"卖算力"，全球科技股与 AI 基建链剧烈分化</h3></div>
-    <p class="summary">Meta 正制定云基础设施业务计划，拟对外开放自研大模型并直接对外出售算力资源，消息一出 Meta 股价涨超 8%，而康宁、美光等 AI 基建龙头则遭重挫——隔夜美光跌 10.57%、闪迪跌 10.62%，费城半导体指数下挫 6.27%。市场担忧算力供给端竞争加剧将挤压上游利润，亚洲市场同步承压。这标志 AI 竞争从"模型军备赛"转向"算力商业化"新阶段。</p>
-    <div class="meta"><span class="src">来源：南方财经</span><a href="https://www.sfccn.com/2026/7-2/0MMDE0MDdfMjE3MzI0MA.html" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-pct">90%</span></div>
-  </article>
+  <div class="card color-yellow">
+    <div class="card-head">
+      <div class="rank">3</div>
+      <h3>2026 世界人工智能大会 7 月 17 日启幕，展览面积首超 10 万㎡</h3>
+    </div>
+    <p class="summary">2026 世界人工智能大会暨人工智能全球治理高级别会议将于 7 月 17 日至 20 日在上海举办。本届大会由外交部、发改委、工信部等多部门与上海市政府共同主办，展览总面积首次突破 10 万平方米，首发新品数量、论坛场次均创历史新高。主办方表示我国人工智能产业规模去年已超万亿，预计今年仍有 30% 以上增速。</p>
+    <div class="meta">
+      <span class="source">来源：<b>澎湃新闻</b></span>
+      <a href="https://www.thepaper.cn/newsDetail_forward_33531953" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性</span><span>88%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-purple">
-    <div class="card-head"><span class="rank">4</span><h3>智谱 GLM-5.2 开源亮相全球数字经济大会，落地政务医疗制造</h3></div>
-    <p class="summary">在 7 月 2 日开幕的 2026 全球数字经济大会上，智谱展出 6 月最新上线并开源的 GLM-5.2 模型，据称在长程任务与代码能力上显著提升。华为同步展示鲲鹏、昇腾 AI 服务器阵列及全液冷超充硬件，并发布覆盖政务、医疗、制造、金融等多行业的 AI 解决方案。大会以"建设数字友好城市"为主题，汇聚近 40 国团组，凸显 AI 应用加速从概念走向产业落地。</p>
-    <div class="meta"><span class="src">来源：中证网 / 中国新闻网</span><a href="https://www.cs.com.cn/ssgs/01/2026/07/03/detail_2026070310022045.html" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><span class="bar-pct">85%</span></div>
-  </article>
+  <div class="card color-purple">
+    <div class="card-head">
+      <div class="rank">4</div>
+      <h3>Anthropic 最强模型解除出口限制，承认中间商规避地域检测</h3>
+    </div>
+    <p class="summary">当地时间 6 月 30 日，Anthropic 宣布美国商务部已移除对 Claude Fable 5 与 Claude Mythos 5 的出口限制，两款模型自 7 月 1 日起恢复访问。此前因美国政府命令，这两款模型曾于 6 月 12 日起面向所有客户关停权限。公司同时承认，有中间商通过隐藏代码检测中国等地区的账户并转售访问权限，引发合规与监管争议。</p>
+    <div class="meta">
+      <span class="source">来源：<b>财新网</b></span>
+      <a href="https://www.caixin.com/2026-07-01/102459586.html" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性</span><span>84%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-cyan">
-    <div class="card-head"><span class="rank">5</span><h3>AI 进入"算力主权"竞速：Anthropic 澳洲建数据中心、Meta 下线 Llama API</h3></div>
-    <p class="summary">7 月 6 日 AI 行业进入"算力主权"关键节点：Anthropic 披露 150 亿美元澳大利亚数据中心计划；Meta 正式下线 Llama API，将生态收拢至自有平台；美光 93 亿美元扩建广岛 HBM 工厂以抢占高端存储。算力与供应链的区域化、自主化趋势愈发清晰，硬件商业化与政策博弈成为继大模型之后的新主战场，全球 AI 产业链格局正被重塑。</p>
-    <div class="meta"><span class="src">来源：CSDN 博客</span><a href="https://blog.csdn.net/haohaizi_liu/article/details/162634327" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><span class="bar-pct">88%</span></div>
-  </article>
+  <div class="card color-cyan">
+    <div class="card-head">
+      <div class="rank">5</div>
+      <h3>月之暗面 Kimi K3 发布，2.5 万亿参数刷新国产大模型规格</h3>
+    </div>
+    <p class="summary">据每日 AI 资讯，月之暗面于 7 月 6 日发布 Kimi K3，以 2.5 万亿参数刷新国产大模型规格纪录，在长上下文处理与智能体执行能力上较上代显著提升。同期字节 Seedance 2.5 上线三大全球首创视频生成能力，全球首例全自动 AI 勒索攻击 JADEPUFFER 亦被曝光，凸显大模型能力跃升与安全威胁并存的行业现状。</p>
+    <div class="meta">
+      <span class="source">来源：<b>AITOP100</b></span>
+      <a href="https://www.aitop100.cn/ai-daily-2026-07-06" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性</span><span>80%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
+    </div>
+  </div>
 
-  <h2 class="section-title">🌍 综合资讯（TOP 8）</h2>
+  <h2 class="section-title">🌍 综合资讯（TOP8）</h2>
 
-  <article class="card color-blue">
-    <div class="card-head"><span class="rank">1</span><h3>全球市场稳健开局，道指创历史新高后小幅回落</h3></div>
-    <p class="summary">进入 2026 下半年，全球市场在 AI 科技驱动、企业盈利韧性与利率预期缓和支撑下开局稳健。7 月 1 日道琼斯工业平均指数盘中刷新历史新高，尽管收盘微跌，但整体风险偏好延续。资管机构 Pictet 指出，随着美伊和平进程推进、油价趋稳，通胀压力有望缓和，权益资产或延续涨势。市场对"AI 相关科技+盈利修复"双主线仍保持乐观。</p>
-    <div class="meta"><span class="src">来源：CNBC / Axon Markets</span><a href="https://www.cnbc.com/2026/06/30/stock-market-today-live-updates.html" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-pct">80%</span></div>
-  </article>
+  <div class="card color-blue">
+    <div class="card-head">
+      <div class="rank">1</div>
+      <h3>央行开展 1 万亿元买断式逆回购，结束连续三月缩量</h3>
+    </div>
+    <p class="summary">中国人民银行 7 月 6 日以固定数量、利率招标、多重价位中标方式开展 1 万亿元 3 个月期买断式逆回购操作。鉴于该期限品种当月有 8000 亿元到期量，此次操作实现加量续作，结束了该期限品种连续 3 个月的缩量进程，向市场释放维护流动性合理充裕的明确信号，有助于稳定季初资金面预期。</p>
+    <div class="meta">
+      <span class="source">来源：<b>百家号 / 央行公告</b></span>
+      <a href="https://baijiahao.baidu.com/s?id=1869921421036796843&wfr=spider&for=pc" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（财经）</span><span>82%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-green">
-    <div class="card-head"><span class="rank">2</span><h3>美伊围绕霍尔木兹海峡激烈交锋，油价与避险情绪升温</h3></div>
-    <p class="summary">联合国安理会紧急公开会上，美伊代表围绕霍尔木兹海峡通行、地区袭击与协议执行相互指责。伊朗要求所有船只遵守其指定航线，并称将加速清理海峡内残余水雷；以色列重申不撤出黎巴嫩南部，引发多国不满。分析认为，霍尔木兹通航不确定性与地缘风险正推升原油风险溢价，并对全球通胀预期形成扰动，成为下半年宏观市场核心变量之一。</p>
-    <div class="meta"><span class="src">来源：新浪财经 / 联合早报</span><a href="https://finance.sina.com.cn/wm/2026-07-04/doc-inifqwek0127218.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="bar-pct">84%</span></div>
-  </article>
+  <div class="card color-green">
+    <div class="card-head">
+      <div class="rank">2</div>
+      <h3>A 股三大指数集体收跌，创业板指跌 1.77% 领跌</h3>
+    </div>
+    <p class="summary">7 月 6 日周一，A 股三大指数集体收跌，创业板指跌 1.77% 领跌，两市成交额缩量至 3.09 万亿元，超 3500 只个股下跌，市场情绪偏弱。盘面上医药、煤炭、液冷服务器等板块逆势走强，而 PCB 概念等前期热点显著回调。分析认为在科技板块持续回调背景下，市场走势疲软、赚钱效应不明显，短期或维持震荡格局。</p>
+    <div class="meta">
+      <span class="source">来源：<b>雪球</b></span>
+      <a href="https://xueqiu.com/5806277312/398689639" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（财经）</span><span>76%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-yellow">
-    <div class="card-head"><span class="rank">3</span><h3>首部《社会救助法》7 月 1 日施行，民生兜底大幅扩围</h3></div>
-    <p class="summary">7 月 1 日起，实施 31 年的社会救助"暂行办法"升级为正式法律——《中华人民共和国社会救助法》全面落地。新规将低保边缘户、遭遇突发重病的普通家庭纳入兜底，申请不再受户籍地限制，可异地线上提交材料；同时简化身后事等办事流程。这部法律标志着我国社会救助从"救急难"迈向"保基本、兜底线、织密网"的制度化新阶段，惠及千万家庭。</p>
-    <div class="meta"><span class="src">来源：腾讯新闻</span><a href="https://news.qq.com/rain/a/20260701A07ZKW00" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div><span class="bar-pct">83%</span></div>
-  </article>
+  <div class="card color-yellow">
+    <div class="card-head">
+      <div class="rank">3</div>
+      <h3>7 月 1 日起全国统一执行民生新规，社会救助法正式实施</h3>
+    </div>
+    <p class="summary">7 月 1 日起一批民生新规全国统一落地。最受关注的是施行 31 年的社会救助"暂行办法"升格为正式法律，低保边缘户、突发重病致困的普通家庭被纳入兜底范围；救助申请实现全国通办，不再需回户籍地奔波。同时社保缴费基数口径收紧，绩效、年终奖、加班费及现金福利均须计入，金税四期将比对差异并追缴。</p>
+    <div class="meta">
+      <span class="source">来源：<b>腾讯新闻</b></span>
+      <a href="https://news.qq.com/rain/a/20260701A07ZKW00" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（社会）</span><span>85%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-purple">
-    <div class="card-head"><span class="rank">4</span><h3>人社部启动毕业生就业攻坚，12 个新职业向社会公示</h3></div>
-    <p class="summary">人社部近日部署启动 2026 年高校毕业生等青年就业服务攻坚行动（7 月至 12 月），面向离校未就业毕业生与登记失业青年，提供实名登记、职业指导、招聘对接、困难帮扶等全链条服务。同期拟新增数字孪生工程技术人员、具身智能机器人应用技术员、运动数据分析师、制香香艺师等 12 个新职业。政策组合拳直指青年就业压力，并呼应 AI 与数字经济催生的新业态用工需求。</p>
-    <div class="meta"><span class="src">来源：中国网 / 央广网</span><a href="https://news.china.com.cn/2026-07/02/content_118579181.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="bar-pct">82%</span></div>
-  </article>
+  <div class="card color-purple">
+    <div class="card-head">
+      <div class="rank">4</div>
+      <h3>应急管理部发布 7 月全国自然灾害风险形势研判</h3>
+    </div>
+    <p class="summary">国家防灾减灾救灾委员会办公室、应急管理部会同多部门会商研判 2026 年 7 月全国自然灾害风险形势。综合分析认为，7 月各地进入防汛关键期，灾害风险形势更加严峻复杂；我国东部及西南地区洪涝和风雹灾害风险高，长江流域、淮河流域、海河流域、珠江流域、松辽流域等需重点防范，提示相关地区提前做好应急准备。</p>
+    <div class="meta">
+      <span class="source">来源：<b>人民网</b></span>
+      <a href="http://society.people.com.cn/n1/2026/0706/c1008-40754422.html" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（社会）</span><span>83%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:83%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-cyan">
-    <div class="card-head"><span class="rank">5</span><h3>海洋二号 E 星成功发射，我国海洋动力环境监测网再添"天眼"</h3></div>
-    <p class="summary">7 月 2 日，由航天科技集团五院研制的海洋二号 E 星由长征四号乙运载火箭成功发射，并入列我国首个海洋动力环境监测网。该系列卫星十余年来持续为海洋防灾减灾、资源开发、海上安全与科学研究提供支撑。E 星将提升对海面风场、浪高、海温等要素的观测精度，助力台风预警与气候变化研究，彰显我国海洋遥感卫星体系的完善与自主能力。</p>
-    <div class="meta"><span class="src">来源：央视网</span><a href="https://news.cctv.com/2026/07/03/ARTIr1Udif9vMLcMcpntlU2T260702.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span class="bar-pct">78%</span></div>
-  </article>
+  <div class="card color-cyan">
+    <div class="card-head">
+      <div class="rank">5</div>
+      <h3>2026 美加墨世界杯 16 强全部出炉，C 罗落泪告别</h3>
+    </div>
+    <p class="summary">北京时间 7 月 4 日，2026 美加墨世界杯 16 强球队全部产生，包括加拿大、巴西、法国、英格兰、西班牙、葡萄牙、阿根廷等。在 1/8 决赛中，葡萄牙遭西班牙补时绝杀 0 比 1 止步 16 强，第 6 次征战世界杯的 C 罗赛后落泪，坦言"这样告别很难过"，表示这是一场势均力敌的比赛，西班牙运气稍好，引发全球球迷热议。</p>
+    <div class="meta">
+      <span class="source">来源：<b>央视体育 / 新浪</b></span>
+      <a href="https://sports.cctv.com/2026/07/04/ARTIiEMYviQgWaG7i15vS1Bu260704.shtml" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（体育）</span><span>78%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-blue">
-    <div class="card-head"><span class="rank">6</span><h3>台风"美莎克"登陆海南，北方遭遇今年最大规模高温</h3></div>
-    <p class="summary">7 月 3 日，今年首个登陆我国的台风"美莎克"在海南沿海登陆；与此同时，我国北方正经历 2026 年以来最大规模高温过程，新疆、甘肃局地高温具有极端性。《新闻 1+1》连线国家气候中心首席预报员指出，台风与高温"双碰头"凸显极端天气频发的气候特征，公众需防范高温热浪、阶段性极端强降水及其引发的山洪地质灾害，相关部门应强化预警与应急联动。</p>
-    <div class="meta"><span class="src">来源：新浪新闻</span><a href="https://news.sina.com.cn/zx/2026-07-04/doc-inifrnzu5460515.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div><span class="bar-pct">79%</span></div>
-  </article>
+  <div class="card color-blue">
+    <div class="card-head">
+      <div class="rank">6</div>
+      <h3>美伊多哈和谈开启，中东局势出现缓和窗口</h3>
+    </div>
+    <p class="summary">7 月 1 日，美国与伊朗在卡塔尔首都多哈启动技术性谈判，由巴基斯坦、卡塔尔斡旋，焦点集中在霍尔木兹海峡通航与石油贸易正常化。与此同时，伊朗总统已正式批准暂停与国际原子能机构的全部合作，指责该机构偏向以色列、无法客观核查，核相关谈判进程全面搁置，地区局势仍具高度不确定性。</p>
+    <div class="meta">
+      <span class="source">来源：<b>联合早报</b></span>
+      <a href="https://www.zaobao.cn/world/202607/6204.html" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（国际）</span><span>81%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-green">
-    <div class="card-head"><span class="rank">7</span><h3>俄称已控制卢甘斯克，顿涅茨克方向取得重大进展</h3></div>
-    <p class="summary">7 月 3 日晚，俄总统网站发布消息称，普京在军事会议上宣布俄军已全部控制卢甘斯克地区，并在顿涅茨克地区取得重大进展；俄总统新闻秘书佩斯科夫随后予以证实。该表态引发国际社会对东欧局势走向的重新评估。多方关注后续外交斡旋与停火谈判的可能性，欧洲国家在能源、防务与对乌援助上的政策取向或随之调整。</p>
-    <div class="meta"><span class="src">来源：央广网</span><a href="http://military.cnr.cn/gj/index_1.html" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:77%"></div></div><span class="bar-pct">77%</span></div>
-  </article>
+  <div class="card color-green">
+    <div class="card-head">
+      <div class="rank">7</div>
+      <h3>BMI 标准下调引热议，你"被肥胖"了吗？</h3>
+    </div>
+    <p class="summary">美国糖尿病协会（ADA）肥胖专业实践委员会发布《2026 成人超重与肥胖管理》新指南，对体重指数（BMI）标准作出下调，相关讨论在国内引发广泛关注。新指南强调以健康风险而非单一数值界定肥胖，并建议结合腰围、代谢指标综合评估。专家指出标准调整旨在更早识别风险人群，但也提醒公众避免对号入座造成焦虑。</p>
+    <div class="meta">
+      <span class="source">来源：<b>央广网</b></span>
+      <a href="https://www.cnr.cn/mspd/yw/" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（健康）</span><span>72%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div>
+    </div>
+  </div>
 
-  <article class="card color-yellow">
-    <div class="card-head"><span class="rank">8</span><h3>WTT 美国大满贯：孙颖莎夺得女单冠军</h3></div>
-    <p class="summary">在 2026 年 WTT 美国大满贯赛事中，孙颖莎勇夺女单冠军，中国乒乓球队继续在国际赛场展现统治力。同日英格兰击败墨西哥晋级八强，多项赛事激战正酣。作为体育大赛年，2026 年冬奥会、世界杯、亚运会接连上演，乒乓球世锦赛、羽毛球汤尤杯等赛事亦接踵而来，全民健身与竞技体育热度持续升温，相关话题频登社交平台热搜。</p>
-    <div class="meta"><span class="src">来源：新华网</span><a href="https://www.xinhuanet.com/sports/news.htm" target="_blank">查看原文 ↗</a></div>
-    <div class="bar-row"><span class="bar-label">重要性</span><div class="bar-track"><div class="bar-fill" style="width:74%"></div></div><span class="bar-pct">74%</span></div>
-  </article>
+  <div class="card color-yellow">
+    <div class="card-head">
+      <div class="rank">8</div>
+      <h3>第九届大数据与人工智能国际会议 BDAI 2026 在重庆举行</h3>
+    </div>
+    <p class="summary">2026 年 7 月 3 日至 5 日，第九届大数据与人工智能国际会议（BDAI 2026）在重庆举行。会议聚焦大数据与人工智能的融合发展与多领域应用延伸，汇聚海内外学者围绕数据挖掘、智能算法、行业落地等议题展开交流。主办方表示，随着大数据与 AI 持续融合，其研究与应用正加速向医疗、交通、制造等更多场景渗透。</p>
+    <div class="meta">
+      <span class="source">来源：<b>腾讯新闻</b></span>
+      <a href="https://news.qq.com/rain/a/20260706A071G300" target="_blank">查看原文 ↗</a>
+    </div>
+    <div class="importance">
+      <div class="bar-label"><span>重要性（科技）</span><span>70%</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
+    </div>
+  </div>
 
-  <footer class="page">本简报由 WorkBuddy 自动抓取公开资讯生成 · 仅供信息参考 · 2026-07-07</footer>
+  <footer>本简报由 WorkBuddy 基于公开网络资讯自动汇总生成 · 仅供信息参考，不构成投资建议</footer>
 </div>
 </body>
 </html>
