@@ -3,218 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日 AI + 综合资讯简报 · 2026年07月12日</title>
+<title>每日 AI + 综合资讯简报</title>
 <style>
-  * { box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    margin: 0;
-    padding: 40px 16px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
-    background: linear-gradient(135deg, #1a202c 0%, #2d3748 60%, #1a202c 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1a2035 55%, #131a2e 100%);
     color: #e2e8f0;
-    line-height: 1.6;
+    line-height: 1.7;
+    padding: 40px 20px;
+    min-height: 100vh;
   }
-  .container { max-width: 940px; margin: 0 auto; }
-  .header {
-    text-align: center;
-    padding: 28px 20px;
-    margin-bottom: 14px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(6px);
+  .container { max-width: 980px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 36px; }
+  header h1 {
+    font-size: 2.3rem;
+    background: linear-gradient(90deg, #63b3ed, #68d391, #ecc94b, #b794f4, #4fd1c5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: 1px;
   }
-  .header h1 { margin: 0 0 8px; font-size: 30px; letter-spacing: 1px; }
-  .header .date { font-size: 15px; color: #a0aec0; }
+  header .date { color: #94a3b8; margin-top: 10px; font-size: 1rem; }
   .section-title {
-    font-size: 24px;
-    margin: 38px 0 18px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 38px 0 22px;
     padding-left: 14px;
-    border-left: 6px solid #4fd1c5;
+    border-left: 5px solid #4299e1;
   }
   .card {
+    background: rgba(255,255,255,0.04);
     border-radius: 16px;
     padding: 22px 24px;
     margin-bottom: 18px;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    transition: transform 0.2s ease;
+    border-left: 6px solid transparent;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.28);
+    transition: transform .2s ease, box-shadow .2s ease;
   }
-  .card:hover { transform: translateY(-3px); }
-  .card .rank {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-    font-weight: 800;
-    font-size: 18px;
-    margin-right: 12px;
-    vertical-align: middle;
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,0.4); }
+  .card-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .rank {
+    font-size: 1.5rem; font-weight: 800; line-height: 1;
+    background: inherit;
   }
-  .card .title {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 20px;
-    font-weight: 700;
-    max-width: calc(100% - 55px);
+  .tag {
+    font-size: .72rem; padding: 3px 10px; border-radius: 20px;
+    font-weight: 600; color: #0f172a; white-space: nowrap;
   }
-  .card .summary {
-    font-size: 14.5px;
-    line-height: 1.85;
-    margin: 14px 0 12px;
-    opacity: 0.97;
-  }
-  .card .meta {
-    font-size: 13px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    align-items: center;
-    opacity: 0.95;
-  }
-  .card .meta a { color: #fff; text-decoration: underline; }
+  .card h2 { font-size: 1.18rem; font-weight: 700; color: #f1f5f9; flex: 1; min-width: 240px; }
+  .summary { color: #cbd5e1; margin: 12px 0 14px; font-size: .95rem; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .82rem; color: #94a3b8; align-items: center; }
+  .meta a { color: #63b3ed; text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
   .importance { margin-top: 12px; }
-  .importance .label { font-size: 12px; opacity: 0.9; margin-bottom: 5px; }
-  .bar-bg {
-    height: 9px;
-    width: 100%;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.28);
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    border-radius: 6px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.55));
-  }
-  .footer {
-    text-align: center;
-    color: #718096;
-    font-size: 12px;
-    margin-top: 30px;
-  }
+  .importance .label { font-size: .76rem; color: #94a3b8; margin-bottom: 5px; display: block; }
+  .bar-bg { background: rgba(255,255,255,0.08); border-radius: 8px; height: 9px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 8px; }
 
-  /* 颜色 class：相邻不同 */
-  .blue   { background: linear-gradient(135deg, #4299e1, #3182ce); }
-  .green  { background: linear-gradient(135deg, #48bb78, #38a169); }
-  .yellow { background: linear-gradient(135deg, #ecc94b, #d69e2e); color:#1a202c; }
-  .yellow .rank { background: rgba(0,0,0,0.15); color:#1a202c; }
-  .yellow .meta a { color:#1a202c; }
-  .purple { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-  .cyan   { background: linear-gradient(135deg, #4fd1c5, #319795); }
+  /* 相邻新闻颜色不同 —— class 命名颜色 */
+  .blue   { border-left-color:#4299e1; } .blue   .rank{ color:#4299e1; } .blue   .tag{ background:linear-gradient(135deg,#4299e1,#3182ce);} .blue .bar-fill{ background:linear-gradient(90deg,#4299e1,#3182ce);}
+  .green  { border-left-color:#48bb78; } .green  .rank{ color:#48bb78; } .green  .tag{ background:linear-gradient(135deg,#48bb78,#38a169);} .green .bar-fill{ background:linear-gradient(90deg,#48bb78,#38a169);}
+  .yellow { border-left-color:#ecc94b; } .yellow .rank{ color:#ecc94b; } .yellow .tag{ background:linear-gradient(135deg,#ecc94b,#d69e2e);} .yellow .bar-fill{ background:linear-gradient(90deg,#ecc94b,#d69e2e);}
+  .purple { border-left-color:#9f7aea; } .purple .rank{ color:#9f7aea; } .purple .tag{ background:linear-gradient(135deg,#9f7aea,#805ad5);} .purple .bar-fill{ background:linear-gradient(90deg,#9f7aea,#805ad5);}
+  .cyan   { border-left-color:#4fd1c5; } .cyan   .rank{ color:#4fd1c5; } .cyan   .tag{ background:linear-gradient(135deg,#4fd1c5,#319795);} .cyan .bar-fill{ background:linear-gradient(90deg,#4fd1c5,#319795);}
+
+  footer { text-align: center; color: #64748b; font-size: .8rem; margin-top: 40px; }
 </style>
 </head>
 <body>
 <div class="container">
+  <header>
+    <h1>每日 AI + 综合资讯简报</h1>
+    <div class="date">2026 年 07 月 13 日 · 周一</div>
+  </header>
 
-  <div class="header">
-    <h1>🤖 每日 AI + 综合资讯简报</h1>
-    <div class="date">2026年07月12日 · 精选 AI 行业 TOP5 + 综合资讯 TOP8</div>
-  </div>
-
-  <!-- ============ AI 行业 TOP5 ============ -->
-  <h2 class="section-title">🔥 今日热点（AI 行业 TOP5）</h2>
+  <!-- 🔥 今日热点：AI 行业 TOP5 -->
+  <h2 class="section-title" style="border-color:#9f7aea;">🔥 今日热点（AI 行业 TOP5）</h2>
 
   <div class="card blue">
-    <span class="rank">1</span><span class="title">2026世界人工智能大会(WAIC) 7月17日上海启幕，国产算力新品集中首秀</span>
-    <div class="summary">2026第九届世界人工智能大会(WAIC)将于7月17日至20日在上海"三地四馆"盛大启幕，本届以"智能伙伴 共创未来"为主题，展览面积首破10万平方米。华为Atlas 950超节点、MiniMax M3多模态大模型、阶跃Agent操作系统等重磅新品将集中首秀，标志AI从"工具时代"迈向"伙伴时代"，行业叙事由参数跑分转向场景落地与生态共建。</div>
-    <div class="meta"><span>来源：CSDN / 百度百家号</span><a href="https://blog.csdn.net/2601_96506637/article/details/162725622" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">1</span>
+      <span class="tag">AI 大模型</span>
+      <h2>OpenAI 正式推出 GPT-5.6 系列模型</h2>
+    </div>
+    <p class="summary">OpenAI 于 7 月 9 日宣布正式推出 GPT-5.6 系列，包含旗舰模型 Sol、均衡型 Terra 与速度最快、成本最低的 Luna 三款版本，即日起在 ChatGPT、Codex 和 OpenAI API 中逐步开放。该系列新增"max"推理模式，在复杂任务上显著增强。美国商务部此前已批准其全面发布，标志着此前仅限机构测试的新模型面向更广泛用户落地，大模型竞争进入多版本精细化运营阶段。</p>
+    <div class="meta"><span>来源：新华社</span><a href="https://www.xinhuanet.com/tech/20260710/d5d93f14967948ad99fcef1231def932/c.html" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:96%"></div></div></div>
   </div>
 
   <div class="card green">
-    <span class="rank">2</span><span class="title">国常会AI产业扶持政策落地：万卡智算中心配套提速，重点行业AI渗透率破80%</span>
-    <div class="summary">国常会此前出台的人工智能产业扶持政策于7月正式落地执行，要求新建万卡级智算中心配套高速光传输设备，并加大高端芯片、存储材料研发补贴与税收减免。国家发改委披露，重点行业AI渗透率已突破80%，预计今年AI终端销量将首次超越非AI产品，"十五五"期间将加快AI自主创新并开放应用场景，同时关注就业影响与风险防范。</div>
-    <div class="meta"><span>来源：百度百家号 / 无矩AI</span><a href="https://baijiahao.baidu.com/s?id=1870147835838474559" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">2</span>
+      <span class="tag">AI 智能体</span>
+      <h2>Anthropic 发布 Claude Sonnet 5，主打智能体能力</h2>
+    </div>
+    <p class="summary">Anthropic 于 7 月 1 日发布 Claude Sonnet 5，号称 Sonnet 系列中智能体（Agent）表现最强，能够自主制定计划、调用浏览器与终端等工具运行。部分性能逼近 Opus 4.8，且定价更具性价比，已接入 Claude Code 与 Claude Platform。此举被视为大模型竞争从参数比拼转向智能体落地的关键信号，直指企业级 AI 工作流场景。</p>
+    <div class="meta"><span>来源：IT之家 / 腾讯新闻</span><a href="https://finance.sina.com.cn/tech/digi/2026-07-01/doc-iniffyta1132506.shtml" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div>
   </div>
 
   <div class="card yellow">
-    <span class="rank">3</span><span class="title">Anthropic 以965亿美元估值成"AI第一股"，GPT-5.6低调内测、出口管制解除</span>
-    <div class="summary">AI资本市场与模型迭代同步升温：Anthropic以965亿美元估值成为"AI第一股"，OpenAI GPT-5.6系列低调开启内测，美国商务部解除对Claude Fable 5的出口管制。与此同时，行业并购与融资活跃度创历史新高，基础大模型加速商品化，竞争焦点转向行业解决方案与Agent落地，头部玩家围绕生态与合规展开新一轮角力。</div>
-    <div class="meta"><span>来源：无矩AI</span><a href="https://iaipie.com/ai%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%80%E6%96%B0%E8%BF%9B%E5%B1%95%E6%B7%B1%E5%BA%A6%E7%9B%98%E7%82%B9%EF%BC%882026%E5%B9%B47%E6%9C%88%E7%AF%87%EF%BC%89/" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">3</span>
+      <span class="tag">AI 大会</span>
+      <h2>2026 世界人工智能大会 7 月 17 日上海启幕</h2>
+    </div>
+    <p class="summary">2026 世界人工智能大会暨人工智能全球治理高级别会议将于 7 月 17 日至 20 日在上海举行，由外交部、发改委、工信部等多部门与上海市政府共同主办。本届展览总面积首次突破 10 万平方米，超 300 款产品全球首发，已推动 57 个核心场景落地，累计达成 162 亿元意向合作，并策划 140 余场论坛，集聚 1400 余位中外嘉宾与 10 余个国际组织。</p>
+    <div class="meta"><span>来源：澎湃新闻</span><a href="https://www.thepaper.cn/newsDetail_forward_33531953" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
   </div>
 
   <div class="card purple">
-    <span class="rank">4</span><span class="title">高盛重磅报告：2026—2031年全球AI算力与数据中心开支将超7.6万亿美元</span>
-    <div class="summary">高盛发布重磅AI产业报告，预计2026至2031年全球AI算力与数据中心资本开支合计将超过7.6万亿美元，制造业、工业机器人、能源成为AI落地核心场景。报告认为基础大模型正逐步商品化，行业竞争从"拼参数"转向"拼行业解决方案"。该预测引发资本市场对算力、电力、储能产业链的重新定价，相关板块估值逻辑面临重构。</div>
-    <div class="meta"><span>来源：雪球</span><a href="https://xueqiu.com/1021113906/398739619" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">4</span>
+      <span class="tag">AI 治理</span>
+      <h2>APEC 2026 数字和人工智能部长会议将落地成都</h2>
+    </div>
+    <p class="summary">工信部宣布，亚太经合组织（APEC）2026 年数字和人工智能部长会议及数字周将于 7 月 16 日至 24 日在四川成都举办，部长会议定于 7 月 23 日召开。今年是中国时隔 12 年第三次担任 APEC 东道主，系列活动将集中展示我国在人工智能与数字经济领域的发展成果，培育亚太合作新亮点，并为 11 月 APEC 领导人会议预热。</p>
+    <div class="meta"><span>来源：新华网</span><a href="https://www.xinhuanet.com/info/20260710/f38a087268a44923a2caf0913489ef3d/c.html" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
   </div>
 
   <div class="card cyan">
-    <span class="rank">5</span><span class="title">国产算力突围、雷达视觉多模态融合量产商用，AI监管加速落地</span>
-    <div class="summary">2026年7月成为AI行业分水岭：监管政策由文件走向落地执行，大模型从通用全能转向场景轻量化，算力生态实现国产替代突破，雷达视觉多模态融合正式进入量产商用阶段。对嵌入式、机载AI从业者而言，依托国产开源模型加昇腾算力的合规、低成本、离线可用行业感知方案，正成为规避C端智能体合规风险的核心机遇。</div>
-    <div class="meta"><span>来源：CSDN</span><a href="https://hwcomputing.csdn.net/6a4f0a7a10ee7a33f28a869c.html" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">5</span>
+      <span class="tag">AI 产业</span>
+      <h2>我国 AI 相关产业规模去年超万亿，今年增速料超 30%</h2>
+    </div>
+    <p class="summary">在 2026 世界人工智能大会发布会上，相关部门透露去年我国人工智能相关产业规模已超万亿元，并预测今年将保持 30% 以上增速。作为"十五五"开局之年，国家将在人工智能布局上持续加码，发改委等部委亦将带来系列政策与成果。强劲的增速预期凸显 AI 已成为驱动经济高质量发展的重要引擎。</p>
+    <div class="meta"><span>来源：上观新闻 / MSN</span><a href="https://www.msn.cn/zh-cn/news/other/%E5%8E%BB%E5%B9%B4%E6%88%91%E5%9B%BD%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E4%BA%A7%E4%B8%9A%E8%A7%84%E6%A8%A1%E8%B6%85%E4%B8%87%E4%BA%BF-%E9%A2%84%E6%B5%8B%E4%BB%8A%E5%B9%B4%E8%BF%98%E6%9C%8930-%E4%BB%A5%E4%B8%8A%E5%A2%9E%E9%80%9F/ar-AA27n5jd" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div></div>
   </div>
 
-  <!-- ============ 综合资讯 TOP8 ============ -->
-  <h2 class="section-title">🌍 综合资讯（TOP8 · 类别多元）</h2>
+  <!-- 🌍 综合资讯：TOP8 -->
+  <h2 class="section-title" style="border-color:#4fd1c5;">🌍 综合资讯（TOP8）</h2>
 
   <div class="card blue">
-    <span class="rank">1</span><span class="title">【财经】IMF 7月世界经济展望：全球增长3.0%、通胀4.7%，反通胀停滞</span>
-    <div class="summary">国际货币基金组织(IMF)发布7月《世界经济展望》更新，预计2026年全球经济增长率为3.0%，通胀率约4.7%，并指出全球反通胀进程已陷入停滞。报告称风险较4月更为平衡，但地缘冲突再现与金融市场重新定价仍构成下行风险，呼吁各经济体保持价格稳定并预留政策空间，以应对潜在外部冲击，避免过早放松宏观紧缩。</div>
-    <div class="meta"><span>来源：IMF</span><a href="https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">1</span>
+      <span class="tag">财经</span>
+      <h2>央行万亿逆回购净投放 2000 亿，下半年宽松基调明确</h2>
+    </div>
+    <p class="summary">央行公告 7 月 6 日开展 1 万亿元 3 个月买断式逆回购，当月到期仅 8000 亿，净投放 2000 亿元，终结连续数月的资金回笼。此举被市场解读为明确下半年宽松基调，压低机构融资成本，利好成长股、科技制造与大金融板块。叠加美国 6 月非农不及预期、市场押注美联储 9 月降息，美元走弱带动离岸人民币小幅升值、北向资金回流。</p>
+    <div class="meta"><span>来源：百度百家号</span><a href="https://baijiahao.baidu.com/s?id=1869875958357931259" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div>
   </div>
 
   <div class="card green">
-    <span class="rank">2</span><span class="title">【财经】发改委"两重"清单全部下达，8000亿超长期特别国债支持1417项目</span>
-    <div class="summary">国家发展改革委披露，2026年"两重"(重大战略实施和重点领域安全能力建设)建设项目清单已全部下达，全年安排8000亿元超长期特别国债资金，支持1417个重大项目建设。专家认为这将为基建投资筑牢关键资金保障、托举全年经济平稳运行，建议各地统筹用好政府资金与新型政策性金融工具，同步扶持民间投资，充分释放市场活力。</div>
-    <div class="meta"><span>来源：新浪财经</span><a href="https://finance.sina.com.cn/stock/y/2026-07-09/doc-inihczpn4589279.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">2</span>
+      <span class="tag">财经</span>
+      <h2>7 月 A 股迎年内第二大解禁"洪峰"</h2>
+    </div>
+    <p class="summary">进入 7 月，A 股市场迎来年内第二大解禁高峰，大规模限售股集中解禁对市场流动性形成考验。与此同时，证监会表态将对编造、传播证券期货虚假误导性信息行为严肃查处，以维护市场秩序。分析人士提示，解禁不等于减持，但短期供给压力仍需关注，投资者宜结合上市公司基本面与产业趋势审慎判断。</p>
+    <div class="meta"><span>来源：央视财经</span><a href="http://m.app.cctv.com/vsetv/detail/VSET100258670037/54d4c2d9fbab4f05af61554c01d16b7e/index.shtml" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
   </div>
 
   <div class="card yellow">
-    <span class="rank">3</span><span class="title">【社会热点】7月1日起全国统一民生新规：社会救助升格法律、跨地可申请</span>
-    <div class="summary">7月1日起全国统一执行一批民生新规，其中最具分量的是将施行31年的社会救助"暂行办法"升格为正式法律，低保边缘户、突发重病的普通家庭被纳入兜底范围，申请救助不再受户籍地限制，指尖即可提交材料。新规还简化了身后事等手续，标志着社会救助体系从"保最低"迈向"兜急难"的实质性跨越，民生保障网进一步织密扎牢。</div>
+    <div class="card-head">
+      <span class="rank">3</span>
+      <span class="tag">社会</span>
+      <h2>社会救助法 7 月 1 日起正式施行，兜底保障扩围</h2>
+    </div>
+    <p class="summary">7 月 1 日起，施行 31 年的社会救助"暂行办法"正式升格为法律。新规最大亮点在于打破户籍限制，困难群众可异地线上提交救助申请；救助对象从此前仅限低保特困，扩展至收入偏低、遭遇急难的一般家庭。这一转变意味着更多普通家庭在遇到重病、突发困难时将获得制度性兜底，是社会治理精细化的重要一步。</p>
     <div class="meta"><span>来源：腾讯新闻</span><a href="https://news.qq.com/rain/a/20260701A07ZKW00" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:86%"></div></div></div>
   </div>
 
   <div class="card purple">
-    <span class="rank">4</span><span class="title">【社会热点】人社部启动2026高校毕业生等青年就业服务攻坚行动(7—12月)</span>
-    <div class="summary">人力资源社会保障部印发通知，部署启动2026年高校毕业生等青年就业服务攻坚行动。行动自7月持续至12月，以"服务不断线 攻坚促就业"为主题，面向2026届离校未就业高校毕业生和登记失业青年，集中提供实名登记、职业指导、能力提升、招聘对接、困难帮扶与权益维护等全方位就业服务，及早公布渠道、发布致毕业生的公开信。</div>
-    <div class="meta"><span>来源：中国网</span><a href="https://news.china.com.cn/2026-07/02/content_118579181.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:87%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">4</span>
+      <span class="tag">社会</span>
+      <h2>养老金调整引关注：三项社保基金结余达 10.8 万亿</h2>
+    </div>
+    <p class="summary">截至 2026 年 3 月底，全国三项社会保险基金累计结余已达 10.8 万亿元，相当于约 1.5 亿退休人员人均可分到的基金结余超 7 万元，养老金调整的"家底"厚实。尽管 2026 年调整退休人员基本养老金的通知截至 7 月 9 日尚未在官方渠道正式发布，但充裕的基金储备为平稳提高待遇水平提供了坚实支撑，相关安排备受退休群体关注。</p>
+    <div class="meta"><span>来源：腾讯新闻</span><a href="https://news.qq.com/rain/a/20260709A04S4D00" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div></div>
   </div>
 
   <div class="card cyan">
-    <span class="rank">5</span><span class="title">【航天科技】长征十号乙首飞成功并实现一子级海上垂直回收</span>
-    <div class="summary">2026年7月10日12时15分，长征十号乙运载火箭在海南商业航天发射场发射升空，将卫星顺利送入预定轨道。火箭一二级分离约6分钟后，一子级通过"领航者"号回收船以网系捕获方式成功实现海上垂直回收，首次发射回收任务取得圆满成功，标志着我国运载火箭可重复使用技术迈出关键一步，商业航天发射能力再上台阶。</div>
-    <div class="meta"><span>来源：央视新闻</span><a href="https://news.cctv.com/2026/07/10/ARTIpeRKVqmmN2aA59kTPrUL260710.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:93%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">5</span>
+      <span class="tag">体育</span>
+      <h2>2026 美加墨世界杯八强球队出炉</h2>
+    </div>
+    <p class="summary">2026 年美加墨世界杯作为史上首次三国联合举办、扩军至 48 队后的首届大赛，淘汰赛阶段精彩纷呈。阿根廷 3-2 逆转埃及晋级八强，埃及则点球大战淘汰澳大利亚挺进 16 强，哥伦比亚 1-0 取胜过关。随着八强席位全部产生，赛事进入白热化阶段，全球球迷关注度持续攀升，东道主三国亦借赛事展现举办能力与城市活力。</p>
+    <div class="meta"><span>来源：网易体育</span><a href="https://sports.163.com/worldcup2026" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div></div>
   </div>
 
   <div class="card blue">
-    <span class="rank">6</span><span class="title">【科学探索】天问二号与小行星2016HO3成功交会，启动科学探测</span>
-    <div class="summary">据国家航天局消息，天问二号探测器历经约400天、行程约10亿千米的"追星"之旅，于近日与小行星2016HO3成功交会，到达距离小行星约20千米处并启动科学探测。该任务是我国首次近地小行星采样返回兼彗星探测的复杂任务，将为研究太阳系起源与演化、小行星物质成分提供宝贵的一手科学数据，彰显深空探测技术实力。</div>
-    <div class="meta"><span>来源：CSDN</span><a href="https://blog.csdn.net/BluerCat/article/details/162623359" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">6</span>
+      <span class="tag">政策</span>
+      <h2>楼市"王炸级"组合拳：六大部委同步发声</h2>
+    </div>
+    <p class="summary">2026 年 7 月，楼市迎来里程碑式顶层政策组合拳。住建部、央行、财政部、国家金融监管总局、税务总局、自然资源部六大部委同步发声，统一发布覆盖需求端、金融端、税费端、土地端、房企纾困与保障房长效机制的一揽子调控新政，配套细则于 7 月全国同步落地。业内普遍将其定义为本轮四年深度调整周期的"王炸级"系统性托底。</p>
+    <div class="meta"><span>来源：新浪财经</span><a href="https://finance.sina.com.cn/roll/2026-07-07/doc-inifyvau8359241.shtml" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:87%"></div></div></div>
   </div>
 
   <div class="card green">
-    <span class="rank">7</span><span class="title">【教育】国务院印发《教育发展"十五五"规划》，2030年建成高质量教育体系</span>
-    <div class="summary">国务院日前印发《教育发展"十五五"规划》，对"十五五"时期加快建设教育强国作出系统部署。规划提出到2030年教育强国建设取得显著成效，高质量教育体系基本建成，党对教育全面领导的制度体系更完善，德智体美劳全面培养体系更健全，教育对科技和人才的支撑更有力，学习型社会基本形成，我国教育的国际影响力、竞争力和话语权显著提升。</div>
-    <div class="meta"><span>来源：新浪科技</span><a href="https://finance.sina.com.cn/tech/discovery/2026-07-06/doc-inifvkkk8601991.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:83%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">7</span>
+      <span class="tag">基建</span>
+      <h2>"两重"建设 8000 亿超长期特别国债清单下达</h2>
+    </div>
+    <p class="summary">国家发展改革委披露，2026 年"两重"（重大战略实施和重点领域安全能力建设）建设项目清单已全部下达，全年安排 8000 亿元超长期特别国债资金，支持 1417 个重大项目建设。受访专家表示，这笔资金将为基建投资筑牢关键保障，托举全年经济平稳运行；下半年各地需统筹用好政府资金与新型政策性金融工具，并出台改革举措扶持民间投资、释放其活力。</p>
+    <div class="meta"><span>来源：新浪财经（四大证券报）</span><a href="https://finance.sina.com.cn/stock/y/2026-07-09/doc-inihczpn4589279.shtml" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:83%"></div></div></div>
   </div>
 
   <div class="card yellow">
-    <span class="rank">8</span><span class="title">【其他】六部委协同出台楼市系统性政策组合拳，7月全国同步落地</span>
-    <div class="summary">7月，楼市迎来具有里程碑意义的顶层政策组合拳：住建部、央行、财政部、国家金融监管总局、税务总局、自然资源部六大部委同步发声，统一发布覆盖需求端、金融端、税费端、土地端、房企纾困与保障房长效机制的一揽子调控新政，配套细则于7月全国同步落地，被业内视为本轮四年深度调整周期的"王炸级"系统性方案。</div>
-    <div class="meta"><span>来源：新浪财经</span><a href="https://finance.sina.com.cn/roll/2026-07-07/doc-inifyvau8359241.shtml" target="_blank">查看原文 ↗</a></div>
-    <div class="importance"><div class="label">重要性</div><div class="bar-bg"><div class="bar-fill" style="width:89%"></div></div></div>
+    <div class="card-head">
+      <span class="rank">8</span>
+      <span class="tag">科技</span>
+      <h2>2026 全球科技展望：生命、家园、深空与智能</h2>
+    </div>
+    <p class="summary">新华网年度特稿展望 2026 年全球科技图景：从实验室到临床的医学突破、应对气候危机的行动、迈向深空的太空任务，以及 AI 驱动的科研深化。文章援引《自然》指出，整合多个大语言模型执行复杂多步骤流程的 AI"智能体"有望更广泛落地。这一系列科学实验与前沿探索，勾勒出人类在疾病、气候与科学前沿可能迎来的关键性进展。</p>
+    <div class="meta"><span>来源：新华网</span><a href="https://www.xinhuanet.com/world/20260108/a6291ff2eca94acc8d10236a5ffb396f/c.html" target="_blank">查看原文 ↗</a></div>
+    <div class="importance"><span class="label">重要性</span><div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div></div>
   </div>
 
-  <div class="footer">每日 AI + 综合资讯简报 · 由 WorkBuddy 自动生成 · 2026-07-12</div>
-
+  <footer>本简报由 AI 资讯聚合系统自动生成 · 数据来源公开网络 · 仅供参考</footer>
 </div>
 </body>
 </html>
