@@ -3,391 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日资讯简报 · 2026年07月15日</title>
+<title>每日资讯简报 · 2026年07月17日</title>
 <style>
-  :root{
-    --bg-1:#1a202c;
-    --bg-2:#2d3748;
-    --card-bg:rgba(255,255,255,0.04);
-    --card-border:rgba(255,255,255,0.08);
-    --text:#e2e8f0;
-    --text-dim:#a0aec0;
-    --blue-1:#4299e1; --blue-2:#3182ce;
-    --green-1:#48bb78; --green-2:#38a169;
-    --yellow-1:#ecc94b; --yellow-2:#d69e2e;
-    --purple-1:#9f7aea; --purple-2:#805ad5;
-    --teal-1:#4fd1c5; --teal-2:#319795;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0f1419;
+    --bg-soft: #1a212b;
+    --card: #1c2530;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --line: #2d3748;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif;
-    background:linear-gradient(160deg,#0f141e 0%,var(--bg-1) 45%,var(--bg-2) 100%);
-    background-attachment:fixed;
-    color:var(--text);
-    line-height:1.7;
-    padding:24px 16px 60px;
-    min-height:100vh;
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(160deg, #0b0f14 0%, #131a24 50%, #0f1620 100%);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 24px 16px 60px;
+    min-height: 100vh;
   }
-  .wrap{max-width:860px;margin:0 auto;}
-  header.page-head{
-    text-align:center;
-    padding:28px 16px 10px;
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  /* 头部 */
+  header {
+    text-align: center;
+    padding: 28px 16px 22px;
+    margin-bottom: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(66,153,225,.16), rgba(159,122,234,.16));
+    border: 1px solid var(--line);
   }
-  header.page-head h1{
-    font-size:1.9rem;
-    font-weight:800;
-    background:linear-gradient(90deg,var(--blue-1),var(--teal-1),var(--purple-1));
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
-    letter-spacing:1px;
-  }
-  header.page-head .date{
-    margin-top:8px;color:var(--text-dim);font-size:.95rem;
-  }
+  header h1 { font-size: 26px; letter-spacing: 1px; }
+  header .date { color: var(--text-dim); margin-top: 8px; font-size: 14px; }
+  header .tip { margin-top: 12px; font-size: 12px; color: #64748b; }
+
   /* 分区标题 */
-  .section{margin-top:42px;}
-  .section-title{
-    display:flex;align-items:center;gap:10px;
-    font-size:1.45rem;font-weight:800;
-    padding:14px 18px;
-    border-radius:14px;
-    background:linear-gradient(90deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02));
-    border-left:5px solid var(--blue-1);
-    box-shadow:0 6px 22px rgba(0,0,0,0.25);
+  .section { margin: 42px 0 22px; }
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 22px; font-weight: 700;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, rgba(66,153,225,.18), rgba(72,187,120,.10));
+    border-left: 5px solid #4299e1;
+    box-shadow: 0 4px 18px rgba(0,0,0,.25);
   }
-  .section.ai .section-title{border-left-color:var(--blue-1);}
-  .section.robot .section-title{border-left-color:var(--purple-1);}
-  .section.general .section-title{border-left-color:var(--teal-1);}
-  .section-title .count{margin-left:auto;font-size:.85rem;font-weight:600;color:var(--text-dim);}
+  .section.sec-robot .section-title { background: linear-gradient(90deg, rgba(159,122,234,.18), rgba(79,209,197,.10)); border-left-color: #9f7aea; }
+  .section.sec-world .section-title { background: linear-gradient(90deg, rgba(236,201,75,.16), rgba(72,187,120,.10)); border-left-color: #ecc94b; }
 
   /* 新闻卡片 */
-  .card{
-    position:relative;
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    padding:20px 20px 18px;
-    margin-top:16px;
-    overflow:hidden;
-    backdrop-filter:blur(6px);
-    transition:transform .18s ease,box-shadow .18s ease;
+  .news {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent1, #4299e1);
+    border-radius: 14px;
+    padding: 18px 20px 18px 60px;
+    margin-bottom: 16px;
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.35);}
-  .card::before{
-    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
-    background:var(--accent-grad);
-  }
-  .card.color-blue{--accent-grad:linear-gradient(180deg,var(--blue-1),var(--blue-2));--accent:var(--blue-1);}
-  .card.color-green{--accent-grad:linear-gradient(180deg,var(--green-1),var(--green-2));--accent:var(--green-1);}
-  .card.color-yellow{--accent-grad:linear-gradient(180deg,var(--yellow-1),var(--yellow-2));--accent:var(--yellow-1);}
-  .card.color-purple{--accent-grad:linear-gradient(180deg,var(--purple-1),var(--purple-2));--accent:var(--purple-1);}
-  .card.color-teal{--accent-grad:linear-gradient(180deg,var(--teal-1),var(--teal-2));--accent:var(--teal-1);}
+  .news:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
 
-  .card-head{display:flex;align-items:center;gap:12px;}
-  .badge{
-    flex:0 0 auto;
-    width:34px;height:34px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:1.05rem;color:#0f141e;
-    background:var(--accent-grad);
-    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+  .badge {
+    position: absolute; left: 14px; top: 16px;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: #fff;
+    background: linear-gradient(135deg, var(--accent1, #4299e1), var(--accent2, #3182ce));
+    box-shadow: 0 2px 10px var(--glow, rgba(66,153,225,.5));
   }
-  .card h3{font-size:1.12rem;font-weight:700;line-height:1.45;color:#fff;}
-  .summary{margin:12px 0 0;color:var(--text);font-size:.95rem;}
-  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;}
-  .source-tag{
-    font-size:.78rem;padding:3px 10px;border-radius:999px;
-    color:var(--accent);
-    background:rgba(255,255,255,0.05);
-    border:1px solid var(--accent);
-  }
-  .cat-tag{
-    font-size:.72rem;padding:3px 9px;border-radius:999px;
-    color:var(--text-dim);background:rgba(255,255,255,0.04);
-    border:1px solid var(--card-border);
-  }
-  .read-link{
-    margin-left:auto;font-size:.85rem;font-weight:600;
-    color:var(--accent);text-decoration:none;
-    border:1px solid var(--accent);padding:5px 12px;border-radius:8px;
-    transition:background .15s ease,color .15s ease;
-  }
-  .read-link:hover{background:var(--accent);color:#0f141e;}
+  .news h3 { font-size: 17px; margin-bottom: 8px; color: #f1f5f9; line-height: 1.45; }
+  .summary { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
 
-  /* 重要性进度条 */
-  .importance{margin-top:14px;}
-  .importance .lab{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-dim);margin-bottom:5px;}
-  .bar{height:8px;border-radius:999px;background:rgba(255,255,255,0.08);overflow:hidden;}
-  .bar > span{display:block;height:100%;border-radius:999px;background:var(--accent-grad);}
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .source {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px;
+    color: #e2e8f0; background: rgba(255,255,255,.06);
+    border: 1px solid var(--line);
+  }
+  .read {
+    font-size: 13px; color: #fff; text-decoration: none;
+    padding: 4px 12px; border-radius: 20px;
+    background: linear-gradient(135deg, var(--accent1, #4299e1), var(--accent2, #3182ce));
+  }
+  .read:hover { filter: brightness(1.12); }
 
-  footer{margin-top:48px;text-align:center;color:var(--text-dim);font-size:.8rem;}
-  @media (max-width:600px){
-    body{padding:14px 10px 40px;}
-    header.page-head h1{font-size:1.5rem;}
-    .section-title{font-size:1.2rem;padding:12px 14px;}
-    .card{padding:16px 14px;}
-    .card h3{font-size:1.02rem;}
-    .read-link{margin-left:0;width:100%;text-align:center;margin-top:10px;}
-    .meta{gap:6px;}
+  .importance { margin-top: 4px; }
+  .importance .lab { font-size: 11px; color: #64748b; margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .bar { height: 7px; border-radius: 6px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .bar > span {
+    display: block; height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent1, #4299e1), var(--accent2, #3182ce));
+  }
+
+  /* 颜色类 */
+  .color-blue   { --accent1:#4299e1; --accent2:#3182ce; --glow:rgba(66,153,225,.45); }
+  .color-green  { --accent1:#48bb78; --accent2:#38a169; --glow:rgba(72,187,120,.45); }
+  .color-yellow { --accent1:#ecc94b; --accent2:#d69e2e; --glow:rgba(236,201,75,.45); }
+  .color-purple { --accent1:#9f7aea; --accent2:#805ad5; --glow:rgba(159,122,234,.45); }
+  .color-teal   { --accent1:#4fd1c5; --accent2:#319795; --glow:rgba(79,209,197,.45); }
+
+  footer { text-align: center; color: #475569; font-size: 12px; margin-top: 40px; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 10px 40px; }
+    header h1 { font-size: 22px; }
+    .section-title { font-size: 18px; }
+    .news { padding: 16px 14px 16px 52px; }
+    .badge { width: 30px; height: 30px; font-size: 14px; left: 11px; top: 14px; }
+    .news h3 { font-size: 16px; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="page-head">
+  <header>
     <h1>📡 每日资讯简报</h1>
-    <div class="date">2026年07月15日 · AI与机器人前沿 + 综合要闻</div>
+    <div class="date">2026年07月17日 · 星期四</div>
+    <div class="tip">AI行业 · 机器人与具身智能 · 综合资讯（共14条）</div>
   </header>
 
   <!-- ============ 第一部分：AI行业资讯 ============ -->
-  <section class="section ai">
-    <div class="section-title">🔥 AI行业资讯 <span class="count">TOP 3</span></div>
+  <div class="section sec-ai">
+    <div class="section-title">🔥 AI行业资讯</div>
 
-    <article class="card color-blue">
-      <div class="card-head">
-        <div class="badge">1</div>
-        <h3>大模型密集上新：GPT-5.6内测、Claude Sonnet 5、Gemini Omni同台竞技</h3>
-      </div>
-      <p class="summary">2026年7月，全球大模型赛道迎来密集更新。OpenAI低调开启GPT-5.6系列有限预览，旗舰模型"Sol"在推理与多模态能力上显著提升；Anthropic发布被称"最强agent模型"的Claude Sonnet 5；Google则上线Gemini Omni视觉模型。与此同时，腾讯Hy3大模型开源、美团LongCat-2.0发布，国产阵营同步发力。业内认为，竞争已从单纯参数比拼转向agent化与生态博弈。</p>
+    <div class="news color-blue">
+      <div class="badge">1</div>
+      <h3>2026世界人工智能大会（WAIC）上海开幕，习近平将出席开幕式</h3>
+      <p class="summary">7月17日至20日，2026世界人工智能大会暨人工智能全球治理高级别会议在上海世博、张江、西岸"三地四馆"启幕。大会由十二大国家部委与上海市政府联合主办，以"智能伙伴 共创未来"为主题，吸引1400多名嘉宾、多位诺奖与图灵奖得主参会，预计300+黑科技全球首发。习近平主席将出席开幕式并发表主旨讲话，系统阐述中方AI发展与治理立场。</p>
       <div class="meta">
-        <span class="source-tag">来源：mi-to-ai / CSDN</span>
-        <a class="read-link" href="https://www.mi-to-ai.com/blog/ai-models-july-2026-roundup" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：人民网 / 新浪</span>
+        <a class="read" href="https://news.sina.com.cn/c/2026-07-15/doc-inihxaez7921673.shtml" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
-        <div class="lab"><span>重要性</span><span>95%</span></div>
-        <div class="bar"><span style="width:95%"></span></div>
+        <div class="lab"><span>重要性</span><span>98%</span></div>
+        <div class="bar"><span style="width:98%"></span></div>
       </div>
-    </article>
+    </div>
 
-    <article class="card color-green">
-      <div class="card-head">
-        <div class="badge">2</div>
-        <h3>2026世界人工智能大会（WAIC）7月底上海启幕，八年积淀见证AI产业化</h3>
-      </div>
-      <p class="summary">自2018年首届以来，世界人工智能大会（WAIC）已走过八个年头。2026年大会将于7月底在上海举办，主题从"人工智能赋能新时代"一路演进，见证AI从技术试点、场景试水，到产业深耕、生态成熟的发展轨迹。本届大会预计汇聚全球顶尖企业、科研机构与开发者，围绕大模型、智能体、AI+制造等议题展开，成为观察中国乃至全球AI产业落地的重要窗口。</p>
+    <div class="news color-green">
+      <div class="badge">2</div>
+      <h3>阿里达摩院×西湖大学发布全球首个干细胞AI大模型"归元"</h3>
+      <p class="summary">7月14日，西湖大学联合阿里巴巴达摩院正式发布全球首个面向干细胞重编程的可解释AI大模型"归元"（ReproPerturb）。该模型突破传统试错式细胞重编程方法，能像输入公式一样精准计算"小分子+生长因子"组合，将皮肤细胞一键还原为胚胎早期关键干细胞，实现细胞"逆生长"的可解释、可量化调控，为再生医学与药物研发提供数字钥匙。</p>
       <div class="meta">
-        <span class="source-tag">来源：中国新闻网</span>
-        <a class="read-link" href="https://www.chinanews.com.cn/cj/2026/07-13/10658328.shtml" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：搜狐</span>
+        <a class="read" href="https://www.sohu.com/a/1050158376_122066679" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
-        <div class="lab"><span>重要性</span><span>88%</span></div>
-        <div class="bar"><span style="width:88%"></span></div>
+        <div class="lab"><span>重要性</span><span>92%</span></div>
+        <div class="bar"><span style="width:92%"></span></div>
       </div>
-    </article>
+    </div>
 
-    <article class="card color-yellow">
-      <div class="card-head">
-        <div class="badge">3</div>
-        <h3>国内AI智能体合规新政落地，国产算力生态加速升级</h3>
-      </div>
-      <p class="summary">2026年7月上旬，国内AI领域迎来监管与产业双线重磅进展。一方面，AI智能体合规新政开始落地，对自主决策型智能体的责任边界、数据安全提出明确要求；另一方面，国产算力生态持续升级，从芯片、框架到应用层协同优化。业内分析指出，监管框架的完善与算力自主化将共同构成下一阶段AI规模落地的关键底座，推动行业从"野蛮生长"走向"规范发展"。</p>
+    <div class="news color-yellow">
+      <div class="badge">3</div>
+      <h3>百度文心一言App上线"深度阅读"与"图表生成"能力</h3>
+      <p class="summary">7月1日，百度文心一言App迎来功能更新，面向C端办公与学习场景新增"深度阅读"与"图表生成"两大能力。用户上传百页以上行业报告或PDF文档，AI可在数秒内提取核心论点并生成结构化脑图；同时支持通过自然语言指令直接生成可视化表格与柱状图。此次更新被视为百度利用大模型巩固C端AI搜索与办公助手入口的关键举措。</p>
       <div class="meta">
-        <span class="source-tag">来源：ai6s.net</span>
-        <a class="read-link" href="https://ai6s.net/6a4f0a7a662f9a54cb8c6366.html" target="_blank" rel="noopener">阅读原文</a>
-      </div>
-      <div class="importance">
-        <div class="lab"><span>重要性</span><span>82%</span></div>
-        <div class="bar"><span style="width:82%"></span></div>
-      </div>
-    </article>
-  </section>
-
-  <!-- ============ 第二部分：机器人与具身智能 ============ -->
-  <section class="section robot">
-    <div class="section-title">🤖 机器人与具身智能 <span class="count">TOP 3</span></div>
-
-    <article class="card color-purple">
-      <div class="card-head">
-        <div class="badge">1</div>
-        <h3>宇树科技IPO注册生效，人形机器人迈入商业化规模落地新周期</h3>
-      </div>
-      <p class="summary">7月2日，证监会同意宇树科技股份有限公司首次公开发行股票并在科创板上市的注册申请，IPO注册正式生效。作为人形机器人头部企业，宇树的资本化进程被视为行业里程碑。机构指出，2026年已成为人形机器人"量产元年"，特斯拉、优必选、宇树、智元等头部企业合计规划产能突破10万台，实际下线交付预计在4到6万台之间，商业化进程可能比预期提前2到3年。</p>
-      <div class="meta">
-        <span class="source-tag">来源：腾讯新闻 / 中国经济网</span>
-        <a class="read-link" href="https://view.inews.qq.com/a/20260703A03S7A00" target="_blank" rel="noopener">阅读原文</a>
-      </div>
-      <div class="importance">
-        <div class="lab"><span>重要性</span><span>94%</span></div>
-        <div class="bar"><span style="width:94%"></span></div>
-      </div>
-    </article>
-
-    <article class="card color-teal">
-      <div class="card-head">
-        <div class="badge">2</div>
-        <h3>首届上海国际具身智能产业博览会（CIEI 2026）开幕</h3>
-      </div>
-      <p class="summary">2026年7月2日，首届上海国际具身智能产业博览会（CIEI 2026）在国家会展中心（上海）开幕。本届博览会聚焦具身智能全产业链的前沿融合，汇聚前沿科技企业、龙头公司和国内外场景需求方，集中展示从"大脑"感知决策到"小脑"运动控制、再到"肢体"执行的全栈技术。业内认为，这标志着具身智能正从单点技术突破走向系统化、产业化协同。</p>
-      <div class="meta">
-        <span class="source-tag">来源：澎湃新闻</span>
-        <a class="read-link" href="https://www.thepaper.cn/newsDetail_forward_33502614" target="_blank" rel="noopener">阅读原文</a>
-      </div>
-      <div class="importance">
-        <div class="lab"><span>重要性</span><span>87%</span></div>
-        <div class="bar"><span style="width:87%"></span></div>
-      </div>
-    </article>
-
-    <article class="card color-blue">
-      <div class="card-head">
-        <div class="badge">3</div>
-        <h3>特斯拉Optimus V3投产在即，智元开启万台级交付</h3>
-      </div>
-      <p class="summary">7月初，人形机器人概念股表现强势，板块催化不断。据披露，特斯拉Optimus Gen-3产线改造完成、V3版本投产在即；国产企业智元机器人启动万台级交付，优必选、宇树等订单从百台级跃升至千台级。英伟达机器人团队亦围绕具身智能、仿真、部署等方向开放招聘，黄仁勋强调"物理AI"是下一波增长浪潮，机器人、汽车与智能工厂将成为现实世界的智能体。</p>
-      <div class="meta">
-        <span class="source-tag">来源：南方财经 / 搜狐</span>
-        <a class="read-link" href="https://www.sfccn.com/2026/7-1/3MMDE1MjBfMjE3MTk3Mw.html" target="_blank" rel="noopener">阅读原文</a>
-      </div>
-      <div class="importance">
-        <div class="lab"><span>重要性</span><span>90%</span></div>
-        <div class="bar"><span style="width:90%"></span></div>
-      </div>
-    </article>
-  </section>
-
-  <!-- ============ 第三部分：综合资讯 ============ -->
-  <section class="section general">
-    <div class="section-title">🌍 综合资讯 <span class="count">TOP 8</span></div>
-
-    <article class="card color-green">
-      <div class="card-head">
-        <div class="badge">1</div>
-        <h3>国务院批复《扩大消费"十五五"规划》，支持消费信贷投放</h3>
-      </div>
-      <p class="summary">中国政府网7月13日消息，国务院印发关于《扩大消费"十五五"规划》的批复，原则同意该规划。规划明确，要促进房地产市场持续健康发展，持续巩固资本市场稳中向好发展态势，多渠道增加城乡居民财产性收入；支持金融机构扩大消费领域信贷投放，加大对消费领域经营主体的信贷支持力度，优化消费金融供给，进一步激发内需潜力。</p>
-      <div class="meta">
-        <span class="source-tag">来源：中国政府网</span>
-        <span class="cat-tag">财经</span>
-        <a class="read-link" href="https://www.sohu.com/a/1049928483_122014422" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：新浪财经</span>
+        <a class="read" href="https://finance.sina.com.cn/stock/t/2026-07-05/doc-inifuhwt9248889.shtml" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
         <div class="lab"><span>重要性</span><span>85%</span></div>
         <div class="bar"><span style="width:85%"></span></div>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card color-yellow">
-      <div class="card-head">
-        <div class="badge">2</div>
-        <h3>券商年内领190张罚单，经纪业务成违规重点</h3>
-      </div>
-      <p class="summary">据中国经济网7月10日报道，今年以来券商累计收到监管罚单约190张，其中经纪业务成为违规重灾区，涉及适当性管理不到位、从业人员违规炒股、营销宣传不规范等问题。监管层持续压实中介机构"看门人"责任，推动投资逻辑从概念炒作回归价值本源。分析认为，严监管有助于净化市场环境，引导资本市场深层改革、重塑价值投资逻辑。</p>
+  <!-- ============ 第二部分：机器人与具身智能 ============ -->
+  <div class="section sec-robot">
+    <div class="section-title">🤖 机器人与具身智能</div>
+
+    <div class="news color-purple">
+      <div class="badge">1</div>
+      <h3>工信部：2026年中国人形机器人整机产量有望突破10万台</h3>
+      <p class="summary">7月7日，工信部科技司副司长甘小斌在2026世界人工智能大会新闻发布会上明确表示，2026年中国人形机器人全年整机产量有望突破10万台，对应同比增长率约594%。这一数据标志着人形机器人正式从"概念验证"迈入规模化量产阶段，国内智元、宇树等本体厂商出货量领跑全球，产业链上下游协同效应加速显现。</p>
       <div class="meta">
-        <span class="source-tag">来源：中国经济网</span>
-        <span class="cat-tag">财经</span>
-        <a class="read-link" href="https://finance.ce.cn/stock/gsgdbd/index.shtml" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：新浪财经</span>
+        <a class="read" href="https://t.cj.sina.com.cn/articles/view/7879848924/1d5acf3dc01901h0gi" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
-        <div class="lab"><span>重要性</span><span>72%</span></div>
-        <div class="bar"><span style="width:72%"></span></div>
+        <div class="lab"><span>重要性</span><span>95%</span></div>
+        <div class="bar"><span style="width:95%"></span></div>
       </div>
-    </article>
+    </div>
 
-    <article class="card color-purple">
-      <div class="card-head">
-        <div class="badge">3</div>
-        <h3>7月1日起全国统一民生新规实施，《社会救助法》正式落地</h3>
-      </div>
-      <p class="summary">7月1日起，一批全国统一实施的民生新规正式落地。其中最受关注的是施行31年的社会救助"暂行办法"正式上升为法律，低保边缘户、突发重病致困的普通家庭被纳入兜底保障，申请救助可异地"指尖办理"，看病上学等急难诉求均可线上提交。新规大幅拓宽救助覆盖面，标志着我国社会救助体系迈入法治化、规范化新阶段。</p>
+    <div class="news color-teal">
+      <div class="badge">2</div>
+      <h3>WAIC人形机器人新品爆发：宇树GD01、智元、优必选全球首发</h3>
+      <p class="summary">2026世界人工智能大会期间，宇树、智元、优必选等头部企业携全球首发产品亮相。宇树GD01、智元启元系列、优必选Walker C1等人形机器人集中展示最新运动控制与交互能力，整机产量预计突破10万台。国内厂商在机器人"大脑"、原创模型与开源生态等核心能力上加速追赶，中国具身智能企业正逐步获得国际关注。</p>
       <div class="meta">
-        <span class="source-tag">来源：腾讯新闻</span>
-        <span class="cat-tag">社会热点</span>
-        <a class="read-link" href="https://news.qq.com/rain/a/20260701A07ZKW00" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：新浪</span>
+        <a class="read" href="https://k.sina.cn/article_7879848900_1d5acf3c4068037crs.html" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
-        <div class="lab"><span>重要性</span><span>80%</span></div>
-        <div class="bar"><span style="width:80%"></span></div>
+        <div class="lab"><span>重要性</span><span>90%</span></div>
+        <div class="bar"><span style="width:90%"></span></div>
       </div>
-    </article>
+    </div>
 
-    <article class="card color-teal">
-      <div class="card-head">
-        <div class="badge">4</div>
-        <h3>中央气象台发布暴雨黄色预警，多地迎大到暴雨</h3>
-      </div>
-      <p class="summary">中央气象台6月30日18时发布暴雨黄色预警，预计6月30日晚至7月1日晚，云南、贵州、广西、湖南、江西、安徽、浙江及华北、山东、辽宁等地有大到暴雨，部分地区有大暴雨。气象部门提醒相关地区防范山洪、地质灾害及城市内涝，公众需关注预警信息、减少山区出游，做好防汛应急准备。</p>
+    <div class="news color-blue">
+      <div class="badge">3</div>
+      <h3>具身智能"大脑"实力榜：类脑架构成下一代方向</h3>
+      <p class="summary">2026具身智能"大脑"实力榜显示，行业认知迎来关键升级——"世界模型 vs VLA"的路线之争在6月智源大会上终结，类脑架构接棒成为下一代机器人大脑的演进方向。这一融合前沿AI大模型与复杂物理交互能力的领域正以前所未有速度发展，具身智能已从虚拟空间迈向物理世界，成为各国科技竞争新焦点。</p>
       <div class="meta">
-        <span class="source-tag">来源：腾讯新闻</span>
-        <span class="cat-tag">社会热点</span>
-        <a class="read-link" href="https://news.qq.com/rain/a/20260701A01QXT00" target="_blank" rel="noopener">阅读原文</a>
-      </div>
-      <div class="importance">
-        <div class="lab"><span>重要性</span><span>70%</span></div>
-        <div class="bar"><span style="width:70%"></span></div>
-      </div>
-    </article>
-
-    <article class="card color-blue">
-      <div class="card-head">
-        <div class="badge">5</div>
-        <h3>吉林筹措7000万元专项资金，助推银发经济与适老化改造</h3>
-      </div>
-      <p class="summary">吉林省民政厅近期答复政协委员提案时表示，已筹措银发经济高质量发展专项资金7000万元，支持适老化家居产品、老年日用辅助产品、养老照护产品等产业项目，以及银发经济产业集聚区和民办养老服务机构建设。通过直接补助、贷款贴息等方式，推动相关产业与设施提质增效，并拨付补助资金2645万元，持续优化养老服务供给。</p>
-      <div class="meta">
-        <span class="source-tag">来源：吉林省民政厅</span>
-        <span class="cat-tag">养老/银发经济</span>
-        <a class="read-link" href="https://mzt.jl.gov.cn/xxgk_2643/jytadf/202607/t20260710_9662966.html" target="_blank" rel="noopener">阅读原文</a>
-      </div>
-      <div class="importance">
-        <div class="lab"><span>重要性</span><span>68%</span></div>
-        <div class="bar"><span style="width:68%"></span></div>
-      </div>
-    </article>
-
-    <article class="card color-green">
-      <div class="card-head">
-        <div class="badge">6</div>
-        <h3>美军对伊朗发动新一轮打击，霍尔木兹海峡局势紧张</h3>
-      </div>
-      <p class="summary">据多家媒体报道，美军中央司令部当地时间7月对伊朗发动新一轮打击，意在削弱其攻击霍尔木兹海峡通行船只的能力。伊朗外交部发表声明强烈谴责，称袭击严重违反《联合国宪章》、威胁国际和平与安全，并表示将坚定抵御军事侵略。事件引发国际社会对中东局势升级的担忧，国际油价与航运市场出现波动。</p>
-      <div class="meta">
-        <span class="source-tag">来源：新浪财经 / 腾讯新闻</span>
-        <span class="cat-tag">国际时事</span>
-        <a class="read-link" href="https://finance.sina.com.cn/stock/y/2026-07-13/doc-inihrhff7415117.shtml" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：IT之家</span>
+        <a class="read" href="https://www.ithome.com/0/977/708.htm" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
         <div class="lab"><span>重要性</span><span>88%</span></div>
         <div class="bar"><span style="width:88%"></span></div>
       </div>
-    </article>
+    </div>
+  </div>
 
-    <article class="card color-yellow">
-      <div class="card-head">
-        <div class="badge">7</div>
-        <h3>体育总局、文旅部发布"跟着赛事去旅行"暑期青少年赛事目录</h3>
-      </div>
-      <p class="summary">近日，国家体育总局与文化和旅游部联合发布"跟着赛事去旅行"2026暑期全国青少年赛事活动目录，推出20项覆盖多项目、跨多地的全国性青少年体育赛事，涵盖田径、游泳、三大球、击剑、铁人三项等门类，举办地遍布河南、山东、广东、北京、新疆、江苏、湖北等地，活动时间贯穿7至8月，推动体育、文化、旅游深度融合。</p>
+  <!-- ============ 第三部分：综合资讯 ============ -->
+  <div class="section sec-world">
+    <div class="section-title">🌍 综合资讯</div>
+
+    <div class="news color-green">
+      <div class="badge">1</div>
+      <h3>财经：上半年服务零售额同比增5.3%，下半年促消费加力</h3>
+      <p class="summary">7月15日，国家统计局发布2026年上半年国民经济运行数据。上半年社会消费品零售总额248722亿元，同比增长1.3%；其中服务零售额增长5.3%，商品零售额增长1.1%。6月社零同比增长1.0%。分析认为，居民消费呈现结构性分化，服务消费韧性较强，下半年在《扩大消费"十五五"规划》等政策推动下，促消费力度有望进一步加码。</p>
       <div class="meta">
-        <span class="source-tag">来源：腾讯新闻 / MSN体育</span>
-        <span class="cat-tag">体育</span>
-        <a class="read-link" href="https://www.msn.cn/zh-cn/sports/%E9%80%9A%E7%94%A8/%E4%BD%93%E8%82%B2%E6%80%BB%E5%B1%80-%E6%96%87%E5%8C%96%E5%92%8C%E6%97%85%E6%B8%B8%E9%83%A8%E8%81%94%E5%90%88%E5%8F%91%E5%B8%83-%E8%B7%9F%E7%9D%80%E8%B5%9B%E4%BA%8B%E5%8E%BB%E6%97%85%E8%A1%8C-2026%E6%9A%91%E6%9C%9F%E5%85%A8%E5%9B%BD%E9%9D%92%E5%B0%91%E5%B9%B4%E8%B5%9B%E4%BA%8B%E6%B4%BB%E5%8A%A8%E7%9B%AE%E5%BD%95/ar-AA27Rw1O" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：新浪财经</span>
+        <a class="read" href="https://finance.sina.com.cn/roll/2026-07-16/doc-inihxxkr7936609.shtml" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
-        <div class="lab"><span>重要性</span><span>65%</span></div>
-        <div class="bar"><span style="width:65%"></span></div>
+        <div class="lab"><span>重要性</span><span>82%</span></div>
+        <div class="bar"><span style="width:82%"></span></div>
       </div>
-    </article>
+    </div>
 
-    <article class="card color-purple">
-      <div class="card-head">
-        <div class="badge">8</div>
-        <h3>2026年全国暑期文化和旅游消费季启动，发放超4.5亿元消费券</h3>
-      </div>
-      <p class="summary">7月8日，文化和旅游部在青海海北启动2026年全国暑期文化和旅游消费季。活动从7月初持续至8月底，各地将围绕消夏避暑、滨海度假、夜间经济、研学旅行、非遗美食、博物馆游等热点，举办超3万场文旅消费活动，并发放超4.5亿元消费券等补贴，增加优质文旅产品供给，助力居民游客畅享暑期美好旅途。</p>
+    <div class="news color-yellow">
+      <div class="badge">2</div>
+      <h3>社会热点：全国"入伏"迎40天加长版三伏天，多地高温预警</h3>
+      <p class="summary">7月15日起，全国多地正式"入伏"，迎来长达40天的加长版三伏天，将持续至8月23日。受副热带高压控制，上海、温州等地晴热开场，上海市气象台发布高温橙色预警，预计中心城区最高气温超37℃、局部达38-39℃。气象部门提醒市民注意防暑降温，尽量避免高温时段外出，并关注用火用电安全。</p>
       <div class="meta">
-        <span class="source-tag">来源：新华网</span>
-        <span class="cat-tag">文化娱乐</span>
-        <a class="read-link" href="https://www.news.cn/20260708/b6ca79182f8f4c1bb9ce1e195d4ce344/c.html" target="_blank" rel="noopener">阅读原文</a>
+        <span class="source">来源：腾讯新闻</span>
+        <a class="read" href="https://news.qq.com/rain/a/20260716A02AFG00" target="_blank" rel="noopener">阅读原文</a>
+      </div>
+      <div class="importance">
+        <div class="lab"><span>重要性</span><span>78%</span></div>
+        <div class="bar"><span style="width:78%"></span></div>
+      </div>
+    </div>
+
+    <div class="news color-purple">
+      <div class="badge">3</div>
+      <h3>社会热点：广西钦州发布暴雨红色预警</h3>
+      <p class="summary">7月16日，广西钦州市气象台于11时20分将暴雨橙色预警信号提升为红色。受强降雨云团影响，钦州多地出现特大暴雨，部分低洼路段积水、河流水位上涨。相关部门已启动应急响应，提醒市民远离河道、山体边坡等危险区域，注意防范城市内涝及次生地质灾害，确保生命财产安全。</p>
+      <div class="meta">
+        <span class="source">来源：央广网</span>
+        <a class="read" href="https://news.cnr.cn/kuaixun/" target="_blank" rel="noopener">阅读原文</a>
       </div>
       <div class="importance">
         <div class="lab"><span>重要性</span><span>75%</span></div>
         <div class="bar"><span style="width:75%"></span></div>
       </div>
-    </article>
-  </section>
+    </div>
 
-  <footer>每日资讯简报 · 由 WorkBuddy 自动生成 · 数据来源网络公开资讯，仅供参考</footer>
+    <div class="news color-teal">
+      <div class="badge">4</div>
+      <h3>养老/银发经济：吉林筹措7000万元补助资金支持银发经济</h3>
+      <p class="summary">吉林省近期筹措拨付补助资金7000万元，支持适老化家居产品、老年日用辅助产品、养老照护产品、适老化环境改善产品等产业项目，以及银发经济产业集聚项目和民办养老服务机构建设。通过直接补助、贷款贴息等方式推动相关产业提质增效，进一步优化银发经济产业结构，激发银龄消费与人才活力。</p>
+      <div class="meta">
+        <span class="source">来源：吉林省民政厅</span>
+        <a class="read" href="https://mzt.jl.gov.cn/xxgk_2643/jytadf/202607/t20260710_9662976.html" target="_blank" rel="noopener">阅读原文</a>
+      </div>
+      <div class="importance">
+        <div class="lab"><span>重要性</span><span>72%</span></div>
+        <div class="bar"><span style="width:72%"></span></div>
+      </div>
+    </div>
+
+    <div class="news color-blue">
+      <div class="badge">5</div>
+      <h3>国际时事：美伊霍尔木兹海峡对峙升级，美空袭伊朗目标</h3>
+      <p class="summary">7月15日，美国中央司令部发起两轮针对伊朗境内军事目标的空袭，打击范围覆盖海岸雷达、导弹发射场及无人机生产基地，目标指向威胁霍尔木兹海峡航运安全的设施。事件引发国际能源市场波动与地区局势紧张，多方呼吁保持克制。分析认为，霍尔木兹海峡作为全球能源运输要道，其局势牵动原油价格与全球供应链。</p>
+      <div class="meta">
+        <span class="source">来源：知乎热点 / 新浪国际</span>
+        <a class="read" href="https://zhuanlan.zhihu.com/p/2061023168232534278" target="_blank" rel="noopener">阅读原文</a>
+      </div>
+      <div class="importance">
+        <div class="lab"><span>重要性</span><span>85%</span></div>
+        <div class="bar"><span style="width:85%"></span></div>
+      </div>
+    </div>
+
+    <div class="news color-green">
+      <div class="badge">6</div>
+      <h3>体育：2026美加墨世界杯激战正酣</h3>
+      <p class="summary">2026年美加墨世界杯作为史上首次由三国联合举办、扩军至48队的首届大赛正如火如荼进行。赛场内外话题不断：英格兰主帅图赫尔表示球队"并非保守，只是控不好球"，队长凯恩强调一球领先死守并不保险；阿根廷主帅盛赞球队踢出"足球最本真"的风采。各路豪强为冠军展开激烈角逐，全球球迷热情高涨。</p>
+      <div class="meta">
+        <span class="source">来源：新华网体育</span>
+        <a class="read" href="https://www.xinhuanet.com/sports/news.htm" target="_blank" rel="noopener">阅读原文</a>
+      </div>
+      <div class="importance">
+        <div class="lab"><span>重要性</span><span>80%</span></div>
+        <div class="bar"><span style="width:80%"></span></div>
+      </div>
+    </div>
+
+    <div class="news color-yellow">
+      <div class="badge">7</div>
+      <h3>文化娱乐：2026暑期档5部重磅新片定档</h3>
+      <p class="summary">2026年7月全国院线超10部新片定档上映，其中5部重磅作品覆盖喜剧、历史、动作等多元类型，为暑期观众提供丰富选择。与此同时，2026微博电影之夜等影视盛典相继落幕，杨紫琼、吴磊、沈腾等明星亮相引发热议。业内预计，在观影需求回暖与口碑发酵下，今年暑期档票房有望迎来明显增长。</p>
+      <div class="meta">
+        <span class="source">来源：新浪娱乐</span>
+        <a class="read" href="https://ent.sina.cn/2026-07-04/detail-inifqwee2315632.d.html" target="_blank" rel="noopener">阅读原文</a>
+      </div>
+      <div class="importance">
+        <div class="lab"><span>重要性</span><span>70%</span></div>
+        <div class="bar"><span style="width:70%"></span></div>
+      </div>
+    </div>
+
+    <div class="news color-purple">
+      <div class="badge">8</div>
+      <h3>民生/旅游：全国暑期文旅消费季启动，发放超4.5亿消费券</h3>
+      <p class="summary">7月8日，文化和旅游部在青海启动2026年全国暑期文化和旅游消费季，活动持续至8月底。各地将围绕消夏避暑、滨海度假、夜间经济、研学旅行、非遗美食、博物馆游等热点，增加优质文旅供给，举办超3万场次文旅消费活动，发放超4.5亿元消费券等补贴，更好满足居民夏季出游与文旅消费需求。</p>
+      <div class="meta">
+        <span class="source">来源：中国政府网 / 央视网</span>
+        <a class="read" href="https://www.gov.cn/lianbo/202607/content_7074657.htm" target="_blank" rel="noopener">阅读原文</a>
+      </div>
+      <div class="importance">
+        <div class="lab"><span>重要性</span><span>76%</span></div>
+        <div class="bar"><span style="width:76%"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>本简报由 WorkBuddy 自动聚合生成 · 数据来源公开网络 · 仅供资讯参考</footer>
 
 </div>
 </body>
