@@ -3,362 +3,384 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日资讯简报 · 2026年07月23日</title>
+<title>每日资讯简报 · 07月24日</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --c-blue-1:#4299e1; --c-blue-2:#3182ce;
+    --c-green-1:#48bb78; --c-green-2:#38a169;
+    --c-yellow-1:#ecc94b; --c-yellow-2:#d69e2e;
+    --c-purple-1:#9f7aea; --c-purple-2:#805ad5;
+    --c-teal-1:#4fd1c5; --c-teal-2:#319795;
+  }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(160deg, #0f172a 0%, #1a2238 50%, #141b2e 100%);
     color: #e2e8f0;
-    background: linear-gradient(160deg, #0f172a 0%, #1a2238 45%, #131c30 100%);
-    min-height: 100vh;
-    padding: 24px 16px 60px;
     line-height: 1.7;
+    padding: 24px 16px 60px;
+    min-height: 100vh;
   }
   .wrap { max-width: 860px; margin: 0 auto; }
-
-  header.header {
+  header.page-head {
     text-align: center;
-    padding: 28px 20px 22px;
+    padding: 28px 16px 20px;
     margin-bottom: 28px;
     border-radius: 20px;
     background: linear-gradient(135deg, rgba(66,153,225,0.18), rgba(159,122,234,0.18));
     border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
   }
-  header.header h1 { font-size: 28px; font-weight: 800; letter-spacing: 1px; }
-  header.header .date {
-    margin-top: 8px; font-size: 15px; color: #a0aec0;
-  }
-  header.header .sub { margin-top: 6px; font-size: 13px; color: #718096; }
+  header.page-head h1 { font-size: 28px; font-weight: 800; letter-spacing: 1px; }
+  header.page-head .date { margin-top: 8px; color: #94a3b8; font-size: 15px; }
+  header.page-head .sub { margin-top: 4px; color: #7c8aa5; font-size: 13px; }
 
   .section-title {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 23px; font-weight: 800;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 22px; font-weight: 800;
     margin: 38px 0 18px;
     padding: 14px 18px;
     border-radius: 14px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+    background: rgba(255,255,255,0.04);
     border-left: 5px solid #4299e1;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
   }
-  .section-title .emoji { font-size: 26px; }
-  .section-divider {
-    height: 1px; margin: 34px 0 6px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
-  }
+  .section-title.ai { border-left-color: #4299e1; }
+  .section-title.robot { border-left-color: #48bb78; }
+  .section-title.general { border-left-color: #9f7aea; }
 
   .card {
     position: relative;
     border-radius: 16px;
-    padding: 18px 18px 18px 22px;
+    padding: 20px 20px 18px;
     margin-bottom: 16px;
-    background: rgba(255,255,255,0.045);
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.07);
-    border-left: 5px solid #4299e1;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.25);
-    transition: transform .18s ease, box-shadow .18s ease;
+    overflow: hidden;
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+  .card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: linear-gradient(180deg, var(--cc1), var(--cc2));
+  }
 
-  .card-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .card.color-blue   { --cc1:var(--c-blue-1);   --cc2:var(--c-blue-2); }
+  .card.color-green  { --cc1:var(--c-green-1);  --cc2:var(--c-green-2); }
+  .card.color-yellow { --cc1:var(--c-yellow-1); --cc2:var(--c-yellow-2); }
+  .card.color-purple { --cc1:var(--c-purple-1); --cc2:var(--c-purple-2); }
+  .card.color-teal   { --cc1:var(--c-teal-1);   --cc2:var(--c-teal-2); }
+
+  .card-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .badge {
-    flex: none;
-    min-width: 34px; height: 34px; padding: 0 8px;
+    flex: 0 0 auto;
+    width: 34px; height: 34px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 10px;
-    font-weight: 800; font-size: 16px; color: #fff;
-    background: linear-gradient(135deg, #4299e1, #3182ce);
+    font-weight: 800; font-size: 15px; color: #0f172a;
+    background: linear-gradient(135deg, var(--cc1), var(--cc2));
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-  .card h3 { font-size: 17.5px; font-weight: 700; color: #f7fafc; line-height: 1.45; flex: 1; }
+  .card h3 { font-size: 17px; font-weight: 700; color: #f1f5f9; flex: 1 1 auto; }
+  .summary { margin: 12px 0 14px; color: #cbd5e1; font-size: 14.5px; text-align: justify; }
+
+  .meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
   .source-tag {
-    flex: none;
-    font-size: 12px; color: #cbd5e0;
-    padding: 3px 10px; border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.10);
+    font-size: 12px; padding: 3px 10px; border-radius: 999px;
+    color: var(--cc2); background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
   }
-  .summary { margin: 12px 0 14px; font-size: 14.5px; color: #cbd5e0; }
-
-  .progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .progress-label { font-size: 12px; color: #a0aec0; flex: none; }
-  .progress-bar {
-    flex: 1; height: 8px; border-radius: 999px;
-    background: rgba(255,255,255,0.10); overflow: hidden;
+  .cat-tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 999px;
+    color: #e2e8f0; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
   }
-  .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(135deg, #4299e1, #3182ce); }
-  .progress-val { font-size: 12px; font-weight: 700; color: #e2e8f0; flex: none; }
-
   .read-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13.5px; font-weight: 600; text-decoration: none;
-    padding: 7px 14px; border-radius: 10px; color: #fff;
-    background: linear-gradient(135deg, #4299e1, #3182ce);
+    font-size: 13px; font-weight: 600; text-decoration: none;
+    color: var(--cc1);
+    padding: 4px 12px; border-radius: 8px;
+    border: 1px solid var(--cc1);
+    transition: background .15s ease, color .15s ease;
   }
-  .read-link:hover { opacity: .9; }
+  .read-link:hover { background: var(--cc1); color: #0f172a; }
 
-  /* 颜色主题 */
-  .color-blue   { border-left-color: #4299e1; }
-  .color-blue   .badge, .color-blue .progress-fill, .color-blue .read-link { background: linear-gradient(135deg, #4299e1, #3182ce); }
-  .color-green  { border-left-color: #48bb78; }
-  .color-green  .badge, .color-green .progress-fill, .color-green .read-link { background: linear-gradient(135deg, #48bb78, #38a169); }
-  .color-yellow { border-left-color: #ecc94b; }
-  .color-yellow .badge, .color-yellow .progress-fill, .color-yellow .read-link { background: linear-gradient(135deg, #ecc94b, #d69e2e); }
-  .color-yellow .badge, .color-yellow .read-link { color: #1a202c; }
-  .color-purple { border-left-color: #9f7aea; }
-  .color-purple .badge, .color-purple .progress-fill, .color-purple .read-link { background: linear-gradient(135deg, #9f7aea, #805ad5); }
-  .color-teal   { border-left-color: #4fd1c5; }
-  .color-teal   .badge, .color-teal .progress-fill, .color-teal .read-link { background: linear-gradient(135deg, #4fd1c5, #319795); }
+  .importance { margin-top: 6px; }
+  .importance .label {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: #94a3b8; margin-bottom: 5px;
+  }
+  .bar { height: 7px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; }
+  .bar > span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--cc1), var(--cc2)); }
 
-  footer.footer {
+  footer {
     text-align: center; margin-top: 40px; padding-top: 20px;
-    font-size: 12.5px; color: #64748b;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    color: #64748b; font-size: 12.5px; border-top: 1px solid rgba(255,255,255,0.07);
   }
 
-  @media (max-width: 600px) {
-    body { padding: 16px 10px 40px; }
-    header.header h1 { font-size: 22px; }
-    .section-title { font-size: 19px; padding: 12px 14px; }
-    .card { padding: 15px 14px 15px 18px; }
-    .card h3 { font-size: 16px; }
-    .source-tag { width: 100%; margin-top: 6px; }
+  @media (max-width: 560px) {
+    header.page-head h1 { font-size: 22px; }
+    .section-title { font-size: 18px; padding: 12px 14px; }
+    .card { padding: 16px 14px; }
+    .card h3 { font-size: 15.5px; }
+    .summary { font-size: 14px; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="header">
+  <header class="page-head">
     <h1>📡 每日资讯简报</h1>
-    <div class="date">2026年07月23日 · 星期四</div>
-    <div class="sub">AI · 机器人 · 综合资讯 每日精选</div>
+    <div class="date">2026年07月24日 · 星期五</div>
+    <div class="sub">AI 行业 · 机器人与具身智能 · 综合资讯</div>
   </header>
 
-  <!-- ============ 第一部分：AI行业资讯 ============ -->
-  <div class="section-title"><span class="emoji">🔥</span><span>AI行业资讯</span></div>
+  <!-- ============ 第一部分 ============ -->
+  <div class="section-title ai">🔥 AI行业资讯</div>
 
   <div class="card color-blue">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">1</div>
-      <h3>月之暗面发布 Kimi K3：全球参数最大开源模型，突破 2.8 万亿</h3>
-      <span class="source-tag">中国新闻网 / 新浪财经</span>
+      <h3>Kimi K3 发布：2.8 万亿参数刷新全球最大开源模型纪录</h3>
     </div>
-    <p class="summary">7月16日，月之暗面正式发布新一代开源基础模型 Kimi K3，采用 MoE 混合专家架构，参数规模达 2.8 万亿，成为全球参数规模最大的开源模型。该模型标志着国产开源大模型综合实力跻身全球第一梯队，中国 AI 开源模型全球累计下载量已突破 100 亿次，开放权重路线正成为行业主流趋势，加速千行百业的智能化落地。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
-      <span class="progress-val">95</span>
+    <p class="summary">在 2026 世界人工智能大会（WAIC）上，新一代大模型 Kimi K3 正式亮相，参数规模达 2.8 万亿，成为全球参数规模最大的开源模型，标志着我国人工智能模型发展迈出关键一步。近年来，一批中国开源大模型从技术追赶到并跑领跑，正与全球共享发展经验与技术产品，开源生态日益繁荣，推动 AI 能力加速普惠化落地。</p>
+    <div class="meta">
+      <span class="cat-tag">大模型</span>
+      <span class="source-tag">来源：中国新闻网</span>
+      <a class="read-link" href="https://www.chinanews.com.cn/gn/2026/07-20/10662667.shtml" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://www.chinanews.com.cn/cj/2026/07-20/10663137.shtml" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>95%</span></div>
+      <div class="bar"><span style="width:95%"></span></div>
+    </div>
   </div>
 
   <div class="card color-green">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">2</div>
-      <h3>2026 世界人工智能大会落幕：300 余款全球首发，AI 迈向"智能伙伴"</h3>
-      <span class="source-tag">中国新闻网</span>
+      <h3>2026 世界人工智能大会落幕，多项"首发首次首个"硬核成果亮眼</h3>
     </div>
-    <p class="summary">7月17日至20日，以"智能伙伴·共创未来"为主题的 2026 世界人工智能大会（WAIC）在上海举行，展览面积首破 10 万平方米，1100 余家企业携 3000 余项成果亮相，超 300 款产品全球首发。与往年比拼参数不同，本届大会释放明确信号：AI 正从"能对话"走向"会干活"，从工具向智能伙伴加速演进，智能体落地进入规模化兑现期。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
-      <span class="progress-val">90</span>
+    <p class="summary">2026 世界人工智能大会以"智能伙伴 共创未来"为主题，汇集国内外 1100 余家企业，线下观展人次预计超 30 万，规模创历年新高。大会集中展示一批中国开源大模型与前沿 AI 技术，多项"首发、首次、首个"成果实力亮眼，涵盖大模型、智能体、具身智能等方向，凸显我国 AI 综合实力系统性跃升，并搭建起国际 AI 交流的高端平台。</p>
+    <div class="meta">
+      <span class="cat-tag">行业动态</span>
+      <span class="source-tag">来源：中国新闻网</span>
+      <a class="read-link" href="https://www.chinanews.com.cn/gn/2026/07-20/10662667.shtml" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://www.chinanews.com.cn/cj/2026/07-20/10663199.shtml" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>90%</span></div>
+      <div class="bar"><span style="width:90%"></span></div>
+    </div>
   </div>
 
   <div class="card color-yellow">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">3</div>
-      <h3>Sensor Tower 报告：上半年生成式 AI 应用使用时长达 360 亿小时</h3>
-      <span class="source-tag">36氪</span>
+      <h3>艾媒咨询发布 AI 办公智能体白皮书，智能体加速渗透办公场景</h3>
     </div>
-    <p class="summary">Sensor Tower 发布《2026 年 AI 应用市场洞察报告》显示，2026 年上半年全球生成式 AI 应用总使用时长预计达 360 亿小时，较 2025 年同期的 172 亿小时实现翻倍增长。报告指出，由聊天机器人引发的变革已演变为更广泛的生态系统转型，AI 正在重塑移动应用、网站流量与数字广告生态，并推动竞争格局与商业变现模式持续演变。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
-      <span class="progress-val">75</span>
+    <p class="summary">艾媒咨询发布《2026 年中国 AI 办公智能体产业发展白皮书》，将 AI 办公智能体界定为智能体在办公场景下的垂直应用，并依托多维度产业数据与终端实测样本梳理产业现状与趋势。随着企业数字化转型深入，办公智能体正从实验工具走向可依赖的生产系统，在文档处理、会议协同、流程自动化等环节释放显著效率红利，成为今年 AI 落地最热赛道之一。</p>
+    <div class="meta">
+      <span class="cat-tag">AI产品</span>
+      <span class="source-tag">来源：艾媒咨询</span>
+      <a class="read-link" href="https://www.iimedia.cn/c400/113198.html" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://www.36kr.com/p/3904793158977413" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>80%</span></div>
+      <div class="bar"><span style="width:80%"></span></div>
+    </div>
   </div>
 
-  <div class="section-divider"></div>
-
-  <!-- ============ 第二部分：机器人与具身智能 ============ -->
-  <div class="section-title"><span class="emoji">🤖</span><span>机器人与具身智能</span></div>
+  <!-- ============ 第二部分 ============ -->
+  <div class="section-title robot">🤖 机器人与具身智能</div>
 
   <div class="card color-purple">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">1</div>
-      <h3>工信部：我国人形机器人整机产品超全球半数，四足占近 70%</h3>
-      <span class="source-tag">中国新闻网</span>
+      <h3>从"上场"到"进厂"：2026 年人形机器人"量产元年"新观察</h3>
     </div>
-    <p class="summary">7月20日国新办发布会透露，上半年我国智能机器人领域发展迅猛：四足机器人占全球销量份额接近 70%，人形机器人整机产品达 400 余款、超过全球半数。工信部总工程师王卫明表示，AI 产品已成为消费新热点，新兴产业势头强劲，我国在全球机器人产业中的引领地位进一步巩固，产业链协同效应持续显现。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
-      <span class="progress-val">92</span>
+    <p class="summary">2026 年被业界视为"人形机器人量产元年"。工业和信息化部、国务院国资委近日联合印发通知，启动年度人形机器人与具身智能实景实训专项行动，提出到今年底"开启作业模式""带动形成万台级规模落地能力"。记者在浙江走访企业，实地探访人形机器人从实验室走向车间的真实进度，验证其在工业场景创造价值的距离与可行路径。</p>
+    <div class="meta">
+      <span class="cat-tag">人形机器人</span>
+      <span class="source-tag">来源：新华网</span>
+      <a class="read-link" href="https://www.xinhuanet.com/liangzi/20260723/d5872820f7704332aae2ce8e0cae1a41/c.html" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://www.chinanews.com.cn/cj/2026/07-20/10662824.shtml" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>95%</span></div>
+      <div class="bar"><span style="width:95%"></span></div>
+    </div>
   </div>
 
   <div class="card color-teal">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">2</div>
-      <h3>人形机器人"量产元年"：2026 年产量冲刺 10 万台关口</h3>
-      <span class="source-tag">新浪财经</span>
+      <h3>爱仕达为工业机器人装上"人形 AI 大脑"，推动具身智能落地</h3>
     </div>
-    <p class="summary">工信部副部长柯吉欣透露，2025 年我国人形机器人产量约 2 万台，2026 年上半年已超 4 万台，预计全年将突破 10 万台。作为"人工智能+"行动核心载体，人形机器人顶层设计持续完善、产业链协同加速，行业正从实验室演示快步迈向规模化应用，全球主要经济体纷纷将其纳入未来产业战略布局，量产拐点已然临近。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
-      <span class="progress-val">88</span>
+    <p class="summary">在 2026 世界人工智能大会链合π圆桌会上，爱仕达副总经理梁锐表示，行业正从数字 AI 迈向物理 AI，人形机器人的核心价值在于真实场景落地与商业变现。爱仕达围绕具身智能搭建六层技术架构，接入生态模型并与科技企业联合开发具身智能平台，围绕数据、行业技能、智能体、场景应用塑造能力，推动机器人从技术展示走向实用化、规模化部署。</p>
+    <div class="meta">
+      <span class="cat-tag">具身智能</span>
+      <span class="source-tag">来源：新浪财经</span>
+      <a class="read-link" href="https://finance.sina.com.cn/roll/2026-07-21/doc-iniiqquy8130260.shtml" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://finance.sina.com.cn/stock/t/2026-07-18/doc-iniiewei8354414.shtml" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>85%</span></div>
+      <div class="bar"><span style="width:85%"></span></div>
+    </div>
   </div>
 
   <div class="card color-blue">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">3</div>
-      <h3>宇树王兴兴：具身智能将迎突破，机器人两三年内适应多数陌生场景</h3>
-      <span class="source-tag">MSN / 新浪</span>
+      <h3>多款行业首创机器人登陆 WAIC，具身智能迎规模化落地新阶段</h3>
     </div>
-    <p class="summary">在 2026 年世界互联网大会数字丝路发展论坛上，宇树科技创始人王兴兴表示，人形机器人技术已实现跨越式发展，从基础行走拓展至舞蹈、功夫格斗等复杂动作，并逐步向简单服务场景渗透。他认为具身智能正接近突破性临界点，机器人或将在两三年内适应多数陌生场景，技术演进轨迹清晰，商业化落地值得期待。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
-      <span class="progress-val">80</span>
+    <p class="summary">2026 世界人工智能大会上，具身智能企业携多款"行业首创"机器人产品亮相，成为展区焦点。云深处科技带来覆盖四足、轮足、人形三大形态的机器人矩阵；京东机器人采销揭秘具身智能落地真相。随着技术成熟度提升与成本持续下降，具身智能正从演示走向规模化真实场景应用，行业整体进入落地加速期。</p>
+    <div class="meta">
+      <span class="cat-tag">机器人产品</span>
+      <span class="source-tag">来源：新浪科技</span>
+      <a class="read-link" href="https://finance.sina.com.cn/tech/roll/2026-07-18/doc-iniiftkc0888186.shtml" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://www.msn.cn/zh-cn/news/other/%E5%AE%87%E6%A0%91%E7%A7%91%E6%8A%80%E7%8E%8B%E5%85%B4%E5%85%B4-%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E5%B0%86%E8%BF%8E%E7%AA%81%E7%A0%B4-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%88%96%E4%B8%A4%E4%B8%89%E5%B9%B4%E5%86%85%E9%80%82%E5%BA%94%E5%A4%9A%E6%95%B0%E9%99%8C%E7%94%9F%E5%9C%BA%E6%99%AF/ar-AA28u97b" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>88%</span></div>
+      <div class="bar"><span style="width:88%"></span></div>
+    </div>
   </div>
 
-  <div class="section-divider"></div>
-
-  <!-- ============ 第三部分：综合资讯 ============ -->
-  <div class="section-title"><span class="emoji">🌍</span><span>综合资讯</span></div>
+  <!-- ============ 第三部分 ============ -->
+  <div class="section-title general">🌍 综合资讯</div>
 
   <div class="card color-green">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">1</div>
-      <h3>万亿长鑫上演资本盛宴，五家理财子"打新"或浮盈近 2 亿元</h3>
-      <span class="source-tag">东方财富网 · 财经</span>
+      <h3>科创板开市七周年，"硬科技军团"拔节生长；顺丰回购近 60 亿元</h3>
     </div>
-    <p class="summary">东方财富理财资讯显示，长鑫存储相关资本运作引发市场热潮，五家银行理财子公司参与"打新"，合计浮盈或近 2 亿元。随着半导体存储国产化进程加速，长鑫作为 DRAM 领域龙头备受资金追捧，反映出资本市场对硬科技核心资产的配置热情持续升温，理财资金入市渠道进一步拓宽，权益市场活跃度提升。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
-      <span class="progress-val">70</span>
+    <p class="summary">2026 年 7 月 22 日，科创板迎来开市七周年。七年来板块制度包容性持续增强，一批"硬科技"企业拔节生长，成为培育新质生产力的重要阵地。同日，顺丰控股公告称最新一轮股份回购方案已实施完毕，累计回购 A 股约 1.6 亿股、占总股本 3.04%，成交金额约 59.99 亿元，并将尽快办理注销，彰显龙头企业对自身长期价值的坚定信心。</p>
+    <div class="meta">
+      <span class="cat-tag">财经新闻</span>
+      <span class="source-tag">来源：中国证券报</span>
+      <a class="read-link" href="https://xueqiu.com/3338215700/401510432" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://money.eastmoney.com/a/clczx.html" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>80%</span></div>
+      <div class="bar"><span style="width:80%"></span></div>
+    </div>
   </div>
 
   <div class="card color-yellow">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">2</div>
-      <h3>上海开展消防安全集中夜查，查处电动车违规停放充电 5.9 万余处</h3>
-      <span class="source-tag">腾讯新闻 · 社会</span>
+      <h3>上半年全国城镇新增就业 695 万人，就业形势总体平稳</h3>
     </div>
-    <p class="summary">7月20日晚，上海消防在全市开展消防安全集中夜查行动，重点整治电动自行车违规停放充电、消防通道堵塞等隐患，共查处违规行为 5.9 万余处，徐汇、奉贤等多区同步联动。行动旨在守护城市夜间消防安全形势稳定，防范和遏制因电动车"进楼入户""飞线充电"引发的安全事故，筑牢基层安全防线。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
-      <span class="progress-val">72</span>
+    <p class="summary">7 月 22 日，人力资源社会保障部举行例行新闻发布会，公布上半年就业数据：全国城镇新增就业 695 万人，同比持平，就业形势保持总体平稳。围绕稳就业、促发展，人社部会同相关部门从五个方面"加力"推进，明确多项政策举措，在稳就业保民生中发挥积极作用，并扎实做好技能人才工作，技能人才队伍持续壮大。</p>
+    <div class="meta">
+      <span class="cat-tag">社会热点</span>
+      <span class="source-tag">来源：人民网</span>
+      <a class="read-link" href="https://cpc.people.com.cn/n1/2026/0723/c64387-40766299.html" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://news.qq.com/rain/a/20260722A03DEY00" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>85%</span></div>
+      <div class="bar"><span style="width:85%"></span></div>
+    </div>
   </div>
 
   <div class="card color-purple">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">3</div>
-      <h3>长沙遭遇强降雨，全市紧急转移群众超 3000 人</h3>
-      <span class="source-tag">腾讯新闻 · 社会</span>
+      <h3>外交部就菲律宾仁爱礁挑衅紧急召见菲驻华大使，提出严正交涉</h3>
     </div>
-    <p class="summary">7月20日，长沙遭遇强降雨，浏阳等地出现大到暴雨，市防汛部门紧急转移群众超 3000 人，省气象局启动暴雨四级应急响应。预计未来三天多阵雨，23 日起晴热高温天气再度发展，最高气温升至 35—37℃。当地消防同步开展夜查，重点整治电动车违规停放充电等隐患，全力保障群众生命财产安全。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
-      <span class="progress-val">75</span>
+    <p class="summary">7 月 21 日，外交部边海司负责人就菲律宾在仁爱礁蓄意挑衅、袭击中国海警执法人员，紧急召见菲驻华大使并提出严正交涉。中方指出，仁爱礁是中国南沙群岛一部分，中国海警执法合理合法；菲方非法"坐滩"军舰施放橡皮艇危险抵近、冲撞中方船艇并恶意滋扰攻击，危及中方人员安全，性质恶劣，要求菲方立即停止侵权挑衅。</p>
+    <div class="meta">
+      <span class="cat-tag">社会热点</span>
+      <span class="source-tag">来源：腾讯新闻</span>
+      <a class="read-link" href="https://news.qq.com/rain/a/20260721A088BS00" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://view.ineews.qq.com/a/20260721A025AH00" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>82%</span></div>
+      <div class="bar"><span style="width:82%"></span></div>
+    </div>
   </div>
 
   <div class="card color-teal">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">4</div>
-      <h3>《城市更新"十五五"规划》首纳银发经济，适老化改造潜在市场超 3 万亿</h3>
-      <span class="source-tag">百度百家号 · 养老</span>
+      <h3>厦门出台居家适老化改造补贴细则，银发经济政策体系成形</h3>
     </div>
-    <p class="summary">2026 年国务院印发《城市更新"十五五"规划》，首次将银发经济纳入城市更新重点培育的新动能体系，明确以适老化改造、社区养老配套、银发消费场景激活为核心抓手。行业分析显示，我国超 58% 老年人住房存在不适老问题，居家适老化改造潜在市场规模超 3 万亿元，目前整体覆盖率不足 10%，空间广阔。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
-      <span class="progress-val">78</span>
+    <p class="summary">厦门市围绕设施建设、服务供给、产业培育等全链条，出台《居家适老化改造补贴实施细则》等系列政策，形成分层衔接、协同发力的政策体系，为银发经济发展提供制度保障。相关措施与"一老一小"整体解决方案、养老事业产业协同发展若干措施相配合，推动养老服务更有温度、更具质感，有效激发银发经济新动能。</p>
+    <div class="meta">
+      <span class="cat-tag">养老 / 银发经济</span>
+      <span class="source-tag">来源：厦门市发改委</span>
+      <a class="read-link" href="https://dpc.xm.gov.cn/xxgk/xxgkml/jcgh/202607/t20260710_3006580.htm" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://baijiahao.baidu.com/s?id=1871379342987118579" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>78%</span></div>
+      <div class="bar"><span style="width:78%"></span></div>
+    </div>
   </div>
 
   <div class="card color-blue">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">5</div>
-      <h3>王毅将出席中国—东盟外长会及上合组织外长理事会会议</h3>
-      <span class="source-tag">外交部 · 国际</span>
+      <h3>王毅将出席中国—东盟外长会并赴吉尔吉斯斯坦出席上合外长会</h3>
     </div>
-    <p class="summary">外交部 7 月 20 日例行记者会宣布，中共中央政治局委员、外交部长王毅将于 7 月 22 日出席在菲律宾马尼拉举行的中国—东盟外长会，于 23 日至 25 日出席在吉尔吉斯斯坦举行的上合组织成员国外长理事会会议并访问吉尔吉斯斯坦。此访将推动周边外交与多边合作，深化区域互联互通与务实合作。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
-      <span class="progress-val">80</span>
+    <p class="summary">据外交部 7 月 20 日例行记者会消息，中共中央政治局委员、外交部长王毅于 7 月 22 日出席在菲律宾马尼拉举行的中国—东盟外长会，并于 23 日至 25 日出席在吉尔吉斯斯坦乔蓬阿塔举行的上海合作组织成员国外长理事会会议并访问吉国。此访将推动周边与多边外交，深化区域合作，并就人工智能全球治理等议题展开交流。</p>
+    <div class="meta">
+      <span class="cat-tag">国际时事</span>
+      <span class="source-tag">来源：外交部</span>
+      <a class="read-link" href="https://ye.china-embassy.gov.cn/fyrth/202607/t20260720_11986571.htm" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://ao.china-embassy.gov.cn/fyrth/202607/t20260720_11986571.htm" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>80%</span></div>
+      <div class="bar"><span style="width:80%"></span></div>
+    </div>
   </div>
 
   <div class="card color-green">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">6</div>
-      <h3>2026 国际足联世界杯激战：美加墨三国联合主办创历史</h3>
-      <span class="source-tag">腾讯体育 / FIFA · 体育</span>
+      <h3>2026 美加墨世界杯落幕，西班牙加时绝杀阿根廷时隔 16 年再捧杯</h3>
     </div>
-    <p class="summary">2026 年国际足联世界杯由美国、加拿大、墨西哥三国联合主办，是史上首次由三个国家共同承办的赛事，48 支球队逐鹿北美。作为全球关注度最高的体育盛事，本届世界杯在赛制扩军、主办模式上均开创新纪元，持续点燃全球球迷热情，相关赛事报道、实时比分与话题讨论热度居高不下，商业价值空前。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
-      <span class="progress-val">82</span>
+    <p class="summary">北京时间 7 月 20 日，2026 年美加墨世界杯在纽约新泽西体育场奏响终章。西班牙队在加时赛下半场由费兰·托雷斯攻入全场唯一进球，时隔 16 年再次捧杯；阿根廷队未能实现卫冕，获得亚军。首届 48 队参赛的世界杯完成全部 104 场比赛，累计 308 个进球、场均 2.96 个，比赛节奏与观赏性大幅提升，清晰照见世界足球发展脉络。</p>
+    <div class="meta">
+      <span class="cat-tag">体育</span>
+      <span class="source-tag">来源：人民日报</span>
+      <a class="read-link" href="https://paper.people.com.cn/rmrb/pc/content/202607/21/content_30169978.html" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://sports.qq.com/" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>88%</span></div>
+      <div class="bar"><span style="width:88%"></span></div>
+    </div>
   </div>
 
   <div class="card color-yellow">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">7</div>
-      <h3>2026 暑期档票房破 40 亿元，《功夫女足》热度领跑</h3>
-      <span class="source-tag">中国新闻网 / 新浪 · 文娱</span>
+      <h3>2026 年度电影总票房突破 200 亿元，暑期档热潮带动文化消费</h3>
     </div>
-    <p class="summary">进入 7 月中旬，2026 年暑期档电影总票房（含预售）突破 40 亿元，年度总票房站上 200 亿元关口。档期内超 110 部中外影片集中上映，类型涵盖历史、喜剧、动作、动画、科幻等。周星驰执导的《功夫女足》票房超 14 亿元领跑，粤产电影《给阿嬷的情书》展现强劲长尾效应，市场观影热度持续攀升。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:76%"></div></div>
-      <span class="progress-val">76</span>
+    <p class="summary">截至 7 月 19 日下午，2026 年度中国电影票房（含预售）已突破 200 亿元，暑期档热度不断攀升。《飞驰人生 3》《给阿嬷的情书》《镖人》等影片带动观影热潮，影旅深度融合成为新趋势。电影市场的回暖折射出居民消费与文化消费升级，线下文化消费场景持续焕新，为夏日经济注入强劲活力。</p>
+    <div class="meta">
+      <span class="cat-tag">文化娱乐</span>
+      <span class="source-tag">来源：央视网</span>
+      <a class="read-link" href="https://arts.cctv.com/2026/07/20/ARTIi015ASJYkJB5loeOGBBE260720.shtml" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://www.chinanews.com.cn/cul/2026/07-13/10658341.shtml" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>75%</span></div>
+      <div class="bar"><span style="width:75%"></span></div>
+    </div>
   </div>
 
   <div class="card color-purple">
-    <div class="card-top">
+    <div class="card-head">
       <div class="badge">8</div>
-      <h3>全国暑期文化和旅游消费季启动，将发放超 4.5 亿元消费补贴</h3>
-      <span class="source-tag">光明网 / 中国政府网 · 消费</span>
+      <h3>超 4.5 亿元消费补贴！2026 年全国暑期文旅消费季启动</h3>
     </div>
-    <p class="summary">7 月 8 日，文化和旅游部在青海举办 2026 年全国暑期文化和旅游消费季主场活动，联合国家体育总局等部门启动消费季，各地将发放超 4.5 亿元消费补贴。活动围绕消夏避暑、滨海度假、夜间经济、研学旅行、非遗美食、博物馆游等方向，激发居民文旅消费潜力，培育服务消费新增长点，助力内需扩容。</p>
-    <div class="progress-row">
-      <span class="progress-label">重要性</span>
-      <div class="progress-bar"><div class="progress-fill" style="width:74%"></div></div>
-      <span class="progress-val">74</span>
+    <p class="summary">7 月 8 日，文化和旅游部在青海海北启动 2026 年全国暑期文化和旅游消费季，各地将发放超 4.5 亿元消费补贴，围绕消夏避暑、滨海度假、夜间经济、游轮游艇、亲子游乐、研学旅行、非遗美食、博物馆游等推出系列活动。消费季旨在激发文旅消费潜力，联动"跟着赛事去旅行"等，丰富群众暑期生活，培育消费新增长点。</p>
+    <div class="meta">
+      <span class="cat-tag">消费 / 旅游</span>
+      <span class="source-tag">来源：中国政府网</span>
+      <a class="read-link" href="https://www.gov.cn/lianbo/202607/content_7074657.htm" target="_blank" rel="noopener">阅读原文 ↗</a>
     </div>
-    <a class="read-link" href="https://politics.gmw.cn/2026-07/09/content_38875482.htm" target="_blank" rel="noopener">阅读原文 →</a>
+    <div class="importance">
+      <div class="label"><span>重要性</span><span>76%</span></div>
+      <div class="bar"><span style="width:76%"></span></div>
+    </div>
   </div>
 
-  <footer class="footer">
-    每日资讯简报 · 由 WorkBuddy 自动生成 · 数据来源：公开网络资讯（截至 2026-07-23）
+  <footer>
+    每日资讯简报 · 数据来源于公开网络搜索，仅供参考 · 生成时间 2026-07-24
   </footer>
 
 </div>
